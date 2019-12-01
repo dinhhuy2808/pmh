@@ -1,0 +1,215 @@
+<div class="container">
+	<div *ngIf="!isShowAll">
+		<div *ngIf="isAdmin" class="row">
+			<div class="col-md-3">
+				<a class="btn btn-primary font-mobile"
+					href="/create-prd?cat=<%= catflt %>&catId=<%= catId %>">Thêm
+					Sản Phẩm</a>
+			</div>
+		</div>
+		<div class="row" id="buttonFilter">
+			<button class="btn btn-info center-block font-mobile"
+				onclick="displayFilter()">Lọc sản phẩm</button>
+		</div>
+		<div class="row" id="filter" style="display: block;">
+			<div class="col-xs-12 col-md-12">
+				<form>
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="form-group">
+								<h3 class="font-mobile">
+									<span class="label label-success">Kích thước(mm) :</span>
+								</h3>
+							</div>
+							<div class="form-group">
+								<input class=" form-control" type="number" [(ngModel)]="size"
+									placeholder="Chỉ nhập nếu bạn cần 1 size cụ thể!" />
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-6">
+							<div class="form-group">
+								<h3 class="font-mobile">
+									<span class="label label-success">Hợp mệnh: </span>
+								</h3>
+							</div>
+							<div class="form-group">
+								<select class=" form-control" [(ngModel)]="menh">
+									<option value=''>Chỉ chọn nếu bạn cần một mạng cụ thể</option>
+									<option value="kim">Kim</option>
+
+									<option value="moc">Mộc</option>
+
+									<option value="thuy">Thủy</option>
+
+									<option value="hoa">Hỏa</option>
+
+									<option value="tho">Thổ</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-6">
+							<div class="form-group">
+								<h3 class="font-mobile">
+									<span class="label label-success">Màu sắc:</span>
+								</h3>
+							</div>
+							<div class="form-group">
+								<select class=" form-control" [(ngModel)]="mau">
+									<option value=''>Chỉ chọn nếu bạn cần một màu cụ thể</option>
+									<option value="đỏ">Đỏ</option>
+									<option value="tím">Tím</option>
+									<option value="hồng">Hồng</option>
+									<option value="vàng">Vàng</option>
+									<option value="nâu">Nâu</option>
+									<option value="cam">Cam</option>
+									<option value="xám">Xám</option>
+									<option value="ánh vàng">Ánh vàng</option>
+									<option value="ánh bạc">Ánh bạc</option>
+									<option value="xanh biển">Xanh biển</option>
+									<option value="đen">Đen</option>
+									<option value="xanh lá">Xanh lá</option>
+									<option value="xanh ngọc">Xanh ngọc</option>
+									<option value="trong suốt">Trong suốt</option>
+									<option value="trắng">Trắng</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-6">
+							<div class="form-group">
+								<h3 class="font-mobile">
+									<span class="label label-success">Hợp tuổi:</span>
+								</h3>
+							</div>
+							<div class="form-group">
+								<select class="form-control" [(ngModel)]="tuoi">
+									<option value='' selected>Chỉ chọn nếu bạn cần một
+										tuổi cụ thể</option>
+
+									<option value="tý">Tý</option>
+
+									<option value="sủu">Sửu</option>
+
+									<option value="dần">Dần</option>
+
+									<option value="mẹo">Mẹo/Mão</option>
+
+									<option value="thìn">Thìn</option>
+
+									<option value="tỵ">Tỵ</option>
+
+									<option value="ngọ">Ngọ</option>
+
+									<option value="mùi">Mùi</option>
+
+									<option value="thân">Thân</option>
+
+									<option value="dậu">Dậu</option>
+
+									<option value="tuất">Tuất</option>
+
+									<option value="hợi">Hợi</option>
+
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<input class=" form-control" [(ngModel)]="keyword"
+								style="display: none" type="text" />
+						</div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3"></div>
+						<div class="col-md-3"></div>
+
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-offset-5 col-md-2 col-xs-offset-5 col-xs-3">
+									<div class="form-group">
+										<button class="btn btn-primary font-mobile" (click)="filter()">Áp
+											Dụng</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="isAdmin" class="row">
+						<button class="btn btn-primary font-mobile" (click)="addProduct()">Thêm sản phẩm.</button>
+					</div>
+					<div class="row">
+						<div *ngFor="let product of categoryscreens">
+							<div class="col-xs-6 col-md-3">
+								<a (click)="navigateToProductDetail(product.name)">
+									<div class="product">
+
+										<div class=""
+											style="position: relative; overflow: hidden; margin-bottom: 20px;">
+											<img class="img-responsive zoom" src="{{product.image}}"
+												alt="image">
+										</div>
+
+										<div *ngIf="product.discountPrice==0"
+											style="position: relative;" class="product_detail">
+											<h2 class="font-custom" style="margin: 0px;">{{product.name}}</h2>
+											<h3>
+												<a href=""
+													style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;</a>
+											</h3>
+											<h3 class="font-custom currency"
+												style="color: red; font-weight: bold; margin-top: 10px;"
+												id="dictprice">{{product.price}}</h3>
+										</div>
+										<div *ngIf="product.discountPrice!=0"
+											style="position: relative;" class="product_detail">
+											<div class="col-md-3"
+												style="position: absolute; padding: 0px; top: 0px; right: 0px;">
+												<div style="position: relative;">
+													<img src="/img/sale.svg">
+													<h5
+														style="color: white; position: absolute; top: 0px; text-align: center; padding-left: 15px;">-{{(1-product.discountPrice/product.price)*100}}%</h5>
+												</div>
+												<!-- <h4 style="color: white;">-39%</h4>   -->
+											</div>
+											<h2 class="font-custom" style="margin: 0px;">{{product.name}}</h2>
+											<h3>
+												<a href=""
+													style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;</a>
+											</h3>
+											<h3 class="font-custom currency"
+												style="color: red; font-weight: bold; margin-top: 10px;"
+												id="dictprice">{{product.discountPrice}}</h3>
+											<h4 class="currency"
+												style="text-decoration: line-through; color: #6b6b6c; margin: 0px;">{{product.price}}</h4>
+										</div>
+										<h3 class="font-custom " style="margin: 0px;">{{product.name}}</h3>
+
+									</div>
+								</a>
+								<div class="row" *ngIf="isAdmin">
+									<div class="col-xs-3 col-md-3">
+										<a class="btn btn-primary"
+											(click)="navigateToProductEdit(product.name)">Edit</a>
+									</div>
+									<div class="col-xs-3 col-md-3">
+										<button class="btn btn-danger"
+											onclick="EraseProduct('<%=result[j].name%>')">Xóa</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+
+
+
+
+	</div>
+</div>

@@ -1,0 +1,62 @@
+<div class="container" style="min-width: 970px;">
+    <div *ngIf="status == 'init'">
+        <div class="row" style="position: relative;">
+            <img class="img-responsive" src="../../assets/img/app-in.jpg">
+            <form class="" role="search" style="position: absolute; top: 40%; left: 10%" action="/app-phongthuy"
+                method="GET">
+                <input name="year" type="text" class="form-control" placeholder="Năm sinh"
+                    style="border: double; background-color: transparent; color: black; font-size: 40px; min-height: 100px; max-width: 320px; border-radius:10px;"
+                    required [(ngModel)]="yearOfBirth">
+                <br>
+                <div class="col-md-8">
+                    <a [routerLink]="['/app-phong-thuy', yearOfBirth]" class="btn btn-primary"
+                        style="background-color: transparent; border: 0px; padding: 0px;">
+                        <img src="../../assets/img/hien.png" class="img-responsive">
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div *ngIf="status != 'init' && respone != null">
+        <div class="row" style="position: relative;">
+            <img class="img-responsive" src="../../assets/img/app-out.jpg">
+            <div class="row" style="position: absolute; top: 150px; left: 15%;">
+                <p style="font-size: 70px;padding-left: 15px; font-family: arial;"><b>{{yearOfBirth}}</b></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <br><br>
+                <p class="font-custom" style="font-size: 100px; text-align: center;">
+                    Mệnh cách:
+                </p>
+            </div>
+            <div class="col-md-4 center-block">
+                <img class="img-responsive center-block" src="../../assets/img/nguhanh/{{respone.id}}.svg">
+            </div>
+        </div>
+        <div class="row">
+            <div class=".col-xs-6 col-md-4">
+                <img class="img-responsive center-block" src="../../assets/img/12giap/{{b}}.png">
+            </div>
+            <div class=".col-xs-12 col-md-8">
+                <p style="font-size: 100px; text-align: center;">
+                    Tuổi:<br> <b>{{yearOfBirth}}</b>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <img class="img-responsive" src="../../assets/img/phatbanmenh/{{b}}.jpg">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <a [routerLink]="['/category', respone.chi, mang[respone.id]]" class="btn btn-primary" style="background-color: transparent; border: 0px; padding: 0px;">
+                    <img src="../../assets/img/xemthem.png" class="img-responsive">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

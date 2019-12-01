@@ -1,0 +1,425 @@
+<div class="container body-content">
+	<div class="row">
+		<ol class="breadcrumb">
+			<a href="/"><i class="icon fa fa-home">Home</i></a>
+			<a href="/maintenance-prd/"></a>/
+			<a href="#"><i class="icon fa fa-home">Tạo Sản Phẩm</i></a>
+		</ol>
+
+	</div>
+	<div class="row product-info">
+		<div class="col-md-4">
+			<div class = "row">
+				<a href="#" class="thumbnail"> <img class="img-responsive"
+				src="assets/img/3x4.png" alt="">
+				</a>
+			</div>
+			<div class="row">
+								<div class="col-md-8">
+									<h3>Folder ID: </h3>
+								</div>
+							</div>
+			<div class = "row">
+				<input class="col-md-8 form-control" type="text"
+									[(ngModel)]="product.image">
+			</div>
+			
+			
+		</div>
+		<div class="col-md-8">
+			<div class="ditem">
+				<div class="bs-example bs-example-tabs">
+					<ul id="myTab" class="nav nav-tabs" role="tablist">
+						<li class="active"><a href="#home" role="tab"
+							data-toggle="tab">Sản Phẩm</a></li>
+						<li class=""><a href="#profile" role="tab" data-toggle="tab">Dịch
+								Vụ</a></li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+
+						<div class="tab-pane fade active in" id="home">
+							<div class="row">
+								<div class="col-md-8">
+									<h3>Tên Sản Phẩm</h3>
+								</div>
+							</div>
+							<div class="row center-block">
+								<input class="col-md-8 form-control" type="text"
+									[(ngModel)]="product.name" (blur)="checkProductName()"
+									#productNameValidation="ngModel" required>
+							</div>
+							<div class="row center-block">
+								<div *ngIf="product.name==''" style="color: red">Mời nhập
+									tên</div>
+								<div *ngIf="isExistProductName" style="color: red">Tên Sản
+									phẩm đã tồn tại.</div>
+							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<h3>Hợp mệnh</h3>
+								</div>
+							</div>
+							<div class="row center-block">
+								<label class="checkbox-inline"> <input type="checkbox"
+									class="checkmenh" id="mang0" value="Kim"
+									(change)="menhChange($event.target)" [checked]="menhcheckall"> Kim
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmenh" id="mang1" value="Mộc"
+									(change)="menhChange($event.target)" [checked]="menhcheckall"> Mộc
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmenh" id="mang2" value="Thủy"
+									(change)="menhChange($event.target)" [checked]="menhcheckall"> Thủy
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmenh" id="mang3" value="Hỏa"
+									(change)="menhChange($event.target)" [checked]="menhcheckall"> Hỏa
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmenh" id="mang4" value="Thổ"
+									(change)="menhChange($event.target)" [checked]="menhcheckall"> Thổ
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmenh" id="mang5" value="All"
+									(change)="menhChange($event.target)"
+									onclick="selectAll('checkmenh')"> Tất cả các mệnh
+								</label>
+							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<h3>Hợp Tuổi</h3>
+								</div>
+							</div>
+							<div class="row center-block">
+								<label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi0" value="Tý" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Tý
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi1" value="Sửu" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Sửu
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi2" value="Dần" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Dần
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi3" value="Mẹo" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Mẹo
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi4" value="Thìn" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Thìn
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi5" value="Tỵ" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Tỵ
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi6" value="Ngọ" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Ngọ
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi7" value="Mùi" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Mùi
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi8" value="Thân" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Thân
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi9" value="Dậu" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Dậu
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi10" value="Tuất" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Tuất
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi11" value="Hợi" [checked]="tuoicheckall"
+									(change)="tuoiChange($event.target)"> Hợi
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checktuoi" id="Tuoi12" value="All"
+									(change)="tuoiChange($event.target)"> Tất cả các tuổi
+								</label>
+							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<h3>Màu sắc</h3>
+								</div>
+							</div>
+							<div class="row center-block">
+								<label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau0" value="Đỏ"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Đỏ
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau1" value="Tím"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Tím
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau2" value="Hồng"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Hồng
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau3" value="Vàng"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Vàng
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau4" value="Nâu"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Nâu
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau5" value="Cam"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Cam
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau6" value="Xám"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Xám
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau7" value="Ánh Vàng"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Ánh vàng
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau8" value="Ánh Bạc"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Ánh bạc
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau9" value="Xanh Biển"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Xanh biển
+								</label>
+							</div>
+							<div class="row center-block">
+								<label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau10" value="Đen"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Đen
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau11" value="Xanh Lá"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Xanh lá
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau12" value="Xanh Ngọc"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Xanh ngọc
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau13" value="Trong Suốt"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Trong suốt
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau14" value="Trắng"  [checked]="maucheckall"
+									(change)="mauChange($event.target)"> Trắng
+								</label> <label class="checkbox-inline"> <input type="checkbox"
+									class="checkmau" id="mau14" value="All"
+									(change)="mauChange($event.target)"> Tất cả các màu
+								</label>
+							</div>
+							<div class="row">
+								<div class="col-md-8">
+									<h3>Size</h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="row">
+										<label class="col-md-4"> Từ: </label>
+										<div class="col-md-8">
+											<input class="form-control" [(ngModel)]="thuoctinh.sizefrom">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="row">
+										<label class="col-md-4"> Đến: </label>
+										<div class="col-md-8">
+											<input class="form-control" [(ngModel)]="thuoctinh.sizeto">
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-8">
+									<h3>Phân loại sản phẩm</h3>
+								</div>
+							</div>
+							<div class="row center-block">
+								<div class="col-xs-2 col-md-2">
+									<h4 style="text-align: center;">Phân Loại</h4>
+								</div>
+								<div class="col-xs-2 col-md-2">
+									<h4 style="text-align: center;">Giá</h4>
+								</div>
+								<div class="col-xs-2 col-md-2">
+									<h4 style="text-align: center;">Giá sau giảm</h4>
+								</div>
+								<div class="col-xs-2 col-md-2">
+									<h4 style="text-align: center;">Tồn kho</h4>
+								</div>
+								<div class="col-xs-2 col-md-2">
+									<h4 style="text-align: center;">Thông tin loại hàng</h4>
+								</div>
+								<div class="col-xs-2 col-md-2">
+									<h4 style="text-align: center;">Mã Sản Phẩm</h4>
+								</div>
+							</div>
+
+							<div class="row" *ngFor="let item of size; let i=index"
+								[ngStyle]="{'display': i <= showInsertRowSize?'block':'none'}">
+								<div class="row center-block">
+
+									<div class="col-xs-2 col-md-2">
+										<input class="form-control" [(ngModel)]="item.size">
+									</div>
+
+									<div class="col-xs-2 col-md-2">
+										<input class="form-control" [(ngModel)]="item.price">
+
+									</div>
+									<div class="col-xs-2 col-md-2">
+										<input class="form-control" [(ngModel)]="item.disct_price">
+										<div *ngIf="item.price < item.disct_price" style="color: red">Giá
+											sau giảm nhỏ hơn giá sản phẩm.</div>
+									</div>
+
+									<div class="col-xs-2 col-md-2">
+										<input class="form-control" [(ngModel)]="item.quantity">
+
+									</div>
+
+									<div class="col-xs-2 col-md-2">
+										<input class="form-control" [(ngModel)]="item.info">
+
+									</div>
+
+									<div class="col-xs-2 col-md-2">
+										<input class="form-control" [(ngModel)]="item.code"
+											(blur)="checkCodeOfSize(item.code)">
+										<div *ngIf="isExistSizeCode" style="color: red">Mã Sản
+											Phẩm đã tồn tại.</div>
+
+									</div>
+
+								</div>
+								<br>
+							</div>
+							<div class="row" id="rowInsertBtn">
+								<div class="col-md-2">
+									<button class="btn btn-danger" (click)="showInsertRowSizeAdd()">+</button>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-3">
+									<input class="form-control newImg" type="file"
+										[(ngModel)]="fileToUpload"
+										(change)="handleFileInput($event.target.files)" multiple>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-2">
+									<button class="btn btn-primary" id="add" (click)="addProduct()" style = 'display: none'
+										>Add</button>
+										<button class="btn btn-primary"  onClick = "clicky()"
+										style="display: block">Add</button>
+								</div>
+								<div class="col-md-2">
+									<a class="btn btn-primary" href="/">Cancel</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane fade" id="profile">
+							<div class="col-md-8">
+								<h3>Tên Dịch Vụ</h3>
+							</div>
+							<div class="row center-block">
+								<div class="col-md-8">
+									<input class="col-md-8 form-control" type="text" id="nameDV"
+										onkeyup="CheckPrdDV()" value="">
+								</div>
+								<div class="col-md-4">
+									<input class="form-control newImgDv" id='newImgDv' type='file'
+										value='' multiple>
+								</div>
+							</div>
+							<br>
+							<div class="row center-block">
+								<div class="col-md-8">
+									<h3>Mã Dịch Vụ</h3>
+								</div>
+							</div>
+							<div class="row center-block">
+								<div class="col-md-3">
+									<input class="form-control" type="text" id="newCodeDV" value="">
+								</div>
+							</div>
+							<br>
+							<div class="row center-block">
+								<div class="col-md-2">
+									<button class="btn btn-primary" id="add" onclick="AddDV()">Add</button>
+								</div>
+								<div class="col-md-2">
+									<a class="btn btn-primary" href="/">Cancel</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<br>
+	<!--<button  onclick="OpenModal()">
+        <i class="fa fa-image" ></i></button>
+-->
+	<a type="button"
+		onclick="document.getElementById('id02').style.display='block'"
+		style="width: auto;"> <span class="glyphicon glyphicon-upload"></span>
+	</a>
+	<!-- Modal -->
+	<div id="id02" class="modal">
+		<div class="container popup animate">
+			<div style="padding-top: 75px;">
+				<span onclick="document.getElementById('id02').style.display='none'"
+					class="close" title="Close Modal">&times; </span> <img
+					src="img/LOGO.svg" alt="Avatar" class="avatar center-block"
+					style="max-width: 75px">
+			</div>
+			<form class="form-horizontal" role="form" action="/login"
+				method="POST">
+				<div class="">
+					<h4 class="modal-title">Thêm Hình</h4>
+					<input class="form-control newImgModal" id='newImgModal'
+						type='file' value=''>
+				</div>
+				<br>
+				<button class="center-block btn btn-primary" onclick="CloseModal()"
+					data-dismiss="modal" type="button">Ok</button>
+			</form>
+		</div>
+	</div>
+
+
+	<div id="modalExpired" class="modal-dialog" style="display: none"
+		role="dialog">
+
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Ngày Hết Hạn Khuyến Mãi</h4>
+			</div>
+			<div class="modal-body">
+				<input class="form-control" id='expiredDate' type='date' value=''>
+			</div>
+			<div class="modal-footer">
+				<button type="button" onclick="CloseModalExpired()"
+					class="btn btn-default" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+
+	</div>
+	<div class="row product-info center-block">
+		<!-- <div>
+            <textarea style="width: 100%; min-height: 300px;" id="description" name="description"></textarea>
+        </div>-->
+		<div class="center">
+
+			<textarea id="editor">
+                
+            </textarea>
+
+		</div>
+		<div ng-app>
+			<div >
+			<div ng-app="myApp" ng-controller="myCtrl">
+				<input id="description" style = 'display: none' (click) = "testDesc($event.target)" value = "" />
+				</div>
+			</div>
+		</div>
+		 
+	</div>
+
+</div>
+

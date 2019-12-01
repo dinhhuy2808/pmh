@@ -1,0 +1,15 @@
+<div class="container dialog" >
+  <label>Name</label> <input class="form-control" type='text'
+    [(ngModel)]="name"> <br> <label>Birth Date</label> <input
+    class="form-control" type="date" [(ngModel)]="birthdate"> <br>
+  <label>Role</label> <select class="form-control" [(ngModel)]="role">
+    <option value='staff' selected>Staff</option>
+    <option value='leader'>Leader</option>
+    <option value='manager'>Manager</option>
+  </select> <br> <label>Gender</label> <select class="form-control"
+    [(ngModel)]="gender">
+    <option value='M' selected>Male</option>
+    <option value='F'>Female</option>
+  </select> <br>
+  <button type="button" class="btn btn-primary"  (click)="AddPerson()">Add</button>
+</div>

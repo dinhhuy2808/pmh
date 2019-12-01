@@ -1,0 +1,92 @@
+<div class="container">
+
+        <div class="row">
+            <ol class="breadcrumb">
+                <a href="/"><i class="icon fa fa-home"></i> Home</a> / <a href="/#">Sign Up</a>
+            </ol>
+
+        </div>
+
+        <div class="row" data-gutter="60">
+            
+            <div class="col-md-offset-3 col-md-6">
+                
+                <h2><span class="label label-success center-block">Đăng kí tài khoản</span></h2>
+                <form enctype="multipart/form-data" >
+                    <div class="row">
+                        <div class="form-group form-group-icon-left col-md-offset-2 col-md-8"><i class="fa fa-user input-icon input-icon-show"></i>
+                            <label>Họ và Tên</label>
+                            <input class="form-control" type="text" [(ngModel)]="user.firstname" name = 'firstname' #fistNameValidation = "ngModel" required>
+                            <div *ngIf="user.firstname.trim()==''" style="color: red"> Mời nhập tên</div>
+                        </div>
+
+                    </div>
+
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-4">
+                                <div class="form-group form-group-icon-left">
+                                    <label>Sinh Ngày</label>
+                                    <input class="form-control" [(ngModel)]="dob" type="date" />
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="row" >
+                        <div class="col-md-offset-2 col-md-4">
+                            <label>Giới Tính</label>
+                            <select class="form-control" [(ngModel)]="user.gender" name = 'gender' #genderValidation = "ngModel">
+                                <option value = "M">Quý Ông</option>
+                                <option value = "F">Quý Bà</option>
+                            </select>
+                            <div *ngIf="user.gender.trim()==''" style="color: red"> Mời giới tính</div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="form-group form-group-icon-left col-md-offset-2 col-md-8"><i class="fa fa-user input-icon input-icon-show"></i>
+                            <label>Số điện thoại</label>
+                            <input class="form-control" type="text" [(ngModel)]="user.phone" name = 'phone' #phoneValidation = "ngModel" (blur)="checkUserByPhone()">
+                             <div *ngIf="user.phone.trim()==''" style="color: red"> Mời số điện thoại</div>checkUserByPhone
+                              <div *ngIf="isValidPhone && user.phone.trim()!=''" style="color: red">Số điện thoại đã được đăng kí</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group form-group-icon-left col-md-offset-2 col-md-8" id = "passwordRow"><i class="fa fa-user input-icon input-icon-show"></i>
+                            <label>Mật khẩu</label>
+                            <input class="form-control" type="password" [(ngModel)]="user.password" name = 'password' #passwordValidation = "ngModel" required>
+                             <div *ngIf="user.password.trim()==''" style="color: red"> Mời nhập mật khẩu</div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="display: none">
+                        <div class="form-group form-group-icon-left col-md-4"><i class="fa fa-user input-icon input-icon-show" ></i>
+                            <label>Email</label>
+                            <input class="form-control" type="text" name="email" id="email" >
+                        </div>
+
+                    </div>
+
+                    <div class="row" >
+
+                        <div class="form-group form-group-icon-left col-md-offset-2 col-md-8">
+                            <label>Địa chỉ</label>
+                            <textarea class="form-control" type="text" [(ngModel)]="user.address" name = 'address' #addressValidation = "ngModel" required></textarea>
+                             <div *ngIf="user.address.trim()==''" style="color: red"> Mời nhập địa chỉ</div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="isAdmin" class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
+                        <label>User Type</label>
+                        <select [(ngModel)]="user.type_id" >
+                            <option value="2" selected>User</option>
+                            <option value="1" >Admin</option>
+
+                        </select>
+                    </div>
+                    <input class="btn btn-success center-block" (click)="register()" value="Đăng kí"  
+                    [disabled]="user.address.trim()==''
+                    ||user.firstname.trim()==''||user.gender.trim()==''||user.phone.trim()==''||user.password.trim()==''" >
+                </form>
+
+            </div>
+        </div>
+    </div>

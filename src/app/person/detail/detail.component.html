@@ -1,0 +1,46 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class = "container">
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Staff</th>
+  </tr>
+  <tr>
+    <td ><input class="form-control"
+      style="background-color: white;" type="text" [(ngModel)]="keyword">
+    </td>
+    <td><select class="form-control" [(ngModel)]="role">
+        <option selected value=''>---- Select ----</option>
+        <option value='staff'>Staff</option>
+        <option value='leader'>Leader</option>
+        <option value='manager'>Manager</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td>
+      <button type="button" class="btn btn-primary" >Search</button>
+    </td>
+  </tr>
+</table>
+<br>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Level</th>
+    <th>Birth Date</th>
+    <th>Gender</th>
+  <tr>
+  <tr *ngFor="let person of persons">
+    <td>{{person.name}}</td>
+    <td>{{person.level}}</td>
+    <td>{{person.birthday | datepipe}}</td>
+    <td *ngIf="person.gender=='F'"><i class="fa fa-venus"></i></td>
+    <td *ngIf="person.gender=='M'"><i class="fa fa-mars"></i></td>
+    <td><a><i class="fa fa-close"></i></a>
+    </td>
+  </tr>
+</table>
+</div>
+

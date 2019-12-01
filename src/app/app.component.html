@@ -1,0 +1,362 @@
+<div *ngIf="isMobile">
+    <div class="container-fluid" id="headerMobile">
+        <div class="row">
+            <div class="col-xs-3">
+                <a href="/"><img src="../assets/img/logo.png" alt="LienHoaCac"
+                    style="width: 100%; padding: 0px;"></a>
+            </div>
+            <div class="col-xs-7">
+                <div class="row">
+                    <div class="col-xs-12" style="padding: 30px;">
+                        <form class="search" method="GET" action="/maintenance-prd/Search">
+                            <div class="form-group">
+                                <input
+                                    style="background-color: white; width: 80%; min-height: 70px;"
+                                    type="text" 
+                                    placeholder="Tìm kiếm trên Cutiie House..." value="">
+                            </div>
+                            <button type="submit" class=""
+                                style="width: 20%; min-height: 70px;">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <button class="cursor" (click)="openDialog()"
+                            style="background-color: transparent; border: 0px; padding: 0px; position: relative;">
+                            <img src="assets/img/cart.png"
+                                class="img-responsive cursor shopping-cart"
+                                style="max-width: 100px; margin: 15px 10px 15px 0px;">
+                            <h4 id='cartIcon'
+                                style="color: red; background-color: transparent; position: absolute; top: 0px; right: 0px;">{{itemInCart}}</h4>
+                        </button>
+                    </div>
+                    <div class="col-xs-4" style="padding: 30px 0px 30px 0px">
+                        <div *ngIf="isSignIn" class="dropdown" style="">
+                            <ul class="nav navbar-nav navbar-left sm menu-hover" style="">
+                                <li>
+                                    <h4>
+                                        Kính chào {{gender}} {{name}} !<span
+                                            class="glyphicon glyphicon-triangle-bottom"></span>
+                                    </h4>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/show-payment"><h3>Đơn Hàng</h3></a></li>
+                                        <li><a href="/edit-account"><h3>Chỉnh Sửa Thông
+                                                    Tin</h3></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xs-4" style="padding: 30px">
+                        <a *ngIf="isSignIn" href="/logout">
+                            <button  class="btn btn-success"
+                                style="min-width: 100px; min-height: 70px;" (click)="logout()">Đăng Xuất</button>
+                        </a>
+
+                        <a *ngIf="!isSignIn"
+                            onclick="document.getElementById('id01').style.display='block'">
+                            <button class="btn btn-success"
+                                style="min-width: 100px; min-height: 70px;">Đăng Nhập</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <a (click)="openNav()"
+                    style="background-color: transparent; border: 0px; padding: 30px; position: relative;">
+                    <img src="assets/img/align-justify.png"
+                    class="img-responsive cursor shopping-cart"
+                    style="max-width: 90px; margin: 15px 10px 15px 0px;">
+                </a>
+                <div class="container-fuild large-menu" id="menu-mobile">
+                    <div class="row" style="margin: 50px;">
+                        <div class="col-xs-offset-10 col-xs-1">
+                            <a href="javascript:void(0)" class="closebtn font-menu-mobile"
+                                (click)="closeNav()">&times;</a>
+                        </div>
+                        <div *ngFor="let item of treeMap | keyvalue">
+                            <div class="col-xs-12">
+                                <div class="" style="border-bottom: 1px solid #000000;">
+                                    <a class="font-menu-mobile" href="/maintenance-prd/{{item.key}}">{{item.key}}</a>
+                                </div>
+                            </div>
+                            <div *ngIf="item.value.length>0 " class="col-xs-12">
+                                <div *ngFor="let cat of item.value">
+                                    <div class="col-xs-12">
+                                        <div class="selected-menu"
+                                            style="border-bottom: 1px solid #000000;">
+                                            <a class="font-menu-mobile" data-filter=".folder2"
+                                                >{{cat.trim()}}</a>
+                                        </div>
+                
+                                        <a class="font-menu-mobile display-menu"
+                                            style="font-weight: bold; position: absolute; right: 50px; top: 0px;"
+                                            >+</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div *ngIf="isAdmin" class="col-xs-12">
+                            <div class="selected-menu"
+                                style="border-bottom: 1px solid #000000;">
+                                <a class="font-menu-mobile selected-menu"
+                                    onclick="display('Administrator')">Administrator</a>
+                            </div>
+
+                            <a class="font-menu-mobile display-menu"
+                                style="font-weight: bold; position: absolute; right: 50px; top: 0px;"
+                                onclick="display('Administrator')">+</a>
+                            <div class="small-menu" id="Administrator" style="display: none;">
+                                <a class="font-menu-mobile col-xs-12" [routerLink]="['accounts']"
+                                    style="border-bottom: 1px solid #000000; padding-left: 50px;">Tài
+                                    Khoản</a> 
+                                 <a class="font-menu-mobile col-xs-12" href="/show-payment"
+                                    style="border-bottom: 1px solid #000000; padding-left: 50px;">Đơn
+                                    Hàng</a> 
+                                    
+                                 <a class="font-menu-mobile col-xs-12" [routerLink]="['maintenance']"
+                                    style="border-bottom: 1px solid #000000; padding-left: 50px;">Thư
+                                    Mục</a> 
+                                    
+                                  <a class="font-menu-mobile col-xs-12" href="/voucher"
+                                    style="border-bottom: 1px solid #000000; padding-left: 50px;">Voucher</a>
+                                    
+                                <a class="font-menu-mobile col-xs-12" href="/maintenance-prd/All"
+                                    style="border-bottom: 1px solid #000000; padding-left: 50px;">Kho</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="close-area" onclick="closeNav()" class="close-area"></div>
+            </div>
+        </div>
+    </div>
+</div> 
+<div *ngIf="!isMobile">
+    <div class="container-fluid" id="menu-pc" style="padding: 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3 col-md-2" style="text-align: center;">
+                    <a href="/"><img src="../assets/img/logo.png" alt="LienHoaCac" style="width: 120px;padding: 0px;"></a>
+                </div>
+            
+                <div class="col-xs-9 col-md-6 ">
+                    <form class="search" method="GET" action="/maintenance-prd/Search">
+                        <div class="form-group">
+                            <input style="background-color: white;" type="text" name="keyword" id="keyword-search" placeholder="Tìm kiếm trên Cutiie House..." value="">
+                        </div>
+                        <button type="submit" class=""><span class="glyphicon glyphicon-search"></span></button>
+                    </form>
+                </div>
+                <div class="col-xs-2 col-md-1 cursor">
+                    <button class="cursor" (click)="openDialog()" style="background-color: transparent; border: 0px; padding: 0px; position: relative;">
+                        <img src="assets/img/cart.png" class="img-responsive cursor shopping-cart" style="max-width: 50px; margin: 15px 10px 15px 0px;">
+                        <h4 id ='cartIcon' style="color: red; background-color: transparent; position: absolute; top: 0px; right: 0px;">{{itemInCart}}</h4>
+                    </button>
+                </div>
+                <div class="col-xs-4 col-md-2" style="max-width: 200px; margin: 15px 0px 0px 0px; text-align: right;">
+                    <div *ngIf="isSignIn" class="dropdown" style="">
+                        <!-- <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: transparent;">
+                        <span class="glyphicon glyphicon-th-list"></span> Menu
+                        </button> -->
+                        <ul class="nav navbar-nav navbar-left sm menu-hover" style="position: absolute; right: 0px;">
+
+                            <li> <h5>Kính chào {{gender}} {{name}}<span class="glyphicon glyphicon-triangle-bottom"></span></h5>
+                                <ul class="dropdown-menu">
+                                    <li> <a href="/show-payment"><h4>Đơn Hàng</h4></a>
+                                    </li>
+                                    <li> <a href="/edit-account"><h4>Chỉnh Sửa Thông Tin</h4></a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-1" style="max-width: 50px; margin: 15px 0px 15px 0px;">
+                        <a *ngIf="isSignIn" class="btn btn-success" style="min-width: 100px;" href="/logout"><p style="color: white;" (click)="logout()">Đăng Xuất</p></a>
+                        <a *ngIf="!isSignIn" class="btn btn-success " [routerLink]="['/user/login']" routerLinkActive="router-link-active" ><p style="color: white;">Đăng nhập</p></a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div *ngFor="let item of treeMap | keyvalue">
+                            <div *ngIf="item.value.length == 1">
+                                <div class="dropdown">
+                                    <ul class="nav navbar-nav navbar-left sm">
+                                        <li class="menu-hover"> <a (click)="displayCat(cat.trim())"><h3 style="color: black;">{{item.key}}</h3></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div *ngIf="item.value.length>1 ">
+                                <div class="dropdown">
+                                    <ul class="nav navbar-nav navbar-left sm">
+                                        <li class="menu-hover"> <a data-filter=".folder2" ><h3><font color="black">{{item.key}}</font></h3></a>
+                                            <ul class="dropdown-menu">
+                                                <li *ngFor="let cat of item.value">
+                                                    <a (click)="displayCat(cat.trim())">
+                                                        <h3>{{cat.trim()}}</h3>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                </div>
+
+                <div *ngIf="isAdmin" class="dropdown">
+                    <ul class="nav navbar-nav navbar-left sm">
+                        <li class="menu-hover"> <a><h3><font color="black">Administrator</font></h3></a>
+                            <ul class="dropdown-menu">
+                                <li> <a [routerLink]="['maintenance/accounts']"><h4>Tài Khoản</h4></a></li>
+                                <li> <a href="/show-payment"><h4>Đơn Hàng</h4></a></li>
+                                <li> <a  [routerLink]="['maintenance']"><h4>Thư Mục</h4></a></li>
+                                <li> <a [routerLink]="['maintenance/voucher']"><h4>Voucher</h4></a></li>
+                                <li> <a href="/maintenance-prd/All"><h4>Kho</h4></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<router-outlet></router-outlet>
+
+<div class="fix_tel">
+    <div class="ring-alo-phone ring-alo-green ring-alo-show" id="ring-alo-phoneIcon" style="right: 150px; bottom: -12px;">
+        <div class="ring-alo-ph-circle"></div>
+        <div class="ring-alo-ph-circle-fill"></div>
+        <div class="ring-alo-ph-img-circle">
+
+            <a href="tel:0901466165"><img class="lazy" src="https://khomaythegioi.com/icon/goi.png" alt="G"></a>
+
+        </div>
+    </div>
+    <div class="tel">
+        <a href="tel: 0901466165"><p class="fone">090.1466.165</p></a>
+    </div>
+</div>
+<div class="container-fluid" style="padding: 0px;">
+    <div class="fb-customerchat"
+         page_id="802412829969294"
+         minimized="true">
+    </div>
+    <div id="fb-root"></div>
+    <div class="row">
+
+    </div>
+    <div class="container-fluid main-footer" style="margin: 0px; padding: 0px;background-color: #f8f8f8">
+        <!--<svg preserveAspectRatio="none" viewBox="0 0 100 105" height="200" width="120%" version="1.1" xmlns="http://www.w3.org/2000/svg" class="svgcolor-light" style="position: absolute;">
+            <path d="M0 0 L50 100 L100 0 Z" fill="#fff" stroke="#fff" style="position: absolute;"></path>
+        </svg>-->
+        <div class="row" style="margin: 20px;">
+
+            <div class="row" style="margin: 20px;">
+                <div class="col-md-offset-1 col-md-12" style="padding: 0px;">
+
+                    <div class="row">
+                        <h3 style="color: #6A3723; font-size: 50px; ">Cutiie House</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class = "row">
+                                <p style="font-size: 120%; color: #6A3723;font-weight: bold">Chính Sách</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;"><a href="/khachsi">Chính sách khách sỉ</a></p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;"><a href="/giaonhan">Chính sách giao nhận</a></p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;"><a href="/doitra">Chính sách đổi trả</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class = "row">
+                                <p style="font-size: 120%; color: #6A3723;font-weight: bold">Hướng Dẫn</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;"><a href="/huongdan">Hướng Dẫn Mua Hàng</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class = "row">
+                                <p style="font-size: 120%; color: #6A3723;font-weight: bold">Cửa Hàng</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;">Địa chỉ: 35 Phạm Ngọc Lộc. Phường 14. Quận 10. Thành phố Hồ Chí Minh.</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;">Email: phammaihoa0705@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class = "row">
+                                <p style="font-size: 120%; color: #6A3723;font-weight: bold">Chủ tài khoản: Bùi Thiện Thanh</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;">0071000799478</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;">Chi nhánh: Vietcombank Tphcm</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class = "row">
+                                <p style="font-size: 120%; color: #6A3723;font-weight: bold">Chủ tài khoản: Bùi Thiện Thanh</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;">060032884027</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;">Chi nhánh: Sacombank Hưng Đạo</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class = "row">
+                                <p style="font-size: 120%; color: #6A3723;font-weight: bold">Chủ tài khoản: Phạm Mai Hoa</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;">1575567</p>
+                            </div>
+                            <div class="row">
+                                <p style="font-size: 120%; color: #6A3723;">Chi nhánh: ACB 3/2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" style="margin: 20px;">
+                <div class="col-md-offset-1 col-md-6">
+                    <div class="row">
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" style="margin: 20px;">
+
+            </div>
+
+        </div>
+        <!--<div class="row" style="text-align: center; color: white">
+                    <br>
+                    <div class="fb-page" data-href="https://www.facebook.com/lienhoacac/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/lienhoacac/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/lienhoacac/">Pháp khí Liên Hoa Các</a></blockquote></div>
+        </div>-->
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="container">
+	<h3>Thông tin sản phẩm</h3>
+
+	<div id="cartdetail" class="row">
+		<table class="table table-bordered">
+			<thead>
+				<th class="text-right" style="text-align: center;"><h3>Tên
+						voucher</h3></th>
+				<th class="text-right" style="text-align: center;"><h3>Voucher</h3></th>
+				<th class="text-right" style="text-align: center;"><h3>Số
+						Giảm</h3></th>
+				<th class="text-right" style="text-align: center;"><h3>Ngày
+						bắt đầu</h3></th>
+				<th class="text-right" style="text-align: center;"><h3>Ngày
+						kết thúc</h3></th>
+				<th class="text-right" style="text-align: center;"><h3>Số
+						Lượng</h3></th>
+				<th class="text-right" style="text-align: center;"><h3>Giá
+						tối thiểu</h3></th>
+
+			</thead>
+			<tbody class="body-voucher">
+
+				<tr style='color: red' *ngFor="let item of vouchers"
+					[ngStyle]="{'background-color': (item.amount==0)?'red':''}">
+					<td><input class="form-control" [(ngModel)]="item.name">
+					</td>
+					<td><input class="form-control" [(ngModel)]="item.code"
+						#codeValidation="ngModel"
+						style="font-size: large; font-weight: bold"></td>
+					<div *ngIf="false" style="color: red">Code đã
+						được đăng kí</div>
+					<td><input class="form-control" [(ngModel)]="item.percent">
+					</td>
+					<td><input class="form-control"
+						[(ngModel)]="item.effective_date" type="date"></td>
+					<td><input class="form-control"
+						[(ngModel)]="item.expired_date" type="date"></td>
+					<td><input class="form-control" [(ngModel)]="item.amount">
+					</td>
+					<td><input class="form-control" [(ngModel)]="item.min">
+					</td>
+					<td>
+						<button class="form-control btn-danger" type="submit" (click)="update(item.voucher_id)">
+							Update</button>
+					</td>
+					<td><span class="glyphicon glyphicon-remove"
+						(click)="delete(item.voucher_id)"></span></td>
+				</tr>
+				<tr style='color: red' *ngFor="let item of newVouchers">
+					<td><input class="form-control" [(ngModel)]="item.name">
+					</td>
+					<td><input class="form-control" [(ngModel)]="item.code"
+						#codeValidation="ngModel"
+						style="font-size: large; font-weight: bold"></td>
+					<div *ngIf="false" style="color: red">Code đã
+						được đăng kí</div>
+					<td><input class="form-control" [(ngModel)]="item.percent">
+					</td>
+					<td><input class="form-control"
+						[(ngModel)]="item.effective_date" type="date"></td>
+					<td><input class="form-control"
+						[(ngModel)]="item.expired_date" type="date"></td>
+					<td><input class="form-control" [(ngModel)]="item.amount">
+					</td>
+					<td><input class="form-control" [(ngModel)]="item.min">
+					</td>
+				</tr>
+				<tr id='rowInsertBtn'></tr>
+			</tbody>
+		</table>
+	</div>
+	<button class="btn btn-success" (click)="add()">+</button>
+	<button class="btn btn-success" (click)="insertVoucher()">OK</button>
+
+</div>

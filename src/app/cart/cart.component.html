@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>Giỏ Hàng.</h2>
+<mat-dialog-actions>
+<button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>
+<mat-dialog-content>
+
+<div class="container">
+	<div style="padding-top: 75px;">
+		<span onclick="document.getElementById('id03').style.display='none'"
+			class="close" title="Close Modal">&times;</span> <img
+			src="/img/LOGO.svg" alt="Avatar" class="avatar center-block"
+			style="max-width: 75px">
+	</div>
+	<form class="form-horizontal" action="/login" method="POST"
+		style="padding-top: 20px">
+		<div id="cartdetail"></div>
+
+		<tr *ngFor="let item of cartDetail | keyvalue">
+			<div class="row">
+				<h2>{{item.key}}</h2>
+			</div>
+			<div class="row">
+			
+					<tr>
+						<td class="text-right col-md-3"><h4 style="text-align: center;">Phân
+								loại</h4></td>
+						<td class="text-right col-md-3"><h4 style="text-align: center;">Giá</h4></td>
+						<td class="text-right col-md-3"><h4 style="text-align: center;">Số
+								Lượng</h4></td>
+						<td class="text-right col-md-3"><h4 style="text-align: center;">Thành
+								Tiền</h4></td>
+					</tr>
+					
+					<tr *ngFor="let cart of item.value ">
+						<td class="text-right col-md-3"><h4 style="text-align: center;">{{cart.size}}</h4></td>
+						<td class="text-right col-md-3"><h4 style="text-align: center;">{{cart.price>cart.disct_price?cart.disct_price:cart.price}}</h4></td>
+						<td class="text-right col-md-3"><h4 style="text-align: center;">{{cart.amount}}</h4></td>
+						<td class="text-right col-md-3"><h4 style="text-align: center;">{{cart.price>cart.disct_price?cart.disct_price*cart.amount:cart.price*cart.amount}}</h4></td>
+					</tr>
+
+			</div>
+		</tr>
+
+	</form>
+	<div class="row">
+		<div class="col-xs-4 col-md-4" style="text-align: right;">
+			<button class="btn btn-danger" type="button"
+				onclick="document.getElementById('id03').style.display='none'"
+				style="min-width: 150px;">Thoát</button>
+		</div>
+		<div class="col-xs-4 col-md-4">
+			<button class="btn btn-info center-block" type="button"
+				onclick="UpdateCart()" style="min-width: 150px;">Cập Nhật
+				Giỏ</button>
+		</div>
+		<div class="col-xs-4 col-md-4" style="text-align: left;">
+			<a [routerLink]="['payment/checkout']">
+				<button class="btn btn-success" type="button" (click)="close()"
+					style="min-width: 150px;">Thanh Toán</button>
+			</a>
+		</div>
+	</div>
+</div>
+</mat-dialog-content>
+

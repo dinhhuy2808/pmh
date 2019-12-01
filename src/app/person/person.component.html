@@ -1,0 +1,16 @@
+
+
+<div class="container">
+  <h1>{{title}}</h1>
+  <ul>
+    <li><a [routerLink]="['/person/detail']"> Show All Persons</a>
+    </li>
+    <li><a [routerLink]="['/person/action/add']"> Add New
+        Person</a></li>
+    <li><a [routerLink]="['/']"> Home</a> </li>
+  </ul>
+<br>
+</div>
+
+
+<router-outlet>
