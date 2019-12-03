@@ -32,7 +32,7 @@ export class TreefolderService {
             folder_name: folder_name,
             cat_name: cat_name,
         }
-        return this.http.post(this.getTreeFolderUrl + '', data, httpOptions).pipe(
+        return this.http.post(this.getTreeFolderUrl + '/'+token, data, httpOptions).pipe(
             map(this.extractData)
             )
     }

@@ -23,7 +23,7 @@ phone: string = '';
       this.user.phone = this.activatedRoute.snapshot.paramMap.get( 'phone' );
       if (this.cookieService.check('token')) {
           this.userService.getPersonsByPhone(this.cookieService.get('token'), this.user.phone).subscribe((res:User) => {
-              if(res == 'null'){
+              if(res == null){
                   this.router.navigate([`/`]);
               } else {
                   this.user = res;
