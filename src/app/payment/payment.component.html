@@ -1,3 +1,112 @@
-<p>
-  payment works!
-</p>
+<div class="container">
+		<div class="row">
+			<form action = '/show-payment' method = 'get'>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<h3><span class="label label-success">Số điện thoại :</span></h3>
+						</div>
+                        <div class="form-group">
+                            <input  class=" form-control" name = 'phone' id = 'phone'   type="text" />
+                        </div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<h3><span class="label label-success">Trạng thái: </span></h3>
+						</div>
+                        <div class="form-group">
+                            <select name="statusflt" id="statusflt" class="form-control">
+                                <option value="none" selected="">----Selected-----</option>
+
+                                <option value="0" >Đặt hàng </option>
+
+                                <option value="1" >Chốt Gửi </option>
+
+                                <option value="2">Đang Giao Hàng </option>
+
+                                <option value="3" >Thành Công </option>
+
+                                <option value="4" >Boom </option>
+
+                                <option value="5" >Chuyển Hoàn </option>
+                                <option value="6" >Hủy </option>
+
+
+                            </select>
+
+                        </div>
+					</div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <h3><span class="label label-success">Mã Đơn:</span></h3>
+                        </div>
+                        <div class="form-group">
+                            <input  class=" form-control" name = 'titleflt' id = 'titleflt'   type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <h3><span class="label label-success">Mã vận chuyển :</span></h3>
+                        </div>
+                        <div class="form-group">
+                            <input  class=" form-control" name = 'shipflt' id = 'shipflt'   type="text" />
+                        </div>
+                    </div>
+
+				</div>
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="form-group">
+							<input class="btn btn-primary" value = 'Áp Dụng' type = 'submit'/>
+						</div>
+
+					</div>
+
+				</div>
+
+			</form>
+		</div>
+		<div *ngIf = "isAdmin" class="row">
+			<div class="col-md-2">
+				<a href="/payment-detail" class="btn btn-primary">Tạo Đơn Hàng</a>
+			</div>
+		</div>
+        <br>
+        <table class="table table-bordered">
+            <thead>
+                <th class="text-right" style="text-align: center;"><h4>Người dùng</h4></th>
+                <th class="text-right" style="text-align: center;"><h4>Địa chỉ</h4></th>
+                <th class="text-right" style="text-align: center;"><h4>Trạng thái</h4></th>
+                <th class="text-right" style="text-align: center;"><h4>Tổng tiền</h4></th>
+                <th class="text-right" style="text-align: center;"><h4>Ngày tạo</h4></th>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let item of payments">
+                    <td class="text-right">
+                        <a class="booking-item" (click)="navigateToPaymentDetail(item.payment_id)">
+                            <h3> {{item.name}} ( {{item.phone}} )
+                            	<div  *ngIf = "isAdmin" >
+                            	<font color="red"> <%=payments[i].fail %></font>/ <font color="black"> <%=payments[i].success%></font>
+                            	</div>
+                                
+                            </h3>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                    	{{item.address}}
+                    </td>
+                    <td class="text-center">
+                        <img class="img-responsive center-block" src="../assets/img/status/status1.png">
+                    </td>
+                    <td class="text-center">
+                        {{item.total}}
+                    </td>
+                    <td class="text-center">
+                        {{item.create_time}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>	
+	</div>

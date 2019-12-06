@@ -47,64 +47,6 @@ fullMau: string = 'Đỏ;Tím;Hồng;Vàng;Nâu;Cam;Xám;Ánh Vàng;Ánh Bạc;X
           // Script Loaded Successfully
         }).catch(error => console.log(error));
       }
-    menhChange( value ) {
-        if ( value.checked ) {
-            if (value.value == 'All') {
-                this.menhcheckall = true;
-                this.thuoctinh.menh = this.fullMenh;
-            } else {
-                this.thuoctinh.menh = this.thuoctinh.menh + value.value + ';';
-            }
-            
-        } else {
-            if (value.value == 'All') {
-                this.menhcheckall = false;
-                this.thuoctinh.menh = '';
-            } else {
-                this.thuoctinh.menh = this.thuoctinh.menh.replace( value.value + ';', '' );
-            }
-            
-        }
-    }
-
-    tuoiChange( value ) {
-        if ( value.checked ) {
-            if (value.value == 'All') {
-                this.tuoicheckall = true;
-                this.thuoctinh.tuoi = this.fullTuoi;
-            } else {
-                this.thuoctinh.tuoi = this.thuoctinh.tuoi + value.value + ';';
-            }
-           
-        } else {
-            if (value.value == 'All') {
-                this.tuoicheckall = false;
-                this.thuoctinh.tuoi = '';
-            } else {
-                this.thuoctinh.tuoi = this.thuoctinh.tuoi.replace( value.value + ';', '' );
-            }
-        }
-    }
-
-    mauChange( value ) {
-        if ( value.checked ) {
-            if (value.value == 'All') {
-                this.maucheckall = true;
-                this.thuoctinh.mau = this.fullMau;
-            } else {
-                this.thuoctinh.mau = this.thuoctinh.mau + value.value + ';';
-            }
-           
-        } else {
-            if (value.value == 'All') {
-                this.maucheckall = false;
-                this.thuoctinh.mau = '';
-            } else {
-                this.thuoctinh.mau = this.thuoctinh.mau.replace( value.value + ';', '' );
-            }
-        }
-
-    }
 
     checkProductName() {
         this.productService.checkProductName( this.product.name ).subscribe( res => {

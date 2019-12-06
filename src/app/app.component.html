@@ -42,7 +42,7 @@
                                             class="glyphicon glyphicon-triangle-bottom"></span>
                                     </h4>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/show-payment"><h3>Đơn Hàng</h3></a></li>
+                                        <li><a [routerLink]="['payment']"><h3>Đơn Hàng</h3></a></li>
                                         <li><a href="/edit-account"><h3>Chỉnh Sửa Thông
                                                     Tin</h3></a></li>
                                     </ul>
@@ -115,7 +115,7 @@
                                 <a class="font-menu-mobile col-xs-12" [routerLink]="['accounts']"
                                     style="border-bottom: 1px solid #000000; padding-left: 50px;">Tài
                                     Khoản</a> 
-                                 <a class="font-menu-mobile col-xs-12" href="/show-payment"
+                                 <a class="font-menu-mobile col-xs-12" [routerLink]="['payment']"
                                     style="border-bottom: 1px solid #000000; padding-left: 50px;">Đơn
                                     Hàng</a> 
                                     
@@ -168,7 +168,7 @@
 
                             <li> <h5>Kính chào {{gender}} {{name}}<span class="glyphicon glyphicon-triangle-bottom"></span></h5>
                                 <ul class="dropdown-menu">
-                                    <li> <a href="/show-payment"><h4>Đơn Hàng</h4></a>
+                                    <li> <a [routerLink]="['payment']"><h4>Đơn Hàng</h4></a>
                                     </li>
                                     <li> <a href="/edit-account"><h4>Chỉnh Sửa Thông Tin</h4></a>
                                     </li>
@@ -218,7 +218,7 @@
                         <li class="menu-hover"> <a><h3><font color="black">Administrator</font></h3></a>
                             <ul class="dropdown-menu">
                                 <li> <a [routerLink]="['maintenance/accounts']"><h4>Tài Khoản</h4></a></li>
-                                <li> <a href="/show-payment"><h4>Đơn Hàng</h4></a></li>
+                                <li> <a [routerLink]="['payment']"><h4>Đơn Hàng</h4></a></li>
                                 <li> <a  [routerLink]="['maintenance']"><h4>Thư Mục</h4></a></li>
                                 <li> <a [routerLink]="['maintenance/voucher']"><h4>Voucher</h4></a></li>
                                 <li> <a href="/maintenance-prd/All"><h4>Kho</h4></a></li>

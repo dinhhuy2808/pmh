@@ -13,5 +13,10 @@ export const PaymentRoutes: Routes = [
         path: 'payment/checkout',
         component: CheckoutComponent,
         pathMatch: 'full'
+    },
+    {
+        path: 'payment',
+        component: PaymentComponent,
+        pathMatch: 'full'
     }
 ];

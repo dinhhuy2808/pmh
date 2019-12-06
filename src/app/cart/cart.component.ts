@@ -24,10 +24,13 @@ export class CartComponent implements OnInit {
               for ( const [key, value] of Object.entries( data ) ) {
                   this.cartDetail.set( key, data[key] );
               }
-              console.log(this.cartDetail);
           } );
       } else {
-          
+          this.productService.getCartNotLogin(this.cookieService.get('cart')).subscribe(( data: {} ) => {
+              for ( const [key, value] of Object.entries( data ) ) {
+                  this.cartDetail.set( key, data[key] );
+              }
+          } );
       }
       
   }

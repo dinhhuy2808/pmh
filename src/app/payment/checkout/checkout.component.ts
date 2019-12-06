@@ -25,6 +25,7 @@ voucherMess: string = '';
       if (this.cookieService.check('token')) {
           this.paymentService.checkoutLogin(this.cookieService.get('token')).subscribe( res => {
               this.payment = <PaymentScreen>res;
+              this.payment.tinhthanh = 'HCM';
           });
       }
       
@@ -47,7 +48,26 @@ voucherMess: string = '';
          
       }
   }
-
+  calculateTotal(){
+      if (this.payment.total >= this.payment.settingShop.freeShip) {
+          this.payment.shipfee = 0;
+      } else {
+          if (this.payment.tinhthanh == 'HCM') {
+              if (this.payment.settingShop.ngoaithanh.includes(this.payment.quanhuyen+',')) {
+                  this.payment.shipfee = this.payment.settingShop.giangoaithanh;
+              } else {
+                  this.payment.shipfee = this.payment.settingShop.gianoithanh;
+              }
+              
+          } else {
+              if (this.payment.hinhthuc == 'thuho') {
+                  this.payment.shipfee = this.payment.settingShop.thuho;
+              } else {
+                  this.payment.shipfee = this.payment.settingShop.chanhxe;
+              }
+          }
+      }
+  }
   selectType(value){
       this.typeSelected = value;
       this.payment.type = value;

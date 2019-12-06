@@ -83,6 +83,16 @@ export class ProductService {
         return this.http.get(this.getProductUrl + '/get-cart-detail/'+token,httpOptions).pipe(
                 map(this.extractData));
     }
+    getCartNotLogin(cartInfo: string) {
+        const httpOptions = {
+                headers: new HttpHeaders(
+                        {'Content-Type': 'application/json'}
+                        
+                )};
+        return this.http.get(this.getProductUrl + '/get-cart-detail-not-login/'+cartInfo,httpOptions).pipe(
+                map(this.extractData));
+    }
+   
     private extractData(res: Response) {
         let body = res;
         return body || {};

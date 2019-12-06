@@ -39,6 +39,10 @@ export class PaymentService {
         return this.http.get(this.getPaymentUrl + '/get-payment-detail/' + token+"/"+id).pipe(
                 map(this.extractData));
     }
+    getPayments(token:string){
+        return this.http.get(this.getPaymentUrl + '/get-payments/' + token).pipe(
+                map(this.extractData));
+    }
     private extractData(res: Response) {
         let body = res;
         return body || {};
