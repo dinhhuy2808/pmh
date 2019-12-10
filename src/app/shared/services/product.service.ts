@@ -89,7 +89,7 @@ export class ProductService {
                         {'Content-Type': 'application/json'}
                         
                 )};
-        return this.http.get(this.getProductUrl + '/get-cart-detail-not-login/'+cartInfo,httpOptions).pipe(
+        return this.http.post(this.getProductUrl + '/get-cart-detail-not-login',cartInfo,httpOptions).pipe(
                 map(this.extractData));
     }
    

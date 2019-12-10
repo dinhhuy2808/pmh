@@ -200,8 +200,8 @@
 	</div>
 	<div class="col-sm-4 solid-content">
 		<h2>Thông tin đơn hàng</h2>
-		<h4>Tên: {{payment.name}}</h4>
-		<h4>Số điện thoại: {{payment.phone}}</h4>
+		<h4>Tên: <input class="form-control" [(ngModel)]="payment.name" ></h4>
+		<h4>Số điện thoại: <input class="form-control" [(ngModel)]="payment.phone"></h4>
 		<h4>
 			Địa Chỉ: <input class="form-control" [(ngModel)]="payment.address">
 		</h4>

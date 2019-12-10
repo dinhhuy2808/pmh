@@ -19,6 +19,7 @@ import { MaintenanceComponent } from './maintenance/maintenance.component';
 import { VoucherComponent } from './maintenance/voucher/voucher.component';
 import { AccountsComponent } from './maintenance/accounts/accounts.component';
 import { CartComponent } from './cart/cart.component';
+import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HomeComponent } from './home/home.component';
@@ -29,6 +30,7 @@ import { HomeComponent } from './home/home.component';
     MaintenanceComponent,
     DetailComponent,
     CartComponent,
+    ModalComponent,
     VoucherComponent,
     HomeComponent,
     AccountsComponent

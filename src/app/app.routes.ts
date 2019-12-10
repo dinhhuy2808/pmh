@@ -8,6 +8,7 @@ import { MaintenanceComponent } from './maintenance/maintenance.component'
 import { VoucherComponent } from './maintenance/voucher/voucher.component'
 import { AccountsComponent } from './maintenance/accounts/accounts.component'
 import { CartComponent } from './cart/cart.component'
+import { ModalComponent } from './modal/modal.component'
 import { AppPhongThuyRoutes } from './app-phong-thuy/app-phong-thuy.routes'
 import { HomeComponent } from './home/home.component';
 
@@ -31,5 +32,8 @@ export const routes: Routes = [
     },
     {
         path:'cart',component: CartComponent,pathMatch : 'full'
+    },
+    {
+        path:'modal/:type',component: ModalComponent,pathMatch : 'full'
     }
 ];

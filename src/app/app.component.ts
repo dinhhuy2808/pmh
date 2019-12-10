@@ -4,7 +4,7 @@ import { ProductService } from './shared/services/product.service'
 import { Observable } from 'rxjs';
 import { Person } from './shared/models/person';
 import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CartComponent } from './cart/cart.component';
@@ -31,14 +31,14 @@ export class AppComponent implements OnInit {
     displayFilter: boolean = true;
 
     constructor( private treefolderService: TreefolderService, private cookieService: CookieService, private router: Router,
-        private deviceService: DeviceDetectorService, private productService: ProductService,private matDialog: MatDialog ) { }
+        private deviceService: DeviceDetectorService, private productService: ProductService,private matDialog: MatDialog, private activatedRoute: ActivatedRoute ) { 
+        
+        activatedRoute.params.subscribe(val => {
+            this.ngOnInit();
+        });
+    }
 
     ngOnInit() {
-        /* let array: string[] = ['test1', 'test2'];
-        let array2: string[] = ['Map2'];
-        this.treeMap.set('xem tuoi', []);
-        this.treeMap.set('Map', array);
-        this.treeMap.set('Map2', array2); */
         this.treefolderService.getTreefolder().subscribe(( data: {} ) => {
             for ( const [key, value] of Object.entries( data ) ) {
                 this.treeMap.set( key, data[key] );

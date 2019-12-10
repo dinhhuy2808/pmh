@@ -31,9 +31,7 @@ export class RegisterComponent implements OnInit {
    register (){
        this.user.dob = this.user.dob.replace(/-/g, '');
        this.userService.addNewUser(this.user).subscribe(res => {
-           if(res == '200'){
-               this.router.navigate([`/user/login`]);
-           }
+             this.router.navigate([`/user/login`]);
          });
    }
 

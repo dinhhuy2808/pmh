@@ -22,16 +22,25 @@ export class PaymentService {
         return this.http.get(this.getPaymentUrl + '/checkout/' + token).pipe(
             map(this.extractData));
     }
+    checkoutNotLogin(cartInfo: string) {
+        const httpOptions = {
+                headers: new HttpHeaders(
+                        {'Content-Type': 'application/json'}
+                        
+                )};
+        return this.http.post(this.getPaymentUrl + '/checkout-not-login/', cartInfo,httpOptions).pipe(
+            map(this.extractData));
+    }
     checkVoucher(voucher: string) {
         return this.http.get(this.getPaymentUrl + '/check/voucher/' + voucher);
     }
-    createPayment(paymentScreen: PaymentScreen,token:string) {
+    createPayment(paymentScreen: PaymentScreen,token:string,isLogIn:string) {
         const httpOptions = {
             headers: new HttpHeaders({'Content-Type': 'application/json'})};
         let data = {
            PaymentScreen: paymentScreen
         }
-        return this.http.post(this.getPaymentUrl + '/'+token, paymentScreen, httpOptions).pipe(
+        return this.http.post(this.getPaymentUrl + '/'+token+"/"+isLogIn, paymentScreen, httpOptions).pipe(
             map(this.extractData)
             )
     }
