@@ -7,5 +7,5 @@ export class Size {
 	disct_price:number;
 	quantity: number;
 	info: string;
-    expired_time:number; 
+    expired_time:string; 
 }

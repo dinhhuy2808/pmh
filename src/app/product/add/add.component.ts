@@ -80,11 +80,18 @@ fullMau: string = 'Đỏ;Tím;Hồng;Vàng;Nâu;Cam;Xám;Ánh Vàng;Ánh Bạc;X
 
     addProduct() {
         this.product.description = this.description;
+        this.size.map(item => {
+            if(item.expired_time != undefined){
+                item.expired_time = item.expired_time.replace(/-/g, '');
+            }
+            
+        });
+
         this.productService.addProduct( this.product, this.size, this.thuoctinh, this.fileToUpload, this.catName ).subscribe( res => {
-            if ( res == true ) {
-                this.isExistSizeCode = true;
+            if ( res == '200' ) {
+                this.router.navigate( ['/category/'+this.catName+'/1'] );
             } else {
-                this.isExistSizeCode = false;
+                alert('Tạo Sản Phẩm không thành công.')
             }
 
         });
@@ -93,20 +100,4 @@ fullMau: string = 'Đỏ;Tím;Hồng;Vàng;Nâu;Cam;Xám;Ánh Vàng;Ánh Bạc;X
     testDesc(value){
         this.description = value.value;
     }
-    /* uploadFileToActivity() {
-      this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
-        // do something, if upload success
-      }, error => {
-        console.log(error);
-      });
-    }
-    postFile(fileToUpload: File): Observable<boolean> {
-      const endpoint = 'your-destination-url';
-      const formData: FormData = new FormData();
-      formData.append('fileKey', fileToUpload, fileToUpload.name);
-      return this.httpClient
-        .post(endpoint, formData, { headers: yourHeadersConfig })
-        .map(() => { return true; })
-        .catch((e) => this.handleError(e));
-    } */
 }

@@ -18,8 +18,8 @@ export class ProductService {
 
     constructor(private http: HttpClient) { }
 
-    getProduct(productName: string) {
-        return this.http.get(this.getProductUrl + '/' + productName).pipe(
+    getProduct(productName: string, purpose:string) {
+        return this.http.get(this.getProductUrl + '/' + productName+"/"+purpose).pipe(
             map(this.extractData));
     }
     getProductByCategoryName(catName: string, page:string) {

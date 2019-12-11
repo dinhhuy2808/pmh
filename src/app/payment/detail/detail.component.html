@@ -65,8 +65,9 @@
 						<td class="text-center">{{item.name}}</td>
 						<td class="text-center">{{item.size}}</td>
 						<td class="text-center">{{item.disct_price>0&&item.price>item.disct_price?item.disct_price:item.price}}</td>
-						<td><input class="form-control text-center"
+						<td *ngIf="isAdmin"><input class="form-control text-center"
 							[(ngModel)]="item.amount" (change)="changeAmount()"></td>
+						<td *ngIf="!isAdmin">{{item.amount}}</td>
 
 						<td class="text-center ">
 							{{item.disct_price>0&&item.price>item.disct_price?item.disct_price*item.amount:item.price*item.amount}}</td>
@@ -114,7 +115,7 @@
 				<div class="row">
 					<div>
 						<textarea class="form-control" style="width: 90%; height: 200%;"
-							[(ngModel)]="payment.note"></textarea>
+							[(ngModel)]="payment.note" [disabled]="!isAdmin"></textarea>
 					</div>
 				</div>
 			</div>
@@ -127,25 +128,29 @@
 
 		<div class="row solid-content">
 			<h3>Hình thức giao hàng</h3>
-			<div *ngIf="payment.ship.includes('ghtk')" class="col-xs-3 col-md-3" id="ship1" >
+			<div *ngIf="payment.ship.includes('ghtk')" class="col-xs-3 col-md-3"
+				id="ship1">
 				<a class="thumbnail" [ngClass]="{selected: shipSelected=='ghtk'}"
 					(click)="selectShip('ghtk')"> <img class="dilivery"
 					src="../assets/img/delivery_form/giaohangtietkiem.png" alt="...">
 				</a>
 			</div>
-			<div *ngIf="payment.ship.includes('ghn')" class="col-xs-3 col-md-3" id="ship2">
+			<div *ngIf="payment.ship.includes('ghn')" class="col-xs-3 col-md-3"
+				id="ship2">
 				<a class="thumbnail" [ngClass]="{selected: shipSelected=='ghn'}"
 					(click)="selectShip('ghn')"> <img class="dilivery"
 					src="../assets/img/delivery_form/giaohangnhanh.png" alt="...">
 				</a>
 			</div>
-			<div *ngIf="payment.ship.includes('vtp')" class="col-xs-3 col-md-3" id="ship3">
+			<div *ngIf="payment.ship.includes('vtp')" class="col-xs-3 col-md-3"
+				id="ship3">
 				<a class="thumbnail" [ngClass]="{selected: shipSelected=='vtp'}"
 					(click)="selectShip('vtp')"> <img class="dilivery"
 					src="../assets/img/delivery_form/viettel_post.jpg" alt="...">
 				</a>
 			</div>
-			<div *ngIf="payment.ship.includes('bd')" class="col-xs-3 col-md-3" id="ship4">
+			<div *ngIf="payment.ship.includes('bd')" class="col-xs-3 col-md-3"
+				id="ship4">
 				<a class="thumbnail" [ngClass]="{selected:shipSelected=='bd'}"
 					(click)="selectShip('bd')"> <img class="dilivery"
 					src="../assets/img/delivery_form/vnpost.png" alt="...">
@@ -155,25 +160,29 @@
 		<div class="row solid-content">
 
 			<h3>Hình thức thanh toán</h3>
-			<div  *ngIf="payment.pay_type.includes('tm')" class="col-xs-3 col-md-3" id="type1">
+			<div *ngIf="payment.pay_type.includes('tm')"
+				class="col-xs-3 col-md-3" id="type1">
 				<a class="thumbnail" [ngClass]="{selected: typeSelected=='tm'}"
 					(click)="selectType('tm')"> <img class="type-payment"
 					src="../assets/img/payment_method/cash.jpg" alt="...">
 				</a>
 			</div>
-			<div *ngIf="payment.pay_type.includes('ck')" class="col-xs-3 col-md-3 " id="type2">
+			<div *ngIf="payment.pay_type.includes('ck')"
+				class="col-xs-3 col-md-3 " id="type2">
 				<a class="thumbnail" [ngClass]="{selected: typeSelected=='ck'}"
 					(click)="selectType('ck')"> <img class="type-payment"
 					src="../assets/img/payment_method/transfer.jpg" alt="...">
 				</a>
 			</div>
-			<div *ngIf="payment.pay_type.includes('COD')" class="col-xs-3 col-md-3" id="type3">
+			<div *ngIf="payment.pay_type.includes('COD')"
+				class="col-xs-3 col-md-3" id="type3">
 				<a class="thumbnail" [ngClass]="{selected: typeSelected=='COD'}"
 					(click)="selectType('COD')"> <img class="type-payment"
 					src="../assets/img/payment_method/cod.png" alt="...">
 				</a>
 			</div>
-			<div *ngIf="payment.pay_type.includes('ttd')" class="col-xs-3 col-md-3" id="type4">
+			<div *ngIf="payment.pay_type.includes('ttd')"
+				class="col-xs-3 col-md-3" id="type4">
 				<a class="thumbnail" [ngClass]="{selected: typeSelected=='ttd'}"
 					(click)="selectType('ttd')"> <img class="type-payment"
 					src="../assets/img/payment_method/credit.png" alt="...">
@@ -186,22 +195,122 @@
 				type="button" onclick="UpdateCart()">Cập Nhật Đơn Hàng</button>
 			<a *ngIf="isAdmin" class="btn btn-success col-xs-4 col-md-3"
 				type="button" href="/bill/{{payment.payment_id}}"> Hóa Đơn </a>
-			<button  class="btn btn-info col-xs-4 col-md-3"
-				type="button" (click)="createPayment()">Thanh Toán</button>
+			<button class="btn btn-info col-xs-4 col-md-3" type="button"
+				(click)="createPayment()">Thanh Toán</button>
 		</div>
 	</div>
 	<div class="col-sm-4 solid-content">
 		<h2>Thông tin đơn hàng</h2>
 		<h4>Tên: {{payment.name}}</h4>
 		<h4>Số điện thoại: {{payment.phone}}</h4>
-		<h4>
+		<h4 *ngIf="isAdmin">
 			Địa Chỉ: <input class="form-control" [(ngModel)]="payment.address">
 		</h4>
 
+		<h4 *ngIf="!isAdmin">Địa Chỉ: {{payment.address}}</h4>
+		<h3>Tỉnh thành:</h3>
+
+		<select class="form-control" [(ngModel)]="payment.tinhthanh"
+			(change)="calculateTotal()">
+			<option value="HNI">Hà Nội</option>
+			<option value="HCM">Hồ Chí Minh</option>
+			<option value="HPG">Hải Phòng</option>
+			<option value="DNG">Đà Nẵng</option>
+			<option value="CTO">Cần Thơ</option>
+			<option value="TGG">Tiền Giang</option>
+			<option value="HUG">Hậu Giang</option>
+			<option value="DKG">Đăk Nông</option>
+			<option value="VPC">Vĩnh Phúc</option>
+			<option value="BNH">Bắc Ninh</option>
+			<option value="HDG">Hải Dương</option>
+			<option value="HYN">Hưng Yên</option>
+			<option value="HNM">Hà Nam</option>
+			<option value="NDH">Nam Ðịnh</option>
+			<option value="TBH">Thái Bình</option>
+			<option value="NBH">Ninh Bình</option>
+			<option value="HGG">Hà Giang</option>
+			<option value="CBG">Cao Bằng</option>
+			<option value="LCI">Lào Cai</option>
+			<option value="BKN">Bắc Kạn</option>
+			<option value="LSN">Lạng Sơn</option>
+			<option value="TQG">Tuyên Quang</option>
+			<option value="YBN">Yên Bái</option>
+			<option value="TNN">Thái Nguyên</option>
+			<option value="PHO">Phú Thọ</option>
+			<option value="BGG">Bắc Giang</option>
+			<option value="QNH">Quảng Ninh</option>
+			<option value="LCU">Lai Châu</option>
+			<option value="SLA">Sơn La</option>
+			<option value="HBH">Hòa Bình</option>
+			<option value="THA">Thanh Hóa</option>
+			<option value="NAN">Nghệ An</option>
+			<option value="HTH">Hà Tĩnh</option>
+			<option value="QBH">Quảng Bình</option>
+			<option value="QTI">Quảng Trị</option>
+			<option value="HUE">Thừa Thiên - Huế</option>
+			<option value="QNM">Quảng Nam</option>
+			<option value="QNI">Quảng Ngãi</option>
+			<option value="BDH">Bình Ðịnh</option>
+			<option value="PYN">Phú Yên</option>
+			<option value="KHA">Khánh Hòa</option>
+			<option value="KTM">Kon Tum</option>
+			<option value="GLI">Gia Lai</option>
+			<option value="DLK">Đăk Lăk</option>
+			<option value="LDG">Lâm Ðồng</option>
+			<option value="NTN">Ninh Thuận</option>
+			<option value="BPC">Bình Phước</option>
+			<option value="TNH">Tây Ninh</option>
+			<option value="BDG">Bình Dương</option>
+			<option value="DNI">Đồng Nai</option>
+			<option value="BTN">Bình Thuận</option>
+			<option value="VTU">Bà rịa - Vũng tàu</option>
+			<option value="LAN">Long An</option>
+			<option value="DTP">Đồng Tháp</option>
+			<option value="AGG">An Giang</option>
+			<option value="VLG">Vĩnh Long</option>
+			<option value="BTE">Bến Tre</option>
+			<option value="KGG">Kiên Giang</option>
+			<option value="TVH">Trà Vinh</option>
+			<option value="STG">Sóc Trăng</option>
+			<option value="BLU">Bạc Liêu</option>
+			<option value="CMU">Cà Mau</option>
+			<option value="DBN">Điện Biên</option>
+		</select>
+		<div id="noithanh"
+			[style.display]="payment.tinhthanh!='HCM'?'none':'block'">
+			<h3>Quận huyện:</h3>
+
+			<select class="form-control" [(ngModel)]="payment.quanhuyen"
+				(change)="calculateTotal()">
+				<option value=' '>----Chọn Quận Huyện----</option>
+				<option *ngFor="let item of settingShop.noithanh.split(',')"
+					[value]="item">{{item}}</option>
+				<option
+					*ngFor="let item of settingShop.ngoaithanh.split(',')"
+					[value]="item">{{item}}</option>
+			</select>
+		</div>
+		<div [style.display]="payment.tinhthanh=='HCM'?'none':'block'">
+			<div class="col-md-6">
+				<div>
+					<h3>Chành xe</h3>
+					<input class="form-control" type="radio"
+						[(ngModel)]="payment.hinhthuc" (click)="calculateTotal()"
+						value="chanhxe" checked>
+
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h3>Thu hộ</h3>
+				<input class="form-control" type="radio"
+					[(ngModel)]="payment.hinhthuc" (click)="calculateTotal()"
+					value="thuho">
+			</div>
+		</div>
 		<h3>Tổng giá sản phẩm:</h3>
-		<h2 id="totalLabel" class="fa-money">{{payment.total}}</h2>
+		<h2 id="totalLabel" class="fa-money">{{payment.sum}}</h2>
 		<h3>Tổng giá đơn hàng:</h3>
-		<h2 id="totalship" class="fa-money">{{payment.total+payment.shipfee}}</h2>
+		<h2 id="totalship" class="fa-money">{{payment.total}}</h2>
 		<h2 *ngIf="voucherMess!=''" style="color: red">{{voucherMess}}</h2>
 	</div>
 

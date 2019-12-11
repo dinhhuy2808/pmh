@@ -8,25 +8,8 @@
 
 	</div>
 	<div class="row product-info">
-		<div class="col-md-4">
-			<div class = "row">
-				<a href="#" class="thumbnail"> <img class="img-responsive"
-				src="assets/img/3x4.png" alt="">
-				</a>
-			</div>
-			<div class="row">
-								<div class="col-md-8">
-									<h3>Folder ID: </h3>
-								</div>
-							</div>
-			<div class = "row">
-				<input class="col-md-8 form-control" type="text"
-									[(ngModel)]="product.image">
-			</div>
-			
-			
-		</div>
-		<div class="col-md-8">
+
+		<div class="col-md-12">
 			<div class="ditem">
 				<div class="bs-example bs-example-tabs">
 					<ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -56,161 +39,14 @@
 							</div>
 							<div class="row">
 								<div class="col-md-8">
-									<h3>Hợp mệnh</h3>
+									<h3>Từ khóa:</h3>
 								</div>
 							</div>
 							<div class="row center-block">
-								<label class="checkbox-inline"> <input type="checkbox"
-									class="checkmenh" id="mang0" value="Kim"
-									(change)="menhChange($event.target)" [checked]="thuoctinh.menh.includes('Kim;')"> Kim
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmenh" id="mang1" value="Mộc"
-									(change)="menhChange($event.target)" [checked]="thuoctinh.menh.includes('Mộc;')"> Mộc
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmenh" id="mang2" value="Thủy"
-									(change)="menhChange($event.target)" [checked]="thuoctinh.menh.includes('Thủy;')"> Thủy
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmenh" id="mang3" value="Hỏa"
-									(change)="menhChange($event.target)" [checked]="thuoctinh.menh.includes('Hỏa;')"> Hỏa
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmenh" id="mang4" value="Thổ"
-									(change)="menhChange($event.target)" [checked]="thuoctinh.menh.includes('Thổ;')"> Thổ
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmenh" id="mang5" value="All"
-									(change)="menhChange($event.target)"
-									onclick="selectAll('checkmenh')"> Tất cả các mệnh
-								</label>
+								<input class="col-md-8 form-control" type="text"
+									[(ngModel)]="thuoctinh.menh">
 							</div>
-							<div class="row">
-								<div class="col-md-8">
-									<h3>Hợp Tuổi</h3>
-								</div>
-							</div>
-							<div class="row center-block">
-								<label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi0" value="Tý" [checked]="thuoctinh.tuoi.includes('Tý;')"
-									(change)="tuoiChange($event.target)"> Tý
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi1" value="Sửu" [checked]="thuoctinh.tuoi.includes('Sửu;')"
-									(change)="tuoiChange($event.target)"> Sửu
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi2" value="Dần" [checked]="thuoctinh.tuoi.includes('Dần;')"
-									(change)="tuoiChange($event.target)"> Dần
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi3" value="Mẹo" [checked]="thuoctinh.tuoi.includes('Mẹo;')"
-									(change)="tuoiChange($event.target)"> Mẹo
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi4" value="Thìn" [checked]="thuoctinh.tuoi.includes('Thìn;')"
-									(change)="tuoiChange($event.target)"> Thìn
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi5" value="Tỵ" [checked]="thuoctinh.tuoi.includes('Tỵ;')"
-									(change)="tuoiChange($event.target)"> Tỵ
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi6" value="Ngọ" [checked]="thuoctinh.tuoi.includes('Ngọ;')"
-									(change)="tuoiChange($event.target)"> Ngọ
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi7" value="Mùi" [checked]="thuoctinh.tuoi.includes('Mùi;')"
-									(change)="tuoiChange($event.target)"> Mùi
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi8" value="Thân" [checked]="thuoctinh.tuoi.includes('Thân;')"
-									(change)="tuoiChange($event.target)"> Thân
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi9" value="Dậu" [checked]="thuoctinh.tuoi.includes('Dậu;')"
-									(change)="tuoiChange($event.target)"> Dậu
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi10" value="Tuất" [checked]="thuoctinh.tuoi.includes('Tuất;')"
-									(change)="tuoiChange($event.target)"> Tuất
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi11" value="Hợi" [checked]="thuoctinh.tuoi.includes('Hợi;')"
-									(change)="tuoiChange($event.target)"> Hợi
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checktuoi" id="Tuoi12" value="All"
-									(change)="tuoiChange($event.target)"> Tất cả các tuổi
-								</label>
-							</div>
-							<div class="row">
-								<div class="col-md-8">
-									<h3>Màu sắc</h3>
-								</div>
-							</div>
-							<div class="row center-block">
-								<label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau0" value="Đỏ"  [checked]="thuoctinh.mau.includes('Đỏ;')"
-									(change)="mauChange($event.target)"> Đỏ
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau1" value="Tím"  [checked]="thuoctinh.mau.includes('Tím;')"
-									(change)="mauChange($event.target)"> Tím
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau2" value="Hồng"  [checked]="thuoctinh.mau.includes('Hồng;')"
-									(change)="mauChange($event.target)"> Hồng
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau3" value="Vàng"  [checked]="thuoctinh.mau.includes('Vàng;')"
-									(change)="mauChange($event.target)"> Vàng
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau4" value="Nâu"  [checked]="thuoctinh.mau.includes('Nâu;')"
-									(change)="mauChange($event.target)"> Nâu
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau5" value="Cam"  [checked]="thuoctinh.mau.includes('Cam;')"
-									(change)="mauChange($event.target)"> Cam
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau6" value="Xám"  [checked]="thuoctinh.mau.includes('Xám;')"
-									(change)="mauChange($event.target)"> Xám
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau7" value="Ánh vàng"  [checked]="thuoctinh.mau.includes('Ánh Vàng;')"
-									(change)="mauChange($event.target)"> Ánh vàng
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau8" value="Ánh bạc"  [checked]="thuoctinh.mau.includes('Ánh Bạc;')"
-									(change)="mauChange($event.target)"> Ánh bạc
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau9" value="Xanh biển"  [checked]="thuoctinh.mau.includes('Xanh Biển;')"
-									(change)="mauChange($event.target)"> Xanh biển
-								</label>
-							</div>
-							<div class="row center-block">
-								<label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau10" value="Đen"  [checked]="thuoctinh.mau.includes('Đen;')"
-									(change)="mauChange($event.target)"> Đen
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau11" value="Xanh lá"  [checked]="thuoctinh.mau.includes('Xanh Lá;')"
-									(change)="mauChange($event.target)"> Xanh lá
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau12" value="Xanh ngọc"  [checked]="thuoctinh.mau.includes('Xanh Ngọc;')"
-									(change)="mauChange($event.target)"> Xanh ngọc
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau13" value="Trong suốt"  [checked]="thuoctinh.mau.includes('Trong Suốt;')"
-									(change)="mauChange($event.target)"> Trong suốt
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau14" value="Trắng"  [checked]="thuoctinh.mau.includes('Trắng;')"
-									(change)="mauChange($event.target)"> Trắng
-								</label> <label class="checkbox-inline"> <input type="checkbox"
-									class="checkmau" id="mau14" value="All"
-									(change)="mauChange($event.target)"> Tất cả các màu
-								</label>
-							</div>
-							<div class="row">
-								<div class="col-md-8">
-									<h3>Size</h3>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="row">
-										<label class="col-md-4"> Từ: </label>
-										<div class="col-md-8">
-											<input class="form-control" [(ngModel)]="thuoctinh.sizefrom">
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="row">
-										<label class="col-md-4"> Đến: </label>
-										<div class="col-md-8">
-											<input class="form-control" [(ngModel)]="thuoctinh.sizeto">
-										</div>
-									</div>
 
-								</div>
-							</div>
 
 							<div class="row">
 								<div class="col-md-8">
@@ -218,7 +54,7 @@
 								</div>
 							</div>
 							<div class="row center-block">
-								<div class="col-xs-2 col-md-2">
+								<div class="col-xs-1 col-md-1">
 									<h4 style="text-align: center;">Phân Loại</h4>
 								</div>
 								<div class="col-xs-2 col-md-2">
@@ -228,6 +64,9 @@
 									<h4 style="text-align: center;">Giá sau giảm</h4>
 								</div>
 								<div class="col-xs-2 col-md-2">
+									<h4 style="text-align: center;">Ngày hết hạn</h4>
+								</div>
+								<div class="col-xs-1 col-md-1">
 									<h4 style="text-align: center;">Tồn kho</h4>
 								</div>
 								<div class="col-xs-2 col-md-2">
@@ -238,11 +77,10 @@
 								</div>
 							</div>
 
-							<div class="row" *ngFor="let item of sizes; let i=index"
-								>
+							<div class="row" *ngFor="let item of sizes; let i=index">
 								<div class="row center-block">
 
-									<div class="col-xs-2 col-md-2">
+									<div class="col-xs-1 col-md-1">
 										<input class="form-control" [(ngModel)]="item.size">
 									</div>
 
@@ -255,8 +93,14 @@
 										<div *ngIf="item.price < item.disct_price" style="color: red">Giá
 											sau giảm nhỏ hơn giá sản phẩm.</div>
 									</div>
-
 									<div class="col-xs-2 col-md-2">
+										<input type="date" class="form-control"
+											[(ngModel)]="item.expired_time">
+										<div
+											*ngIf="item.disct_price!=0&&item.disct_price!=undefined&&(item.expired_time==undefined||item.expired_time=='0')"
+											style="color: red">Xin nhập ngày hết hạn.</div>
+									</div>
+									<div class="col-xs-1 col-md-1">
 										<input class="form-control" [(ngModel)]="item.quantity">
 
 									</div>
@@ -284,18 +128,20 @@
 							</div>
 							<br>
 							<div class="row">
-								<div class="col-md-3">
-									<input class="form-control newImg" type="file"
-										[(ngModel)]="fileToUpload"
-										(change)="handleFileInput($event.target.files)" multiple>
+								<div class="col-md-8">
+									<h3>Folder ID:</h3>
 								</div>
+							</div>
+							<div class="row">
+								<input class="col-md-8 form-control" type="text"
+									[(ngModel)]="product.image">
 							</div>
 							<br>
 							<div class="row">
 								<div class="col-md-2">
-									<button class="btn btn-primary" id="add" (click)="editProduct()" style = 'display: none'
-										>Add</button>
-										<button class="btn btn-primary"  onClick = "clicky()"
+									<button class="btn btn-primary" id="add"
+										(click)="editProduct()" style='display: none'>Add</button>
+									<button class="btn btn-primary" onClick="clicky()"
 										style="display: block">Edit</button>
 								</div>
 								<div class="col-md-2">
@@ -412,13 +258,14 @@
 
 		</div>
 		<div ng-app>
-			<div >
-			<div ng-app="myApp" ng-controller="myCtrl">
-				<input id="description" style = 'display: none' (click) = "testDesc($event.target)" value = "" />
+			<div>
+				<div ng-app="myApp" ng-controller="myCtrl">
+					<input id="description" style='display: none'
+						(click)="testDesc($event.target)" value="" />
 				</div>
 			</div>
 		</div>
-		 
+
 	</div>
 
 </div>

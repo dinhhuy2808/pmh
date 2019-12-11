@@ -60,7 +60,7 @@ export class CheckoutComponent implements OnInit {
                 });
 
             } else {
-                this.userService.checkUserByPhone( this.payment.phone ).subscribe( res => {
+                this.userService.checkUserByPhoneForPayment( this.payment.phone ).subscribe( res => {
                     if ( res == true ) {
                         const dialogConfig = new MatDialogConfig();
                         dialogConfig.data = {

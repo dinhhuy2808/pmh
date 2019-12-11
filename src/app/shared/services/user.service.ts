@@ -31,6 +31,16 @@ export class UserService {
         
     }
 
+    checkUserByPhoneForPayment(phone: string){
+        return this.http.get( this.getPersonUrl + "/check-payment/" + phone  ).pipe(
+            map(this.extractData));
+        
+    }
+    isAdmin(token: string){
+        return this.http.get( this.getPersonUrl + "/isAdmin/" + token  ).pipe(
+            map(this.extractData));
+        
+    }
     getPersonsByNameFilteredByRole( name: string, role: string ) {
         return this.http.get( this.getPersonUrl + "/" + name + "/" + role )
            /* .map( this.extractData )

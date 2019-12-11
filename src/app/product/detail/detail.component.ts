@@ -37,7 +37,7 @@ export class DetailComponent implements OnInit {
 
     ngOnInit() {
         this.name = this.activatedRoute.snapshot.paramMap.get( 'name' );
-        this.productService.getProduct( this.name ).subscribe( res => {
+        this.productService.getProduct( this.name , 'detail').subscribe( res => {
             this.productScreenDetail = <ProducScreenDtail>res;
             this.product = this.productScreenDetail.product;
             this.sizes = this.productScreenDetail.sizes;

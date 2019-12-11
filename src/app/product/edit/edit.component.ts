@@ -42,10 +42,17 @@ export class EditComponent implements OnInit {
         this.loadScripts();
 
         this.name = this.activatedRoute.snapshot.paramMap.get( 'name' );
-        this.productService.getProduct( this.name ).subscribe( res => {
+        this.productService.getProduct( this.name , 'edit').subscribe( res => {
             this.productScreenDetail = <ProducScreenDtail>res;
             this.product = this.productScreenDetail.product;
             this.sizes = this.productScreenDetail.sizes;
+            this.sizes.map(item => {
+                var date =item.expired_time.toString();
+                var year = date.substring( 0, 4 )
+                var month = date.substring( 4, 6 )
+                var day = date.substring( 6, 8 )
+                item.expired_time = year + '-' + month + '-' + day;
+            });
             this.thuoctinh = this.productScreenDetail.thuoctinh;
             if ( this.thuoctinh.menh == this.fullMenh ) {
                 this.menhcheckall = true;
@@ -165,6 +172,9 @@ export class EditComponent implements OnInit {
     }
     editProduct() {
         this.product.description = this.description;
+        this.sizes.map(item => {
+            item.expired_time = item.expired_time.replace(/-/g, '');
+        });
         this.productService.editProduct( this.product, this.sizes, this.thuoctinh, this.fileToUpload, this.name,this.cookieService.get('token') ).subscribe( res => {
             if ( res == 200 ) {
                 alert('Edit thành công.')

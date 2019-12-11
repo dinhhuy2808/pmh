@@ -8,25 +8,8 @@
 
 	</div>
 	<div class="row product-info">
-		<div class="col-md-4">
-			<div class = "row">
-				<a href="#" class="thumbnail"> <img class="img-responsive"
-				src="assets/img/3x4.png" alt="">
-				</a>
-			</div>
-			<div class="row">
-								<div class="col-md-8">
-									<h3>Folder ID: </h3>
-								</div>
-							</div>
-			<div class = "row">
-				<input class="col-md-8 form-control" type="text"
-									[(ngModel)]="product.image">
-			</div>
-			
-			
-		</div>
-		<div class="col-md-8">
+
+		<div class="col-md-12">
 			<div class="ditem">
 				<div class="bs-example bs-example-tabs">
 					<ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -56,12 +39,12 @@
 							</div>
 							<div class="row">
 								<div class="col-md-8">
-									<h3>Từ khóa: </h3>
+									<h3>Từ khóa:</h3>
 								</div>
 							</div>
 							<div class="row center-block">
 								<input class="col-md-8 form-control" type="text"
-									[(ngModel)]="thuoctinh.menh" >
+									[(ngModel)]="thuoctinh.menh">
 							</div>
 
 							<div class="row">
@@ -70,7 +53,7 @@
 								</div>
 							</div>
 							<div class="row center-block">
-								<div class="col-xs-2 col-md-2">
+								<div class="col-xs-1 col-md-1">
 									<h4 style="text-align: center;">Phân Loại</h4>
 								</div>
 								<div class="col-xs-2 col-md-2">
@@ -80,6 +63,9 @@
 									<h4 style="text-align: center;">Giá sau giảm</h4>
 								</div>
 								<div class="col-xs-2 col-md-2">
+									<h4 style="text-align: center;">Ngày hết hạn</h4>
+								</div>
+								<div class="col-xs-1 col-md-1">
 									<h4 style="text-align: center;">Tồn kho</h4>
 								</div>
 								<div class="col-xs-2 col-md-2">
@@ -94,7 +80,7 @@
 								[ngStyle]="{'display': i <= showInsertRowSize?'block':'none'}">
 								<div class="row center-block">
 
-									<div class="col-xs-2 col-md-2">
+									<div class="col-xs-1 col-md-1">
 										<input class="form-control" [(ngModel)]="item.size">
 									</div>
 
@@ -107,8 +93,11 @@
 										<div *ngIf="item.price < item.disct_price" style="color: red">Giá
 											sau giảm nhỏ hơn giá sản phẩm.</div>
 									</div>
-
 									<div class="col-xs-2 col-md-2">
+										<input type = "date" class="form-control" [(ngModel)]="item.expired_time">
+										<div *ngIf="item.disct_price!=0&&item.disct_price!=undefined&&item.expired_time==undefined" style="color: red">Xin nhập ngày hết hạn.</div>
+									</div>
+									<div class="col-xs-1 col-md-1">
 										<input class="form-control" [(ngModel)]="item.quantity">
 
 									</div>
@@ -136,18 +125,20 @@
 							</div>
 							<br>
 							<div class="row">
-								<div class="col-md-3">
-									<input class="form-control newImg" type="file"
-										[(ngModel)]="fileToUpload"
-										(change)="handleFileInput($event.target.files)" multiple>
+								<div class="col-md-8">
+									<h3>Folder Id</h3>
 								</div>
+							</div>
+							<div class="row">
+								<input class="col-md-8 form-control" type="text"
+									[(ngModel)]="product.image">
 							</div>
 							<br>
 							<div class="row">
 								<div class="col-md-2">
-									<button class="btn btn-primary" id="add" (click)="addProduct()" style = 'display: none'
-										>Add</button>
-										<button class="btn btn-primary"  onClick = "clicky()"
+									<button class="btn btn-primary" id="add" (click)="addProduct()"
+										style='display: none'>Add</button>
+									<button class="btn btn-primary" onClick="clicky()"
 										style="display: block">Add</button>
 								</div>
 								<div class="col-md-2">
@@ -160,15 +151,9 @@
 							<div class="col-md-8">
 								<h3>Tên Dịch Vụ</h3>
 							</div>
-							<div class="row center-block">
-								<div class="col-md-8">
-									<input class="col-md-8 form-control" type="text" id="nameDV"
-										onkeyup="CheckPrdDV()" value="">
-								</div>
-								<div class="col-md-4">
-									<input class="form-control newImgDv" id='newImgDv' type='file'
-										value='' multiple>
-								</div>
+							<div class="row">
+								<input class="col-md-8 form-control" type="text"
+									[(ngModel)]="product.image">
 							</div>
 							<br>
 							<div class="row center-block">
@@ -264,13 +249,14 @@
 
 		</div>
 		<div ng-app>
-			<div >
-			<div ng-app="myApp" ng-controller="myCtrl">
-				<input id="description" style = 'display: none' (click) = "testDesc($event.target)" value = "" />
+			<div>
+				<div ng-app="myApp" ng-controller="myCtrl">
+					<input id="description" style='display: none'
+						(click)="testDesc($event.target)" value="" />
 				</div>
 			</div>
 		</div>
-		 
+
 	</div>
 
 </div>
