@@ -51,6 +51,8 @@ export class CheckoutComponent implements OnInit {
             alert( 'Xin địa chỉ.' )
         }else if ( this.payment.tinhthanh == '' ) {
             alert( 'Xin chọn tỉnh thành.' )
+        } else if ( this.payment.tinhthanh == 'HCM' && this.payment.quanhuyen == '' ) {
+            alert( 'Xin chọn Quận Huyện.' )
         } else {
             if ( this.cookieService.check( 'token' ) ) {
                 this.payment.ship = this.shipSelected;
@@ -155,10 +157,21 @@ export class CheckoutComponent implements OnInit {
             this.payment.shipfee = 0;
         }
         this.payment.total = total;
+        if (this.voucherMess != '') {
+            if ( this.voucherMess.split( '###' ).length > 1 ) {
+                var discount = Number( this.voucherMess.split( '###' )[1] );
+                if ( discount > 100 ) {
+                    this.payment.total = this.payment.total - discount;
+                } else {
+                    this.payment.total = this.payment.total * discount / 100;
+                }
+            }
+        }
     }
     applyVoucher() {
         if ( this.payment.voucher == '' ) {
             this.voucherMess = '';
+            this.changeAmount();
         } else {
             this.paymentService.checkVoucher( this.payment.voucher ).subscribe(( res: {}) => {
                 var message = '';

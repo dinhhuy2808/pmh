@@ -1,263 +1,379 @@
 <div class="container">
-    <div class="row" data-gutter="60">
-        <h3><a href="/">Home</a></h3>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-            <h3><span class="label label-danger" style="background-color: #6A3723;">Phương thức vận chuyển</span></h3>
-        </div>
-        <div class="col-md-8">
-            <label class="checkbox-inline">
-                <input type="checkbox" class="phuongthucvanchuyen" [checked]="vanchuyenChecked[0]" value="ghtk" (change)="vanchuyenChange($event.target)"> Giao hàng tiết kiệm
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" class="phuongthucvanchuyen" [checked]="vanchuyenChecked[1]" value="bd" (change)="vanchuyenChange($event.target)"> Bưu điện (VN POST)
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" class="phuongthucvanchuyen" [checked]="vanchuyenChecked[2]" value="vtp" (change)="vanchuyenChange($event.target)"> Viettel POST
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" class="phuongthucvanchuyen"  [checked]="vanchuyenChecked[3]" value="ghn" (change)="vanchuyenChange($event.target)"> Giao Hàng Nhanh
-            </label>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-8">
-            <h3><span class="label label-danger" style="background-color: #6A3723;">Phương thức thanh toán</span></h3>
-        </div>
-        <div class="col-md-8">
-            <label class="checkbox-inline">
-                <input type="checkbox" class="phuongthucthanhtoan" [checked]="thanhtoanChecked[0]" value="tm" (change)="thanhtoanChange($event.target)">Tiền mặt
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" class="phuongthucthanhtoan" [checked]="thanhtoanChecked[1]" value="COD" (change)="thanhtoanChange($event.target)">COD(Giao hàng thu tiền)
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" class="phuongthucthanhtoan" [checked]="thanhtoanChecked[2]" value="ck" (change)="thanhtoanChange($event.target)">Chuyển khoản
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" class="phuongthucthanhtoan"  [checked]="thanhtoanChecked[3]" value="ttd" (change)="thanhtoanChange($event.target)">Thẻ tín dụng
-            </label>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-10">
-            <h3><span class="label label-danger" style="background-color: #6A3723;">Đơn hàng sẽ được miễn phí vận chuyển khi giá sau khuyến mãi lớn hơn:</span></h3>
-        </div>
-        <div class="col-md-3">
-            <input class="form-control" [(ngModel)]="settingShop.freeShip">
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-10">
-            <h3><span class="label label-danger" style="background-color: #6A3723;">Dưới số này đơn hàng có phí dịch vụ vận chuyển mặc định là:</span></h3>
-        </div>
-        <div class="col-md-3">
-            <input class="form-control" [(ngModel)]="settingShop.defaultShip" >
-        </div>
-    </div>
-    <div class="row">
-        <br>
-        <div class="col-md-12">
-            <table style="border-collapse: collapse; border: none;">
-                <tbody>
-                <tr style="height: 20.65pt;">
-                    <td style="width: 155.8pt; border: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt; height: 20.65pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><strong><span style="font-size: 10.5pt; font-family: 'Helvetica',sans-serif; color: #333333; background: white;">Khu vực</span></strong></p>
-                    </td>
-                    <td style="width: 155.85pt; border: solid #BFBFBF 1.0pt; border-left: none; padding: 0in 5.4pt 0in 5.4pt; height: 20.65pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><strong><span style="font-size: 10.5pt; font-family: 'Helvetica',sans-serif; color: #333333; background: white;">Quận/ Huyện</span></strong></p>
-                    </td>
-                    <td style="width: 155.85pt; border: solid #BFBFBF 1.0pt; border-left: none; padding: 0in 5.4pt 0in 5.4pt; height: 20.65pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><strong><span style="font-size: 10.5pt; font-family: 'Helvetica',sans-serif; color: #333333; background: white;">Ph&iacute; Ship</span></strong></p>
-                    </td>
-                </tr>
-                <tr style="height: 49.45pt;">
-                    <td style="width: 155.8pt; border: solid #BFBFBF 1.0pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt; height: 49.45pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 10.5pt; font-family: 'Helvetica',sans-serif; color: #333333; background: white;">Ship nội th&agrave;nh</span> TPHCM</p>
-                    </td>
-                    <td style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt; height: 49.45pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 10.5pt; font-family: 'Helvetica',sans-serif; color: #333333; background: white;">
-                            <textarea class="form-control" [(ngModel)]="settingShop.noithanh">
-                            </textarea >
-                            </span></p>
-                    </td>
-                    <td style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt; height: 49.45pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: #111111;">
-                                <input class="form-control" [(ngModel)]="settingShop.gianoithanh">
-                            </span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 155.8pt; border: solid #BFBFBF 1.0pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 10.5pt; font-family: 'Helvetica',sans-serif; color: #333333; background: white;">Ship quận v&agrave; huyện ngoại th&agrave;nh</span></p>
-                    </td>
-                    <td style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 10.5pt; font-family: 'Helvetica',sans-serif; color: #333333; background: white;">
-                                <textarea class="form-control" [(ngModel)]="settingShop.ngoaithanh">
-                                </textarea >
-                            </span></p>
-                    </td>
-                    <td style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: #111111;">
-                                 <input class="form-control" [(ngModel)]="settingShop.giangoaithanh">
-                            </span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 155.8pt; border: solid #BFBFBF 1.0pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt;" rowspan="2" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: #111111;">Tỉnh</span></p>
-                    </td>
-                    <td style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: #111111;">Ship ch&agrave;nh xe (kh&aacute;ch chuyển khoản trước)</span></p>
-                    </td>
-                    <td style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: #111111;">
-                                <input class="form-control" [(ngModel)]="settingShop.chanhxe">
-                            </span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: #111111;">Ship thu hộ</span></p>
-                    </td>
-                    <td style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;" width="208">
-                        <p style="margin-bottom: .0001pt; text-align: center; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Times New Roman',serif; color: #111111;">
-                                <input class="form-control" [(ngModel)]="settingShop.thuho">
-                            </span></p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <br>
-        <div class="col-md-8">
-            <button class="btn btn-danger" (click) = "updateSettingShop()" style="background-color: #6A3723;">Update Setting Shop</button>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <button class="btn btn-danger" style="background-color: #6A3723;">Add Category</button>
-    </div>
+	<div class="row" data-gutter="60">
+		<h3>
+			<a href="/">Home</a>
+		</h3>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<h3>
+				<span class="label label-danger" style="background-color: #6A3723;">Phương
+					thức vận chuyển</span>
+			</h3>
+		</div>
+		<div class="col-md-8">
+			<label class="checkbox-inline"> <input type="checkbox"
+				class="phuongthucvanchuyen" [checked]="vanchuyenChecked[0]"
+				value="ghtk" (change)="vanchuyenChange($event.target)"> Giao
+				hàng tiết kiệm
+			</label> <label class="checkbox-inline"> <input type="checkbox"
+				class="phuongthucvanchuyen" [checked]="vanchuyenChecked[1]"
+				value="bd" (change)="vanchuyenChange($event.target)"> Bưu
+				điện (VN POST)
+			</label> <label class="checkbox-inline"> <input type="checkbox"
+				class="phuongthucvanchuyen" [checked]="vanchuyenChecked[2]"
+				value="vtp" (change)="vanchuyenChange($event.target)">
+				Viettel POST
+			</label> <label class="checkbox-inline"> <input type="checkbox"
+				class="phuongthucvanchuyen" [checked]="vanchuyenChecked[3]"
+				value="ghn" (change)="vanchuyenChange($event.target)"> Giao
+				Hàng Nhanh
+			</label>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-8">
+			<h3>
+				<span class="label label-danger" style="background-color: #6A3723;">Phương
+					thức thanh toán</span>
+			</h3>
+		</div>
+		<div class="col-md-8">
+			<label class="checkbox-inline"> <input type="checkbox"
+				class="phuongthucthanhtoan" [checked]="thanhtoanChecked[0]"
+				value="tm" (change)="thanhtoanChange($event.target)">Tiền
+				mặt
+			</label> <label class="checkbox-inline"> <input type="checkbox"
+				class="phuongthucthanhtoan" [checked]="thanhtoanChecked[1]"
+				value="COD" (change)="thanhtoanChange($event.target)">COD(Giao
+				hàng thu tiền)
+			</label> <label class="checkbox-inline"> <input type="checkbox"
+				class="phuongthucthanhtoan" [checked]="thanhtoanChecked[2]"
+				value="ck" (change)="thanhtoanChange($event.target)">Chuyển
+				khoản
+			</label> <label class="checkbox-inline"> <input type="checkbox"
+				class="phuongthucthanhtoan" [checked]="thanhtoanChecked[3]"
+				value="ttd" (change)="thanhtoanChange($event.target)">Thẻ
+				tín dụng
+			</label>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-10">
+			<h3>
+				<span class="label label-danger" style="background-color: #6A3723;">Đơn
+					hàng sẽ được miễn phí vận chuyển khi giá sau khuyến mãi lớn hơn:</span>
+			</h3>
+		</div>
+		<div class="col-md-3">
+			<input class="form-control" [(ngModel)]="settingShop.freeShip">
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-10">
+			<h3>
+				<span class="label label-danger" style="background-color: #6A3723;">Dưới
+					số này đơn hàng có phí dịch vụ vận chuyển mặc định là:</span>
+			</h3>
+		</div>
+		<div class="col-md-3">
+			<input class="form-control" [(ngModel)]="settingShop.defaultShip">
+		</div>
+	</div>
+	<div class="row">
+		<br>
+		<div class="col-md-12">
+			<table style="border-collapse: collapse; border: none;">
+				<tbody>
+					<tr style="height: 20.65pt;">
+						<td
+							style="width: 155.8pt; border: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt; height: 20.65pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<strong><span
+									style="font-size: 10.5pt; font-family: 'Helvetica', sans-serif; color: #333333; background: white;">Khu
+										vực</span></strong>
+							</p>
+						</td>
+						<td
+							style="width: 155.85pt; border: solid #BFBFBF 1.0pt; border-left: none; padding: 0in 5.4pt 0in 5.4pt; height: 20.65pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<strong><span
+									style="font-size: 10.5pt; font-family: 'Helvetica', sans-serif; color: #333333; background: white;">Quận/
+										Huyện</span></strong>
+							</p>
+						</td>
+						<td
+							style="width: 155.85pt; border: solid #BFBFBF 1.0pt; border-left: none; padding: 0in 5.4pt 0in 5.4pt; height: 20.65pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<strong><span
+									style="font-size: 10.5pt; font-family: 'Helvetica', sans-serif; color: #333333; background: white;">Ph&iacute;
+										Ship</span></strong>
+							</p>
+						</td>
+					</tr>
+					<tr style="height: 49.45pt;">
+						<td
+							style="width: 155.8pt; border: solid #BFBFBF 1.0pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt; height: 49.45pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 10.5pt; font-family: 'Helvetica', sans-serif; color: #333333; background: white;">Ship
+									nội th&agrave;nh</span> TPHCM
+							</p>
+						</td>
+						<td
+							style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt; height: 49.45pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 10.5pt; font-family: 'Helvetica', sans-serif; color: #333333; background: white;">
+									<textarea class="form-control"
+										[(ngModel)]="settingShop.noithanh">
+                            </textarea>
+								</span>
+							</p>
+						</td>
+						<td
+							style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt; height: 49.45pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 12.0pt; font-family: 'Times New Roman', serif; color: #111111;">
+									<input class="form-control"
+									[(ngModel)]="settingShop.gianoithanh">
+								</span>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td
+							style="width: 155.8pt; border: solid #BFBFBF 1.0pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 10.5pt; font-family: 'Helvetica', sans-serif; color: #333333; background: white;">Ship
+									quận v&agrave; huyện ngoại th&agrave;nh</span>
+							</p>
+						</td>
+						<td
+							style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 10.5pt; font-family: 'Helvetica', sans-serif; color: #333333; background: white;">
+									<textarea class="form-control"
+										[(ngModel)]="settingShop.ngoaithanh">
+                                </textarea>
+								</span>
+							</p>
+						</td>
+						<td
+							style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 12.0pt; font-family: 'Times New Roman', serif; color: #111111;">
+									<input class="form-control"
+									[(ngModel)]="settingShop.giangoaithanh">
+								</span>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td
+							style="width: 155.8pt; border: solid #BFBFBF 1.0pt; border-top: none; padding: 0in 5.4pt 0in 5.4pt;"
+							rowspan="2" width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 12.0pt; font-family: 'Times New Roman', serif; color: #111111;">Tỉnh</span>
+							</p>
+						</td>
+						<td
+							style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 12.0pt; font-family: 'Times New Roman', serif; color: #111111;">Ship
+									ch&agrave;nh xe (kh&aacute;ch chuyển khoản trước)</span>
+							</p>
+						</td>
+						<td
+							style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 12.0pt; font-family: 'Times New Roman', serif; color: #111111;">
+									<input class="form-control" [(ngModel)]="settingShop.chanhxe">
+								</span>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td
+							style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 12.0pt; font-family: 'Times New Roman', serif; color: #111111;">Ship
+									thu hộ</span>
+							</p>
+						</td>
+						<td
+							style="width: 155.85pt; border-top: none; border-left: none; border-bottom: solid #BFBFBF 1.0pt; border-right: solid #BFBFBF 1.0pt; padding: 0in 5.4pt 0in 5.4pt;"
+							width="208">
+							<p
+								style="margin-bottom: .0001pt; text-align: center; line-height: normal;">
+								<span
+									style="font-size: 12.0pt; font-family: 'Times New Roman', serif; color: #111111;">
+									<input class="form-control" [(ngModel)]="settingShop.thuho">
+								</span>
+							</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<br>
+		<div class="col-md-8">
+			<button class="btn btn-danger" (click)="updateSettingShop()"
+				style="background-color: #6A3723;">Update Setting Shop</button>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<button class="btn btn-danger" style="background-color: #6A3723;">Add
+			Category</button>
+	</div>
 
-    <br/>
+	<br />
 
 
-    <div class="row" >
-        <div class="row">
-            <h4 class="col-md-4">
-                Thư mục </h4>
-            <h4 class="col-md-4">
-                Nhóm Sản Phẩm </h4>
-        </div>
-        
-        <div class="row">
-        	<div class="col-md-4">
-        		<input class="form-control" type = 'text' [(ngModel)]="treeName">
-        	</div>
-        	
-        	<div class="col-md-4">
-        		<input class="form-control" type = 'text' [(ngModel)]="catName">
-        	</div>
+	<div class="row">
+		<div class="row">
+			<h4 class="col-md-4">Thư mục</h4>
+			<h4 class="col-md-4">Nhóm Sản Phẩm</h4>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<input class="form-control" type='text' [(ngModel)]="treeName">
+			</div>
+
+			<div class="col-md-4">
+				<input class="form-control" type='text' [(ngModel)]="catName">
+			</div>
 			<button class="btn btn-danger" (click)="addTreeFolder()">Ok</button>
-        </div>
+		</div>
 
-    </div>
+	</div>
 
-    <div class="row">
+	<div class="row">
 
-        <div class="row">
-            <div class="col-md-4">
-                <h4>Thư Mục</h4>
-            </div>
-            <div class="col-md-4">
-                <h4>Nhóm Sản Phẩm</h4>
-            </div>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Thư Mục</h4>
+			</div>
+			<div class="col-md-4">
+				<h4>Nhóm Sản Phẩm</h4>
+			</div>
+			<div class="col-md-4">
+				<h4>Tên Mới</h4>
+			</div>
+
+		</div>
+		<div *ngFor="let item of treeMap | keyvalue">
+			<div *ngIf="item.value.length == 0">
+				<div class="row">
+					<div class="col-md-4">
+						<input class="form-control" value="{{item.key}}" disabled>
+					</div>
+					<div class="col-md-4">
+						<input class="form-control" value="{{item.key}}" disabled>
+					</div>
+					<div class="col-md-3">
+						<input class="form-control"  value=" " >
+					</div>
+					<div class="col-md-1">
+						<a class="btn btn-success form-control" (click)="changeName($event.target)">Ok</a>
+					</div>
+				</div>
+			</div>
+			<div *ngIf="item.value.length>0 ">
+				<div class="row" *ngFor="let cat of item.value">
+					<div class="col-md-4">
+						<input class="form-control" value="{{item.key}}" disabled>
+					</div>
+					<div class="col-md-4">
+						<input class="form-control" value="{{cat}}" disabled>
+					</div>
+					<div class="col-md-3">
+						<input class="form-control" value="" >
+					</div>
+					<div class="col-md-1">
+						<a class="btn btn-success form-control" (click)="changeName($event.target.parentElement.parentElement)">Ok</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="row">
+			<div class="col-md-10">
+				<h3>
+					<span class="label label-danger" style="background-color: #6A3723;">Sắp
+						xếp Header: </span>
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h4>Tên</h4>
+			</div>
+			<div class="col-md-4">
+				<h4>Chỉ Mục</h4>
+			</div>
 
 
-        </div>
-        <div *ngFor="let item of treeMap | keyvalue">
-                            <div *ngIf="item.value.length == 0">
-                                <div class="row">
-                                	<div class="col-md-4">
-				                    <input class="form-control"'
-				                           value="{{item.key}}" disabled>
-					                </div>
-					                <div class="col-md-4">
-					                    <input class="form-control"
-					                           value="{{item.key}}" disabled>
-					                </div>
-						            <div class="col-md-1">
-						
-						            </div>
-						            <div class="col-md-1">
-						                <a class="btn btn-success form-control"
-						                  >Products</a>
-						            </div>
-                                </div>
-                            </div>
-                            <div *ngIf="item.value.length>0 ">
-	                            <div class="row" *ngFor="let cat of item.value">
-	                                	<div class="col-md-4">
-					                    <input class="form-control"
-					                           value="{{item.key}}" disabled>
-						                </div>
-						                <div class="col-md-4">
-						                    <input class="form-control"
-						                           value="{{cat}}">
-						                </div>
-							            <div class="col-md-1">
-							
-							            </div>
-							            <div class="col-md-1">
-							                <a class="btn btn-success form-control"
-							                  >Products</a>
-							            </div>
-	                                </div>
-                            </div>
-                </div>
-    </div>
+		</div>
 
-    <div class="row">
-        <div class="row">
-            <div class="col-md-10">
-                <h3><span class="label label-danger" style="background-color: #6A3723;">Sắp xếp Header: </span></h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <h4>Tên</h4>
-            </div>
-            <div class="col-md-4">
-                <h4>Chỉ Mục</h4>
-            </div>
+		<div *ngFor="let item of treeMap | keyvalue ; let i=index">
+			<div class="row">
+				<div class="col-md-4">
+					<input class="form-control" value='{{item.key}}'>
+				</div>
+				<div class="col-md-2">
+					<input class="form-control" value='{{i+1}}'>
+				</div>
+				<div class="col-md-1">
+					<button class="form-control" (click)="updateIndex($event.target.parentElement.parentElement)">OK</button>
+				</div>
+			</div>
+		</div>
 
 
-        </div>
-        
-        <div *ngFor="let item of treeMap | keyvalue ; let i=index">
-        	<div class="row">
-                <div class="col-md-4">
-                    <input class="form-control" 
-                           value='{{item.key}}' >
-                </div>
-                <div class="col-md-2">
-                    <input class="form-control" 
-                           value='{{i+1}}' >
-                </div>
-                <div class="col-md-1">
-                    <button class="form-control" >OK</button>
-                </div>
-            </div>
-        </div>
-        
-
-    </div>
-    <div class="gap"></div>
+	</div>
+	<div class="gap"></div>
 </div>
 
