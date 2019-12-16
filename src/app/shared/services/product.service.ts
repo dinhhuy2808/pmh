@@ -25,6 +25,9 @@ export class ProductService {
     getProductByCategoryName(catName: string, page:string) {
         return this.http.get<CategoryScreen[]>(this.getProductUrl + '/get-by-category/' + catName+"/"+page);
     }
+    search(keyword: string, page:string) {
+        return this.http.get<CategoryScreen[]>(this.getProductUrl + '/search/' + keyword+"/"+page);
+    }
     checkProductName(productName: string) {
         return this.http.get(this.getProductUrl + '/check/' + productName).pipe(
             map(this.extractData));

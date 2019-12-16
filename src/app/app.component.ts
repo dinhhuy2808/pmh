@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     fontDescriptionArea: string = '';
     displayButtonFilter: boolean = false;
     displayFilter: boolean = true;
-
+    search: string = '';
     constructor( private treefolderService: TreefolderService, private cookieService: CookieService, private router: Router,
         private deviceService: DeviceDetectorService, private productService: ProductService,private matDialog: MatDialog, private activatedRoute: ActivatedRoute ) { 
         
@@ -150,5 +150,8 @@ export class AppComponent implements OnInit {
                 }
             }
         }
+    }
+    Search(){
+        this.router.navigate( ['category/Search/1'], { queryParams: { keyword: this.search } } );
     }
 }

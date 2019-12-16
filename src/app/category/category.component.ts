@@ -23,12 +23,22 @@ export class CategoryComponent implements OnInit {
     categoryscreens: CategoryScreen[];
     constructor( private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService, private cookieService: CookieService ) { 
         activatedRoute.params.subscribe(val => {
+            this.categoryscreens = [];
             this.name = this.activatedRoute.snapshot.paramMap.get( 'name' );
             this.page = this.activatedRoute.snapshot.paramMap.get( 'page' );
-            this.productService.getProductByCategoryName( this.name , this.page).subscribe( res => {
-                this.categoryscreens = res;
-                console.log( this.categoryscreens )
-            });
+            if (this.name == 'Search') {
+                this.activatedRoute.queryParams.subscribe(params => {
+                    this.keyword = params['keyword'];
+                    this.productService.search( this.keyword , this.page).subscribe( res => {
+                        this.categoryscreens = res;
+                    });
+                });
+                
+            } else {
+                this.productService.getProductByCategoryName( this.name , this.page).subscribe( res => {
+                    this.categoryscreens = res;
+                });
+            }
         });
         
     }
@@ -36,10 +46,20 @@ export class CategoryComponent implements OnInit {
     ngOnInit() {
         this.name = this.activatedRoute.snapshot.paramMap.get( 'name' );
         this.page = this.activatedRoute.snapshot.paramMap.get( 'page' );
-        this.productService.getProductByCategoryName( this.name , this.page).subscribe( res => {
-            this.categoryscreens = res;
-            console.log( this.categoryscreens )
-        });
+        if (this.name == 'Search') {
+            this.activatedRoute.queryParams.subscribe(params => {
+                this.keyword = params['keyword'];
+                this.productService.search( this.keyword , this.page).subscribe( res => {
+                    this.categoryscreens = res;
+                });
+            });
+            
+        } else {
+            this.productService.getProductByCategoryName( this.name , this.page).subscribe( res => {
+                this.categoryscreens = res;
+            });
+        }
+       
     }
 
     filter() {

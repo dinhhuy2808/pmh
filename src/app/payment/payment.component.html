@@ -1,13 +1,12 @@
 <div class="container">
 		<div class="row">
-			<form action = '/show-payment' method = 'get'>
 				<div class="row">
 					<div class="col-md-3">
 						<div class="form-group">
 							<h3><span class="label label-success">Số điện thoại :</span></h3>
 						</div>
                         <div class="form-group">
-                            <input  class=" form-control" name = 'phone' id = 'phone'   type="text" />
+                            <input  class=" form-control" [(ngModel)]="phone"   type="text" />
                         </div>
 					</div>
 					<div class="col-md-3">
@@ -15,8 +14,8 @@
 							<h3><span class="label label-success">Trạng thái: </span></h3>
 						</div>
                         <div class="form-group">
-                            <select name="statusflt" id="statusflt" class="form-control">
-                                <option value="none" selected="">----Selected-----</option>
+                            <select [(ngModel)]="status" class="form-control">
+                                <option value="" selected="">----Selected-----</option>
 
                                 <option value="0" >Đặt hàng </option>
 
@@ -41,7 +40,7 @@
                             <h3><span class="label label-success">Mã Đơn:</span></h3>
                         </div>
                         <div class="form-group">
-                            <input  class=" form-control" name = 'titleflt' id = 'titleflt'   type="text" />
+                            <input  class=" form-control" [(ngModel)]="title" type="text" />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -49,7 +48,7 @@
                             <h3><span class="label label-success">Mã vận chuyển :</span></h3>
                         </div>
                         <div class="form-group">
-                            <input  class=" form-control" name = 'shipflt' id = 'shipflt'   type="text" />
+                            <input  class=" form-control" [(ngModel)]="shipcode" type="text" />
                         </div>
                     </div>
 
@@ -58,14 +57,13 @@
 
 					<div class="col-md-12">
 						<div class="form-group">
-							<input class="btn btn-primary" value = 'Áp Dụng' type = 'submit'/>
+							<input class="btn btn-primary" value = 'Áp Dụng'(click)="apply()"/>
 						</div>
 
 					</div>
 
 				</div>
 
-			</form>
 		</div>
 		<div *ngIf = "isAdmin" class="row">
 			<div class="col-md-2">
