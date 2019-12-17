@@ -86,6 +86,10 @@ export class ProductService {
         return this.http.get(this.getProductUrl + '/get-cart-detail/'+token,httpOptions).pipe(
                 map(this.extractData));
     }
+    getProductByCode(code:string, token:string) {
+        return this.http.get(this.getProductUrl + '/getProductByCode/'+code+'/'+token).pipe(
+                map(this.extractData));
+    }
     getCartNotLogin(cartInfo: string) {
         const httpOptions = {
                 headers: new HttpHeaders(

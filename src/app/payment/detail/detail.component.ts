@@ -8,21 +8,23 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import {PaymentService} from '../../shared/services/payment.service';
 import {UserService} from '../../shared/services/user.service';
+import {ProductService} from '../../shared/services/product.service';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css'],
-  providers: [PaymentService,UserService]
+  providers: [PaymentService,UserService,ProductService]
 })
 export class DetailComponent implements OnInit {
     paymentscreen : PaymentScreen = new PaymentScreen();
     payment: Payment = new Payment();
     isAdmin:boolean = false;
     carts : Array<Cart> = new Array();
+    newCarts : Array<Cart> = new Array();
     settingShop: Settingshop = new Settingshop();
 id:string = '';
   constructor( private activatedRoute: ActivatedRoute, private router: Router, private paymentService: PaymentService
-          , private cookieService: CookieService, private userService: UserService ) { }
+          , private cookieService: CookieService, private userService: UserService, private productService: ProductService ) { }
 
   ngOnInit() {
     if(this.cookieService.check('token')){
@@ -63,5 +65,13 @@ id:string = '';
           this.paymentscreen.shipfee = 0;
       }
       this.paymentscreen.total = total;
+  }
+  addProduct(){
+      this.newCarts.push( new Cart() )
+  }
+  getProductByCode(value,i){
+      this.productService.getProductByCode(value.value, this.cookieService.get('token')).subscribe(res => {
+          this.newCarts[i] = res;
+      });
   }
 }

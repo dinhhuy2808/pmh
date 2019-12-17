@@ -72,13 +72,29 @@
 						<td class="text-center ">
 							{{item.disct_price>0&&item.price>item.disct_price?item.disct_price*item.amount:item.price*item.amount}}</td>
 					</tr>
+					<tr *ngFor="let newItem of newCarts; index as i">
+						<td class="text-center"><input class="form-control text-center" [(ngModel)]="newItem.code" (blur)="getProductByCode($event.target,i)"></td>
+						<td class="text-center"><input class="form-control text-center" [(ngModel)]="newItem.name"></td>
+						<td class="text-center"><input class="form-control text-center" [(ngModel)]="newItem.size"></td>
+						<td class="text-center" *ngIf="newItem.disct_price>0&&newItem.price>newItem.disct_price">
+							<input class="form-control text-center" [(ngModel)]="newItem.disct_price"></td>
+						<td class="text-center" *ngIf="!(newItem.disct_price>0&&newItem.price>newItem.disct_price)">
+							<input class="form-control text-center" [(ngModel)]="newItem.price"></td>
+						<td *ngIf="isAdmin"><input class="form-control text-center"
+							[(ngModel)]="newItem.amount" (change)="changeAmount()"></td>
+						<td *ngIf="!isAdmin">{{item.amount}}</td>
+						<td class="text-center" *ngIf="newItem.disct_price>0&&newItem.price>newItem.disct_price">
+							{{newItem.disct_price*newItem.amount}}</td>
+							<td class="text-center" *ngIf="!(newItem.disct_price>0&&newItem.price>newItem.disct_price)">
+							{{newItem.price*newItem.amount}}</td>
+					</tr>
 
 					<tr id='rowInsertBtn'></tr>
 				</tbody>
 			</table>
 		</div>
 		<button *ngIf="isAdmin" class="btn btn-success" id="insertBtn"
-			onclick="insert()">+</button>
+			(click)="addProduct()">+</button>
 		<button *ngIf="isAdmin" class="btn btn-success" id="insertBtn"
 			onclick="Add()">OK</button>
 		<div class="row" style="padding-left: 20px;">
