@@ -22,11 +22,11 @@
 					[disabled]="!isAdmin">
 			</div>
 		</div>
-		<div class="row" *ngIf="isAdmin">
+		<div class="row" >
 			<div class="col-md-2">
 				<div class="form-group form-group-icon-left">
 					<h3>Status :</h3>
-					<select name="status" *ngModel="payment.status_id"
+					<select name="status" [(ngModel)]="payment.status_id" [disabled]="!isAdmin"
 						class="form-control">
 						<option value="none">----Selected-----</option>
 						<option value="0">Đặt hàng</option>
@@ -140,7 +140,7 @@
 
 
 	</div>
-	<div class="col-sm-7">
+	<div *ngIf="!isAdmin" class="col-sm-7">
 
 		<div class="row solid-content">
 			<h3>Hình thức giao hàng</h3>
@@ -215,6 +215,81 @@
 				(click)="createPayment()">Thanh Toán</button>
 		</div>
 	</div>
+	<div *ngIf="isAdmin" class="col-sm-7">
+
+		<div class="row solid-content">
+			<h3>Hình thức giao hàng</h3>
+			<div *ngIf="settingShop.transportMethod.includes('ghtk')"
+				class="col-xs-3 col-md-3" id="ship1">
+				<a class="thumbnail" [ngClass]="{selected: shipSelected=='ghtk'}"
+					(click)="selectShip('ghtk')"> <img class="dilivery"
+					src="../assets/img/delivery_form/giaohangtietkiem.png" alt="...">
+				</a>
+			</div>
+			<div *ngIf="settingShop.transportMethod.includes('ghn')"
+				class="col-xs-3 col-md-3" id="ship2">
+				<a class="thumbnail" [ngClass]="{selected: shipSelected=='ghn'}"
+					(click)="selectShip('ghn')"> <img class="dilivery"
+					src="../assets/img/delivery_form/giaohangnhanh.png" alt="...">
+				</a>
+			</div>
+			<div *ngIf="settingShop.transportMethod.includes('vtp')"
+				class="col-xs-3 col-md-3" id="ship3">
+				<a class="thumbnail" [ngClass]="{selected: shipSelected=='vtp'}"
+					(click)="selectShip('vtp')"> <img class="dilivery"
+					src="../assets/img/delivery_form/viettel_post.jpg" alt="...">
+				</a>
+			</div>
+			<div *ngIf="settingShop.transportMethod.includes('bd')"
+				class="col-xs-3 col-md-3" id="ship4">
+				<a class="thumbnail" [ngClass]="{selected:shipSelected=='bd'}"
+					(click)="selectShip('bd')"> <img class="dilivery"
+					src="../assets/img/delivery_form/vnpost.png" alt="...">
+				</a>
+			</div>
+		</div>
+		<div class="row solid-content">
+
+			<h3>Hình thức thanh toán</h3>
+			<div *ngIf="settingShop.paymentMethod.includes('tm')"
+				class="col-xs-3 col-md-3" id="type1">
+				<a class="thumbnail" [ngClass]="{selected: typeSelected=='tm'}"
+					(click)="selectType('tm')"> <img class="type-payment"
+					src="../assets/img/payment_method/cash.jpg" alt="...">
+				</a>
+			</div>
+			<div *ngIf="settingShop.paymentMethod.includes('ck')"
+				class="col-xs-3 col-md-3 " id="type2">
+				<a class="thumbnail" [ngClass]="{selected: typeSelected=='ck'}"
+					(click)="selectType('ck')"> <img class="type-payment"
+					src="../assets/img/payment_method/transfer.jpg" alt="...">
+				</a>
+			</div>
+			<div *ngIf="settingShop.paymentMethod.includes('COD')"
+				class="col-xs-3 col-md-3" id="type3">
+				<a class="thumbnail" [ngClass]="{selected: typeSelected=='COD'}"
+					(click)="selectType('COD')"> <img class="type-payment"
+					src="../assets/img/payment_method/cod.png" alt="...">
+				</a>
+			</div>
+			<div *ngIf="settingShop.paymentMethod.includes('ttd')"
+				class="col-xs-3 col-md-3" id="type4">
+				<a class="thumbnail" [ngClass]="{selected: typeSelected=='ttd'}"
+					(click)="selectType('ttd')"> <img class="type-payment"
+					src="../assets/img/payment_method/credit.png" alt="...">
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div *ngIf="isAdmin" class="col-xs-2 col-md-3"></div>
+			<button *ngIf="isAdmin" class="btn btn-info col-xs-4 col-md-3"
+				type="button" (click)="update()">Cập Nhật Đơn Hàng</button>
+			<a *ngIf="isAdmin" class="btn btn-success col-xs-4 col-md-3"
+				type="button" href="/bill/{{payment.payment_id}}"> Hóa Đơn </a>
+			<button class="btn btn-info col-xs-4 col-md-3" type="button"
+				(click)="createPayment()">Thanh Toán</button>
+		</div>
+	</div>
 	<div class="col-sm-4 solid-content">
 		<h2>Thông tin đơn hàng</h2>
 		<h4>Tên: {{payment.name}}</h4>
@@ -226,7 +301,7 @@
 		<h4 *ngIf="!isAdmin">Địa Chỉ: {{payment.address}}</h4>
 		<h3>Tỉnh thành:</h3>
 
-		<select class="form-control" [(ngModel)]="payment.tinhthanh"
+		<select class="form-control" [(ngModel)]="payment.tinhthanh" [disabled]="!isAdmin"
 			(change)="calculateTotal()">
 			<option value="HNI">Hà Nội</option>
 			<option value="HCM">Hồ Chí Minh</option>
@@ -296,7 +371,7 @@
 			[style.display]="payment.tinhthanh!='HCM'?'none':'block'">
 			<h3>Quận huyện:</h3>
 
-			<select class="form-control" [(ngModel)]="payment.quanhuyen"
+			<select class="form-control" [(ngModel)]="payment.quanhuyen" [disabled]="!isAdmin"
 				(change)="calculateTotal()">
 				<option value=' '>----Chọn Quận Huyện----</option>
 				<option *ngFor="let item of settingShop.noithanh.split(',')"

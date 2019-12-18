@@ -173,7 +173,7 @@ export class CheckoutComponent implements OnInit {
             this.voucherMess = '';
             this.changeAmount();
         } else {
-            this.paymentService.checkVoucher( this.payment.voucher ).subscribe(( res: {}) => {
+            this.paymentService.checkVoucher( this.payment.voucher, this.payment.total ).subscribe(( res: {}) => {
                 var message = '';
                 for ( const [key, value] of Object.entries( res ) ) {
                     if ( key == 'message' ) {
@@ -187,6 +187,8 @@ export class CheckoutComponent implements OnInit {
                     } else {
                         this.payment.total = this.payment.total * discount / 100;
                     }
+                } else {
+                    this.payment.voucher = ''
                 }
 
                 this.voucherMess = message;
