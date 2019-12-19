@@ -276,7 +276,7 @@
 			<h3>Quận huyện:</h3>
 
 			<select class="form-control" [(ngModel)]="payment.quanhuyen"  (change)="calculateTotal()">
-				<option value = ' '>----Chọn Quận Huyện----</option>
+				<option value = ''>----Chọn Quận Huyện----</option>
 				<option *ngFor="let item of payment.settingShop.noithanh.split(',')"
 					[value]="item">{{item}}</option>
 				<option *ngFor="let item of payment.settingShop.ngoaithanh.split(',')"
@@ -300,7 +300,7 @@
 			
 		
 		<h3>Tổng giá sản phẩm:</h3>
-		<h2 id="totalLabel" class="fa-money">{{payment.total}}</h2>
+		<h2 id="totalLabel" class="fa-money">{{total}}</h2>
 		<h3>Tổng giá đơn hàng:</h3>
 		<h2 id="totalship" class="fa-money">{{payment.total+payment.shipfee}}</h2>
 		<h2 *ngIf="voucherMess!=''" style="color: red">{{voucherMess.split('###')[0]}}</h2>

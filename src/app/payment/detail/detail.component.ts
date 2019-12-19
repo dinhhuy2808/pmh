@@ -69,7 +69,7 @@ shipSelected: string = '';
     getProductByCode( value, i ) {
         this.productService.getProductByCode( value.value, this.cookieService.get( 'token' ) ).subscribe(( res: any) => {
             this.newCarts[i] = res;
-            this.changeAmount();
+            this.applyVoucher();
         });
     }
     calculateTotal() {
@@ -128,10 +128,9 @@ shipSelected: string = '';
     }
     
     applyVoucher() {
-        if ( this.payment.voucher == '' ) {
-            this.voucherMess = '';
-            this.changeAmount();
-        } else {
+        this.voucherMess = '';
+        this.changeAmount();
+        if ( this.payment.voucher != '' ) {
             this.paymentService.checkVoucher( this.payment.voucher, this.payment.sum ).subscribe(( res: {}) => {
                 var message = '';
                 for ( const [key, value] of Object.entries( res ) ) {
@@ -152,12 +151,13 @@ shipSelected: string = '';
 
                 this.voucherMess = message;
             });
-        }
+        } 
 
     }
     update() {
         this.paymentService.updatePayment(this.cookieService.get('token'), this.payment, this.carts).subscribe(( res: any) => {
-            console.log(res);
+            alert('Cập nhật đơn hàng thành công.');
+            window.location.reload();
         });
     }
 }

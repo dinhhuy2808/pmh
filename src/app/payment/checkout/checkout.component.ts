@@ -21,6 +21,7 @@ export class CheckoutComponent implements OnInit {
     typeSelected: string = '';
     shipSelected: string = '';
     voucherMess: string = '';
+    total : number = 0;
     constructor( private activatedRoute: ActivatedRoute, private router: Router,
         private paymentService: PaymentService, private cookieService: CookieService
         , private matDialog: MatDialog, private userService: UserService ) { }
@@ -30,11 +31,15 @@ export class CheckoutComponent implements OnInit {
             this.paymentService.checkoutLogin( this.cookieService.get( 'token' ) ).subscribe( res => {
                 this.payment = <PaymentScreen>res;
                 this.payment.tinhthanh = 'HCM';
+                this.payment.quanhuyen = '';
+                this.total = this.payment.total;
             });
         } else {
             this.paymentService.checkoutNotLogin( this.cookieService.get( 'cart' ) ).subscribe( res => {
                 this.payment = <PaymentScreen>res;
                 this.payment.tinhthanh = 'HCM';
+                this.payment.quanhuyen = '';
+                this.total = this.payment.total;
             });
         }
 
@@ -143,20 +148,23 @@ export class CheckoutComponent implements OnInit {
         this.payment.ship = value;
     }
     changeAmount() {
-        var total = 0;
+        this.total = 0;
+        var sum = 0
         this.payment.carts.map( function( cart ) {
             if ( cart.disct_price != 0 && cart.price >= cart.disct_price ) {
-                total += cart.disct_price * cart.amount;
+                sum += cart.disct_price * cart.amount;
             } else {
-                total += cart.price * cart.amount;
+                sum += cart.price * cart.amount;
             }
         });
-        if ( total < this.payment.settingShop.freeShip ) {
+        this.total = sum;
+        if ( this.total < this.payment.settingShop.freeShip ) {
             this.payment.shipfee = this.payment.settingShop.defaultShip;
         } else {
             this.payment.shipfee = 0;
         }
-        this.payment.total = total;
+        
+        this.payment.total = this.total;
         if (this.voucherMess != '') {
             if ( this.voucherMess.split( '###' ).length > 1 ) {
                 var discount = Number( this.voucherMess.split( '###' )[1] );
@@ -169,10 +177,10 @@ export class CheckoutComponent implements OnInit {
         }
     }
     applyVoucher() {
-        if ( this.payment.voucher == '' ) {
-            this.voucherMess = '';
-            this.changeAmount();
-        } else {
+        
+        this.voucherMess = '';
+        this.changeAmount();
+        if ( this.payment.voucher != '' ) {
             this.paymentService.checkVoucher( this.payment.voucher, this.payment.total ).subscribe(( res: {}) => {
                 var message = '';
                 for ( const [key, value] of Object.entries( res ) ) {

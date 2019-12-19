@@ -4,6 +4,7 @@ import { Person } from '../models/person'
 import { Product } from '../models/product'
 import { Size } from '../models/size'
 import { Cart } from '../models/cart'
+import { Payment } from '../models/payment'
 import { PaymentScreen } from '../screenvars/PaymentScreen'
 import { Thuoctinh } from '../models/thuoctinh'
 import { Observable } from 'rxjs';
