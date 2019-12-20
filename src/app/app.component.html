@@ -196,7 +196,7 @@
 						style="min-width: 100px;" href="/logout"><p
 							style="color: white;" (click)="logout()">Đăng Xuất</p></a> <a
 						*ngIf="!isSignIn" class="btn btn-success "
-						[routerLink]="['/user/login']"
+						(click)="openLoginDialog()"
 						routerLinkActive="router-link-active"><p
 							style="color: white;">Đăng nhập</p></a>
 				</div>

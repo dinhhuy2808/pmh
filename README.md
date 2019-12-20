@@ -36,3 +36,4 @@ npm install --save @ckeditor/ckeditor5-angular
 npm install --save @ckeditor/ckeditor5-build-classic
 npm install ngx-device-detector --save
 ng add @angular/material 
+npm install --save ngx-loading

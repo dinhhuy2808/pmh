@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { CategoryComponent } from './category.component';
 import { RouterModule } from '@angular/router';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgxLoadingModule.forRoot({}),
     RouterModule
   ],
   providers: [CookieService],

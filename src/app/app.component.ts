@@ -8,6 +8,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CartComponent } from './cart/cart.component';
+import { LoginComponent } from './user/login/login.component';
 @Component( {
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -83,6 +84,10 @@ export class AppComponent implements OnInit {
     openDialog() {
         const dialogConfig = new MatDialogConfig();
         this.matDialog.open(CartComponent, dialogConfig);
+      }
+    openLoginDialog() {
+        const dialogConfig = new MatDialogConfig();
+        this.matDialog.open(LoginComponent, dialogConfig);
       }
     logout() {
         this.cookieService.delete( 'name' );

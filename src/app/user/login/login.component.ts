@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { UserService } from '../../shared/services/user.service';
 import {Router} from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
     phone:string = '';
     password:string = '';
     loginInfo: LoginInfo = new LoginInfo();
-  constructor(private userService:UserService, private cookieService: CookieService, private router : Router) { }
+  constructor(public dialogRef: MatDialogRef<LoginComponent>,private userService:UserService, private cookieService: CookieService, private router : Router) { }
 
   ngOnInit() {
   }
@@ -36,4 +38,7 @@ export class LoginComponent implements OnInit {
           }
         });
   }
+  close() {
+      this.dialogRef.close();
+    }
 }
