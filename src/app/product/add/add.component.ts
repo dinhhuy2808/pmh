@@ -96,7 +96,18 @@ fullMau: string = 'Đỏ;Tím;Hồng;Vàng;Nâu;Cam;Xám;Ánh Vàng;Ánh Bạc;X
 
         });
     }
+    addProductDichVu() {
+        this.product.description = this.description;
 
+        this.productService.addProductDV( this.product, this.thuoctinh, this.catName ).subscribe( res => {
+            if ( res == '200' ) {
+                this.router.navigate( ['/category/'+this.catName+'/1'] );
+            } else {
+                alert('Tạo Sản Phẩm không thành công.')
+            }
+
+        });
+    }
     testDesc(value){
         this.description = value.value;
     }

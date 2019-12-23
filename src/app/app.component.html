@@ -9,12 +9,12 @@
 				<div class="row">
 					<div class="col-xs-12" style="padding: 30px;">
 						<div class="form-group">
-							<input
+							<input class="form-control"
 								style="background-color: white; width: 80%; min-height: 70px;"
 								type="text" placeholder="Tìm kiếm trên Cutiie House..."
 								[(ngModel)]="search">
 						</div>
-						<button class="" style="width: 20%; min-height: 70px;"
+						<button class="form-control" style="width: 20%; min-height: 70px;"
 							(click)="Search()">
 							<span class="glyphicon glyphicon-search"></span>
 						</button>
@@ -53,10 +53,10 @@
 							<button class="btn btn-success"
 								style="min-width: 100px; min-height: 70px;" (click)="logout()">Đăng
 								Xuất</button>
-						</a> <a *ngIf="!isSignIn"
-							onclick="document.getElementById('id01').style.display='block'">
+						</a> <a *ngIf="!isSignIn">
 							<button class="btn btn-success"
-								style="min-width: 100px; min-height: 70px;">Đăng Nhập</button>
+								style="min-width: 100px; min-height: 70px;" (click)="openLoginDialog()"
+						routerLinkActive="router-link-active">Đăng Nhập</button>
 						</a>
 					</div>
 				</div>
@@ -68,61 +68,61 @@
 					class="img-responsive cursor shopping-cart"
 					style="max-width: 90px; margin: 15px 10px 15px 0px;">
 				</a>
-				<div class="container-fuild large-menu" id="menu-mobile">
+				<div class="container-fuild large-menu" id="menu-mobile" style="background-color: white;">
 					<div class="row" style="margin: 50px;">
 						<div class="col-xs-offset-10 col-xs-1">
 							<a href="javascript:void(0)" class="closebtn font-menu-mobile"
 								(click)="closeNav()">&times;</a>
 						</div>
 						<div *ngFor="let item of treeMap | keyvalue">
-							<div class="col-xs-12">
-								<div class="" style="border-bottom: 1px solid #000000;">
-									<a class="font-menu-mobile"
-										href="/maintenance-prd/{{item.key}}">{{item.key}}</a>
-								</div>
-							</div>
-							<div *ngIf="item.value.length>0 " class="col-xs-12">
-								<div *ngFor="let cat of item.value">
-									<div class="col-xs-12">
-										<div class="selected-menu"
-											style="border-bottom: 1px solid #000000;">
-											<a class="font-menu-mobile" data-filter=".folder2">{{cat.trim()}}</a>
-										</div>
+                            <div class="col-xs-12">
+                                <div class="" style="border-bottom: 1px solid #000000;">
+                                    <a class="font-menu-mobile" (click)="displayCat(item.key)" style="color: black;">{{item.key}}</a>
+                                </div>
+                                <a *ngIf="item.value != item.key" class="font-menu-mobile display-menu"
+                                    style="font-weight: bold; position: absolute; right: 50px; top: 0px;" (click)="displayMenu(item.key)"
+                                >+</a>
+                            </div>
 
-										<a class="font-menu-mobile display-menu"
-											style="font-weight: bold; position: absolute; right: 50px; top: 0px;">+</a>
-									</div>
-								</div>
-
-							</div>
-						</div>
+                            <div *ngIf="item.value != item.key" class="col-xs-12" id="{{item.key}}" style="display: none;" >
+                                <div *ngFor="let cat of item.value" >
+                                    <div class="col-xs-12" style="background-color: white;">
+                                        <div class="selected-menu" 
+                                            style="border-bottom: 1px solid #000000; display: block;">
+                                            <a class="font-menu-mobile" data-filter=".folder2" style="color: #6A3723" (click)="displayCat(cat.trim())"
+                                                >  {{cat.trim()}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
 
 						<div *ngIf="isAdmin" class="col-xs-12">
 							<div class="selected-menu"
 								style="border-bottom: 1px solid #000000;">
 								<a class="font-menu-mobile selected-menu"
-									onclick="display('Administrator')">Administrator</a>
+									style="color: black;">Administrator</a>
 							</div>
 
 							<a class="font-menu-mobile display-menu"
-								style="font-weight: bold; position: absolute; right: 50px; top: 0px;"
-								onclick="display('Administrator')">+</a>
-							<div class="small-menu" id="Administrator" style="display: none;">
+								style="font-weight: bold; position: absolute; right: 50px; top: 0px;" (click)="displayMenu('Administrator')">+</a>
+							<div class="small-menu" id="Administrator" style="display: block;">
 								<a class="font-menu-mobile col-xs-12"
 									[routerLink]="['accounts']"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;">Tài
+									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Tài
 									Khoản</a> <a class="font-menu-mobile col-xs-12"
 									[routerLink]="['payment']"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;">Đơn
+									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Đơn
 									Hàng</a> <a class="font-menu-mobile col-xs-12"
 									[routerLink]="['maintenance']"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;">Thư
+									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Thư
 									Mục</a> <a class="font-menu-mobile col-xs-12" href="/voucher"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;">Voucher</a>
+									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Voucher</a>
 
 								<a class="font-menu-mobile col-xs-12"
 									href="/maintenance-prd/All"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;">Kho</a>
+									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Kho</a>
 							</div>
 						</div>
 					</div>
@@ -206,15 +206,15 @@
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div *ngFor="let item of treeMap | keyvalue">
-					<div *ngIf="item.value.length == 1">
+					<div *ngIf="item.value == item.key">
 						<div class="dropdown">
 							<ul class="nav navbar-nav navbar-left sm">
-								<li class="menu-hover"><a (click)="displayCat(cat.trim())"><h3
+								<li class="menu-hover"><a (click)="displayCat(item.key.trim())"><h3
 											style="color: black;">{{item.key}}</h3></a></li>
 							</ul>
 						</div>
 					</div>
-					<div *ngIf="item.value.length>1 ">
+					<div *ngIf="item.value != item.key">
 						<div class="dropdown">
 							<ul class="nav navbar-nav navbar-left sm">
 								<li class="menu-hover"><a data-filter=".folder2"><h3>

@@ -118,10 +118,17 @@ export class AppComponent implements OnInit {
         document.getElementById( 'close-area' ).style.width = '0px';
     }
     displayMenu( item: string ) {
-        document.getElementById( item ).style.display = 'block';
-        document.getElementById( item ).style.backgroundColor = '#CCCCCC';
+        if (document.getElementById( item ).style.display == 'block') {
+            document.getElementById( item ).style.display = 'none';
+        } else {
+            document.getElementById( item ).style.display = 'block';
+        }
+        document.getElementById( item ).style.backgroundColor = 'white';
     }
     displayCat(value) {
+        if (this.isMobile) {
+            this.closeNav();
+        }
         let catLink = 'category/'+value.replace(/ /g,'-')+'/1';
         this.router.navigate( [catLink] );
     }

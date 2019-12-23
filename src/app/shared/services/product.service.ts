@@ -50,6 +50,17 @@ export class ProductService {
             map(this.extractData)
             )
     }
+    addProductDV(product: Product, thuoctinh: Thuoctinh, catName:string) {
+        const httpOptions = {
+            headers: new HttpHeaders({'Content-Type': 'application/json'})};
+        let data = {
+            product: product,
+            thuoctinh: thuoctinh,
+        }
+        return this.http.post(this.getProductUrl + '/DV/'+catName, data, httpOptions).pipe(
+            map(this.extractData)
+            )
+    }
     editProduct(product: Product, size: Array<Size>, thuoctinh: Thuoctinh, file:FileList, catName:string,token:string) {
         const httpOptions = {
             headers: new HttpHeaders({'Content-Type': 'application/json'})};

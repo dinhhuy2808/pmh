@@ -34,10 +34,10 @@ export class CategoryComponent implements OnInit {
                 this.activatedRoute.queryParams.subscribe(params => {
                     this.keyword = params['keyword'];
                     this.productService.search( this.keyword , this.page).subscribe( res => {
-                        if (res != '203') {
+                        this.loading = false;
+                        if(Array.isArray(res)) {
                             this.categoryscreens = res;
                         }
-                        this.loading = false;
                         if (this.cookieService.check('token')) {
                             this.userService.isAdmin( this.cookieService.get( 'token' ) ).subscribe( res => {
                                 if ( res == true ) {
@@ -50,10 +50,10 @@ export class CategoryComponent implements OnInit {
                 
             } else {
                 this.productService.getProductByCategoryName( this.name , this.page).subscribe( res => {
-                    if (res != '203') {
+                    this.loading = false;
+                    if(Array.isArray(res)) {
                         this.categoryscreens = res;
                     }
-                    this.loading = false;
                     if (this.cookieService.check('token')) {
                         this.userService.isAdmin( this.cookieService.get( 'token' ) ).subscribe( res => {
                             if ( res == true ) {
@@ -75,7 +75,7 @@ export class CategoryComponent implements OnInit {
             this.activatedRoute.queryParams.subscribe(params => {
                 this.keyword = params['keyword'];
                 this.productService.search( this.keyword , this.page).subscribe( res => {
-                    if (res != 203) {
+                    if(Array.isArray(res)) {
                         this.categoryscreens = res;
                     }
                     this.loading = false;
@@ -92,10 +92,10 @@ export class CategoryComponent implements OnInit {
             
         } else {
             this.productService.getProductByCategoryName( this.name , this.page).subscribe( res => {
-                if (res != '203') {
+                this.loading = false;
+                if(Array.isArray(res)) {
                     this.categoryscreens = res;
                 }
-                this.loading = false;
                 if (this.cookieService.check('token')) {
                     this.userService.isAdmin( this.cookieService.get( 'token' ) ).subscribe( res => {
                         if ( res == true ) {

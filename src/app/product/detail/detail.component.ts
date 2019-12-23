@@ -40,9 +40,11 @@ export class DetailComponent implements OnInit {
         this.productService.getProduct( this.name , 'detail').subscribe( res => {
             this.productScreenDetail = <ProducScreenDtail>res;
             this.product = this.productScreenDetail.product;
-            this.sizes = this.productScreenDetail.sizes;
-            this.selectedSize = this.sizes[0].size;
-            this.handleSelectedSize(this);
+            if(this.productScreenDetail.sizes.length >0) {
+                this.sizes = this.productScreenDetail.sizes;
+                this.selectedSize = this.sizes[0].size;
+                this.handleSelectedSize(this);
+            }
             this.thuoctinh = this.productScreenDetail.thuoctinh;
             if (this.thuoctinh.menh == 'All;') {
                 this.thuoctinh.menh = 'Tất cả mệnh';
