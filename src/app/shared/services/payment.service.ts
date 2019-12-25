@@ -10,13 +10,13 @@ import { Thuoctinh } from '../models/thuoctinh'
 import { Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-
+import { Index } from '../index';
 
 
 @Injectable()
 export class PaymentService {
-
-    private getPaymentUrl = 'http://localhost:8080/app/payment';
+    index:Index = new Index();
+    private getPaymentUrl = 'http://'+this.index.host+':8080/app/payment';
 
     constructor( private http: HttpClient ) { }
 

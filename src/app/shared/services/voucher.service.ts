@@ -5,11 +5,11 @@ import { Settingshop } from '../models/settingshop'
 import { Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-
+import { Index } from '../index';
 @Injectable()
 export class VoucherService {
-
-    private getVoucherUrl = 'http://localhost:8080/app/voucher';
+    index:Index = new Index();
+    private getVoucherUrl = 'http://'+this.index.host+':8080/app/voucher';
 
     constructor( private http: HttpClient ) { }
 

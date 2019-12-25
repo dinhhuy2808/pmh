@@ -9,6 +9,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import {MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './user/login/login.component';
+import { ModalComponent } from './modal/modal.component';
 @Component( {
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -165,5 +166,33 @@ export class AppComponent implements OnInit {
     }
     Search(){
         this.router.navigate( ['category/Search/1'], { queryParams: { keyword: this.search } } );
+    }
+    openChinhSachKhachSi() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = {
+            name: 'ChinhSachKhachSi',
+        }
+        const dialogRef = this.matDialog.open( ModalComponent, dialogConfig );
+    }
+    openChinhSachGiaoNhan() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = {
+            name: 'ChinhSachGiaoNhan',
+        }
+        const dialogRef = this.matDialog.open( ModalComponent, dialogConfig );
+    }
+    openChinhSachDoiHang() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = {
+            name: 'ChinhSachDoiHang',
+        }
+        const dialogRef = this.matDialog.open( ModalComponent, dialogConfig );
+    }
+    openHuongDan() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = {
+            name: 'HuongDanMuaHang',
+        }
+        const dialogRef = this.matDialog.open( ModalComponent, dialogConfig );
     }
 }

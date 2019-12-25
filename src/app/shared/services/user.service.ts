@@ -5,11 +5,11 @@ import { User } from '../models/user'
 import { Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-
+import { Index } from '../index';
 @Injectable()
 export class UserService {
-
-    private getPersonUrl = 'http://localhost:8080/app/user';
+    index:Index = new Index();
+    private getPersonUrl = 'http://'+this.index.host+':8080/app/user';
 
     constructor( private http: HttpClient ) { }
 

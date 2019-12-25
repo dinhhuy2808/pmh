@@ -2,9 +2,7 @@
 	<img src="assets/img/logo.png" alt="Avatar" class="avatar center-block"
 		style="max-width: 75px">
 </h2>
-<mat-dialog-actions>
-<button class="mat-raised-button" (click)="close()">Close</button>
-</mat-dialog-actions>
+<mat-dialog-actions> </mat-dialog-actions>
 <mat-dialog-content>
 
 <div class="row" *ngIf="dataRequest.name=='RequestSignUp'">
@@ -88,35 +86,34 @@
 				</div>
 
 			</div>
-				<div class="row">
-					<label for="inputEmail3" class="col-sm-2 control-label">Tài
-						khoản:</label>
-					<div class="col-sm-10">
-						<input type="text" placeholder="Enter Username" required
-							class="form-control" [(ngModel)]="user.phone" disabled>
-					</div>
+			<div class="row">
+				<label for="inputEmail3" class="col-sm-2 control-label">Tài
+					khoản:</label>
+				<div class="col-sm-10">
+					<input type="text" placeholder="Enter Username" required
+						class="form-control" [(ngModel)]="user.phone" disabled>
 				</div>
-				<div class="row">
-					<label for="inputPassword3" class="col-sm-2 control-label">Mật
-						khẩu:</label>
-					<div class="col-sm-10">
-						<input type="password" placeholder="Enter Password"
-							class="form-control" [(ngModel)]="user.password">
-					</div>
+			</div>
+			<div class="row">
+				<label for="inputPassword3" class="col-sm-2 control-label">Mật
+					khẩu:</label>
+				<div class="col-sm-10">
+					<input type="password" placeholder="Enter Password"
+						class="form-control" [(ngModel)]="user.password">
 				</div>
-				<div class="row">
-				<label  class="col-sm-2 control-label"></label>
-					<div class="col-sm-10">
-						<div style="color: red">{{message}}</div>
-					</div>
+			</div>
+			<div class="row">
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-10">
+					<div style="color: red">{{message}}</div>
 				</div>
-				
+			</div>
+
 
 			<div class="col-md-5"></div>
 			<div class="col-md-2">
 				<br>
-				<button class="form-control btn-danger"
-					(click)='CancelLogin()'>Đóng</button>
+				<button class="form-control btn-danger" (click)='CancelLogin()'>Đóng</button>
 
 			</div>
 			<div class="col-md-2">
@@ -128,6 +125,373 @@
 
 
 		</div>
+	</div>
+</div>
+
+<div class="row" *ngIf="dataRequest.name=='ChinhSachKhachSi'">
+	<div class="container" style="text-align: center">
+		<p>
+			<strong>KH&Aacute;CH SỈ:</strong>
+		</p>
+		<p>C&aacute;ch thức lấy sỉ</p>
+		<p>- Lần đầu lấy 7c bất k&igrave; l&agrave; được gi&aacute; sỉ</p>
+		<p>- Những lần sau kh&aacute;ch lấy 3 c&aacute;i l&agrave; được.</p>
+		<p>- Qu&aacute; 10 ng&agrave;y kh&ocirc;ng lấy h&agrave;ng
+			th&igrave; t&iacute;nh lại từ đầu</p>
+		<p>- H&agrave;ng đổi lỗi trong v&ograve;ng 3 ng&agrave;y (chỉ đổi
+			c&ugrave;ng mẫu, c&ugrave;ng m&agrave;u, c&ugrave;ng size)</p>
+		<p>- Sau 3 ng&agrave;y b&ecirc;n shop kh&ocirc;ng nhận giải quyết
+			nữa</p>
+		<p>- Nhận may mẫu sll từ 30c trở l&ecirc;n</p>
+		<p>&nbsp;</p>
+		<p>▪️Kh&aacute;ch sỉ cập nhật mẫu mới, gi&aacute; v&agrave; chốt
+			bill zalo 0901.466.165</p>
+		<p>▪️Kh&aacute;ch chốt bill trước 12g, h&agrave;ng đi trong
+			ng&agrave;y</p>
+		<p>▪️Chốt sau 12g, h&agrave;ng đi v&agrave;o ng&agrave;y h&ocirc;m
+			sau</p>
+		<p>&nbsp;</p>
+		<p>❌B&ecirc;n em chỉ sỉ cho kh&aacute;ch về b&aacute;n lại</p>
+		<p>❌ KH&Aacute;CH SỈ VUI L&Ograve;NG KH&Ocirc;NG THỬ ĐỒ</p>
+		<p>&nbsp;</p>
+
+		<p>
+			<strong><em>Kh&aacute;ch h&agrave;ng ở TPHCM</em></strong>
+		</p>
+
+		<p>Kh&aacute;ch c&oacute; thể gh&eacute; trực tiếp cửa h&agrave;ng
+			xem v&agrave; mua h&agrave;ng hoặc shop ship cho kh&aacute;ch.</p>
+		<p>Địa chỉ: 35 Nguyễn Ngọc Lộc P14 Q10</p>
+		<p>Mở cửa: 10:00 - 21:00 ( từ thứ 2 - thứ 7)</p>
+		<p>Lưu &yacute;:</p>
+		<p>Shop nhận ship với đơn h&agrave;ng từ 5sp trở l&ecirc;n</p>
+		<p>Dưới 5sp kh&aacute;ch vui l&ograve;ng gh&eacute; mua
+			h&agrave;ng trực tiếp tại cửa h&agrave;ng</p>
+		<p>
+			<strong><em>Kh&aacute;ch h&agrave;ng ở t&igrave;nh
+					v&agrave; c&aacute;c th&agrave;nh phố kh&aacute;c</em></strong>
+		</p>
+		<p>Kh&aacute;ch sỉ tỉnh phải chuyển khoản trước gi&aacute; trị đơn
+			h&agrave;ng đ&atilde; mua</p>
+		<p>
+			<br /> Chủ t&agrave;i khoản: B&ugrave;i Thiện Thanh
+		</p>
+		<p>Stk: 0071000799478</p>
+		<p>Chi nh&aacute;nh: Vietcombank Tphcm</p>
+		<p>&nbsp;</p>
+		<p>Chủ t&agrave;i khoản: B&ugrave;i Thiện Thanh</p>
+		<p>Stk: 060032884027</p>
+		<p>Chi nh&aacute;nh: Sacombank Hưng Đạo</p>
+		<p>&nbsp;</p>
+		<p>Chủ t&agrave;i khoản: Phạm Mai Hoa</p>
+		<p>Stk: 1575567</p>
+		<p>Chi nh&aacute;nh: ACB 3/2</p>
+		<p>&nbsp;</p>
+	</div>
+</div>
+
+<div class="row" *ngIf="dataRequest.name=='ChinhSachGiaoNhan'">
+	<div class="container">
+		<ol>
+			<li>
+				<p>
+					<strong>I/ KH&Aacute;CH H&Agrave;NG MUA LẺ</strong>
+				</p>
+				<table border="y">
+					<tbody>
+						<tr>
+							<td width="208">
+								<p>
+									<strong>Khu vực</strong>
+								</p>
+							</td>
+							<td width="208">
+								<p>
+									<strong>Quận/ Huyện</strong>
+								</p>
+							</td>
+							<td width="208">
+								<p>
+									<strong>Ph&iacute; Ship</strong>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td width="208">
+								<p>Ship nội th&agrave;nh TPHCM</p>
+							</td>
+							<td width="208">
+								<p>1,3,4,5,6,7,8,10,11,T&acirc;n Ph&uacute;, T&acirc;n
+									B&igrave;nh, Ph&uacute; Nhuận, B&igrave;nh Thạnh, G&ograve; Vấp</p>
+							</td>
+							<td width="208">
+								<p>20.000đ</p>
+							</td>
+						</tr>
+						<tr>
+							<td width="208">
+								<p>Ship quận v&agrave; huyện ngoại th&agrave;nh</p>
+							</td>
+							<td width="208">
+								<p>2,9,12, Thủ Đức, H&oacute;c M&ocirc;n, B&igrave;nh
+									T&acirc;n, B&igrave;nh Ch&aacute;nh, Củ Chi, Nh&agrave;
+									B&egrave;, Cần Giờ</p>
+							</td>
+							<td width="208">
+								<p>30.000đ</p>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="2" width="208">
+								<p>Tỉnh</p>
+							</td>
+							<td width="208">
+								<p>Ship ch&agrave;nh xe (kh&aacute;ch chuyển khoản trước)</p>
+							</td>
+							<td width="208">
+								<p>20.000đ</p>
+							</td>
+						</tr>
+						<tr>
+							<td width="208">
+								<p>Ship thu hộ</p>
+							</td>
+							<td width="208">
+								<p>40.000đ</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>
+					<br /> <strong>Lưu &yacute; khi nhận h&agrave;ng</strong>
+				</p>
+				<ul>
+					<li>Qu&yacute; kh&aacute;ch h&agrave;ng vui l&ograve;ng kiểm
+						tra sản phẩm ngay tại chỗ trước khi thanh to&aacute;n (nếu
+						c&oacute;) cho nh&acirc;n</li>
+				</ul>
+				<p>vi&ecirc;n giao h&agrave;ng. Nhưng Kh&aacute;ch h&agrave;ng
+					lưu &yacute; l&agrave; kh&ocirc;ng được ph&eacute;p thử sản phẩm.</p>
+				<ul>
+					<li>Khi ph&aacute;t hiện h&agrave;ng h&oacute;a bị hư hại,
+						trầy xước, bể vỡ, m&oacute;p m&eacute;o, hoặc sai h&agrave;ng
+						h&oacute;a, sai k&iacute;ch thước</li>
+				</ul>
+				<p>sai m&agrave;u sắc th&igrave; k&yacute; x&aacute;c nhận
+					t&igrave;nh trạng h&agrave;ng h&oacute;a với Nh&acirc;n vi&ecirc;n
+					giao nhận v&agrave; th&ocirc;ng b&aacute;o ngay cho Bộ phận Chăm
+					s&oacute;c kh&aacute;ch h&agrave;ng của CUTIIE HOUSE để xử
+					l&yacute; ngay.</p>
+				<ul>
+					<li>Sau khi kh&aacute;ch h&agrave;ng đ&atilde; k&yacute; nhận
+						h&agrave;ng v&agrave; thanh to&aacute;n cho nh&acirc;n vi&ecirc;n
+						giao h&agrave;ng. CUTIIE</li>
+				</ul>
+				<p>HOUSE kh&ocirc;ng giải quyết với những y&ecirc;u cầu đổi trả
+					v&igrave; hư hỏng, trầy xước, bể vỡ, m&oacute;p m&eacute;o, sai
+					h&agrave;ng h&oacute;a&hellip; từ kh&aacute;ch h&agrave;ng sau
+					n&agrave;y.</p>
+				<p>&nbsp;</p>
+				<p>
+					II<strong>/ KH&Aacute;CH H&Agrave;NG NHẬP SỈ</strong>
+				</p>
+				<ol>
+					<li><strong>Kh&aacute;ch h&agrave;ng ở Tp.HCM</strong></li>
+				</ol>
+				<table border="Y">
+					<tbody>
+						<tr>
+							<td width="208">
+								<p>Nội th&agrave;nh</p>
+							</td>
+							<td width="208">
+								<p>1,3,4,5,6,7,8,10,11,T&acirc;n Ph&uacute;, T&acirc;n
+									B&igrave;nh, Ph&uacute; Nhuận, B&igrave;nh Thạnh, G&ograve; Vấp</p>
+							</td>
+							<td width="208">
+								<p>20.000đ</p>
+							</td>
+						</tr>
+						<tr>
+							<td width="208">
+								<p>
+									<strong>Ship quận v&agrave; huyện ngoại th&agrave;nh</strong>
+								</p>
+							</td>
+							<td width="208">
+								<p>2,9,12, Thủ Đức, H&oacute;c M&ocirc;n, B&igrave;nh
+									T&acirc;n, B&igrave;nh Ch&aacute;nh, Củ Chi, Nh&agrave;
+									B&egrave;, Cần Giờ</p>
+							</td>
+							<td width="208">
+								<p>30.000đ</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>&nbsp;</p>
+				<p>Lưu &yacute;:</p>
+				<ul>
+					<li>Shop nhận ship với đơn h&agrave;ng từ 5sp trở l&ecirc;n</li>
+					<li>Dưới 5sp kh&aacute;ch vui l&ograve;ng gh&eacute; mua
+						h&agrave;ng trực tiếp tại cửa h&agrave;ng</li>
+				</ul>
+				<ol start="2">
+					<li><strong>Kh&aacute;ch h&agrave;ng ở tỉnh v&agrave;
+							c&aacute;c th&agrave;nh phố kh&aacute;c</strong></li>
+				</ol>
+				<p>Kh&aacute;ch tỉnh lấy sỉ chuyển khoản trước 100% gi&aacute;
+					trị đơn h&agrave;ng đ&atilde; mua</p>
+				<p>Về ph&iacute; vận chuyển:</p>
+				<table border="Y">
+					<tbody>
+						<tr>
+							<td width="312">
+								<p>Ship tận nơi</p>
+							</td>
+							<td width="312">
+								<p>Kh&aacute;ch h&agrave;ng thanh to&aacute;n ph&iacute;
+									ship cho b&ecirc;n dịch vụ giao h&agrave;ng khi nhận
+									h&agrave;ng</p>
+								<p>&nbsp;</p>
+							</td>
+						</tr>
+						<tr>
+							<td width="312">
+								<p>Ship ch&agrave;nh xe</p>
+							</td>
+							<td width="312">
+								<p>Kh&aacute;ch h&agrave;ng thanh to&aacute;n ph&iacute;
+									ship cho b&ecirc;n ch&agrave;nh xe khi nhận h&agrave;ng</p>
+								<p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									Đơn h&agrave;ng tr&ecirc;n 10sp: freeship ra ch&agrave;nh xe</p>
+								<p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									Đơn h&agrave;ng dưới 10sp: ph&iacute; ra ch&agrave;nh xe 20k</p>
+								<p>&nbsp;</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</li>
+		</ol>
+	</div>
+</div>
+<div class="row" *ngIf="dataRequest.name=='ChinhSachDoiHang'">
+	<div class="container">
+		<ol>
+			<li><strong> Điều kiện v&agrave; quy định đổi trả sản
+					phẩm</strong></li>
+		</ol>
+		<p>- Sản phẩm phải c&ograve;n nguy&ecirc;n vẹn, nguy&ecirc;n tem
+			m&aacute;c, chưa qua sử dụng v&agrave; sửa chửa. Đối với sản phẩm
+			c&oacute; hộp phải c&ograve;n nguy&ecirc;n hộp, đầy đủ phụ kiện,
+			hướng dẫn đi k&egrave;m, tặng phẩm (nếu c&oacute;).</p>
+		<p>- Sản phẩm đ&atilde; nhận kh&ocirc;ng qu&aacute; 3 ng&agrave;y.</p>
+		<p>- Sản phẩm chỉ được đổi 1 lần duy nhất v&agrave; chỉ đổi
+			c&ugrave;ng m&agrave;u, c&ugrave;ng mẫu</p>
+		<p>- Sản phẩm kh&ocirc;ng mua trong thời gian khuyến m&atilde;i
+			hoặc giảm gi&aacute;.</p>
+		<p>- Sản phẩm đổi trả phải c&oacute; h&oacute;a đơn b&aacute;n
+			h&agrave;ng k&egrave;m theo.</p>
+		<p>&nbsp;</p>
+		<ol>
+			<li><strong> C&aacute;c trường hợp được đổi trả </strong></li>
+		</ol>
+		<p>- Sản phẩm lỗi do nh&agrave; sản xuất</p>
+		<p>- Sản phẩm kh&aacute;ch h&agrave;ng nhận kh&ocirc;ng
+			đ&uacute;ng với mẫu m&atilde;, k&iacute;ch thước, m&agrave;u sắc như
+			đ&atilde; đặt</p>
+		<p>- Kh&aacute;ch h&agrave;ng c&oacute; nhu cầu được đổi size do
+			mặc kh&ocirc;ng vừa.</p>
+		<p>&nbsp;</p>
+		<ol>
+			<li><strong> Hướng dẫn đổi sản phẩm</strong></li>
+			<li><strong> Kh&aacute;ch h&agrave;ng ở TPHCM đến đổi
+					sản phẩm trực tiếp tại cửa h&agrave;ng</strong></li>
+			<li><strong> Kh&aacute;ch h&agrave;ng ở tỉnh gửi
+					h&agrave;ng qua dịch vụ hoặc bưu điện đến địa chỉ: 35 Nguyễn Ngọc
+					Lộc, Phường 14, Quận 10. </strong></li>
+		</ol>
+		<p>
+			<strong>H&agrave;ng được đổi lại cho kh&aacute;ch trong
+				v&ograve;ng 3-7 ng&agrave;y sau khi b&ecirc;n bộ phận kinh doanh
+				Cutiie House kiểm tra x&aacute;c nhận lỗi v&agrave; t&igrave;nh
+				trạng của sản phẩm</strong>
+		</p>
+		<p>
+			<strong>&nbsp;</strong>
+		</p>
+		<ol>
+			<li><strong> Chi ph&iacute; đổi trả</strong></li>
+		</ol>
+		<p>&nbsp;- B&ecirc;n shop miễn ph&iacute; đổi h&agrave;ng cho
+			kh&aacute;ch h&agrave;ng khi mua sắm tại Cutiie House trong trường
+			hợp sản phẩm bị lỗi sản xuất, bị trầy xước khi vận chuyển, giao nhầm.</p>
+		<p>- Tuy nhi&ecirc;n, trong trường hợp kh&aacute;ch h&agrave;ng
+			muốn đổi sản phẩm v&igrave; l&iacute; do chủ quan như kh&ocirc;ng vừa
+			size, &hellip;&hellip;kh&aacute;ch h&agrave;ng vui l&ograve;ng chịu
+			ph&iacute; vận chuyển</p>
+	</div>
+
+</div>
+
+<div class="row" *ngIf="dataRequest.name=='HuongDanMuaHang'">
+	<div class="container">
+		<p>
+			<strong>Hướng dẫn mua h&agrave;ng</strong>
+		</p>
+		<p>
+			<strong>Bước 1:</strong>&nbsp;T&igrave;m kiếm sản phẩm y&ecirc;u
+			th&iacute;ch tại&nbsp;<a href="https://cutiiehouse.com/"><strong>cutiiehouse.com</strong></a>
+		</p>
+		<p>
+			<strong>Bước 2:</strong>&nbsp;Xem th&ocirc;ng tin / h&igrave;nh ảnh
+			sản phẩm v&agrave; đặt mua h&agrave;ng
+		</p>
+		<p>
+			Sau khi bấm n&uacute;t&nbsp;<strong>&ldquo;MUA NGAY&rdquo;</strong>&nbsp;bạn
+			sẽ thấy xuất hiện m&agrave;n h&igrave;nh th&ocirc;ng b&aacute;o sản
+			phẩm bạn đ&atilde; chọn mua.
+		</p>
+		<p>
+			<em>Lưu &yacute;: Bạn cần kiểm tra kỹ t&ecirc;n sản phẩm,
+				m&agrave;u sắc sản phẩm v&agrave; số lượng sản phẩm đặt mua trước
+				khi sang bước tiếp theo.</em>
+		</p>
+		<p>
+			<strong>Bước 3:</strong>&nbsp;Nhập th&ocirc;ng tin giao h&agrave;ng
+		</p>
+		<p>
+			<strong>Bước 4:</strong>&nbsp;Thanh to&aacute;n
+		</p>
+		<p>Qu&yacute; kh&aacute;ch c&oacute; thể lựa chọn 1 trong 3
+			h&igrave;nh thức thanh to&aacute;n sau:</p>
+		<p>&nbsp; &nbsp; &nbsp;- Thanh to&aacute;n bằng tiền mặt khi nhận
+			h&agrave;ng (chỉ &aacute;p dụng đối với kh&aacute;ch h&agrave;ng mua
+			lẻ v&agrave; kh&aacute;ch sỉ ở TPHCM)</p>
+		<p>&nbsp; &nbsp; &nbsp;- Chuyển khoản qua số t&agrave;i khoản
+			ng&acirc;n h&agrave;ng</p>
+		<p>&nbsp; &nbsp; &nbsp;- Thanh to&aacute;n qua v&iacute; MoMo /
+			ZaloPay</p>
+		<p>&nbsp;</p>
+		<p>
+			<strong>Lưu &yacute;: Nếu gặp kh&oacute; khăn trong
+				qu&aacute; tr&igrave;nh đặt h&agrave;ng v&agrave; thanh to&aacute;n,
+				qu&yacute; kh&aacute;ch h&agrave;ng c&oacute; thể li&ecirc;n hệ với
+				bộ phận chăm s&oacute;c kh&aacute;ch h&agrave;ng bằng 1 trong 2
+				c&aacute;ch sau:</strong>
+		</p>
+		<p>
+			<strong>&nbsp; &nbsp; &nbsp;- Gọi số hotline
+				0901.466.165&nbsp; (10h &ndash; 21h tất cả c&aacute;c ng&agrave;y
+				trong tuần).</strong>
+		</p>
+		<p>
+			<strong>&nbsp; &nbsp; &nbsp;- Nhắn tin trực tiếp nh&acirc;n
+				vi&ecirc;n hỗ trợ đặt h&agrave;ng nhanh tr&ecirc;n website&nbsp;<a
+				href="https://cutiiehouse.com/">cutiiehouse.com</a>
+			</strong>
+		</p>
 	</div>
 </div>
 </mat-dialog-content>

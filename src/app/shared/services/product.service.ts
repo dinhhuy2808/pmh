@@ -8,13 +8,13 @@ import { Thuoctinh } from '../models/thuoctinh'
 import { Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-
+import { Index } from '../index';
 
 
 @Injectable()
 export class ProductService {
-
-    private getProductUrl = 'http://localhost:8080/app/product';
+    index:Index = new Index();
+    private getProductUrl = 'http://'+this.index.host+':8080/app/product';
 
     constructor(private http: HttpClient) { }
 

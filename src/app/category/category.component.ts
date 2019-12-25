@@ -15,7 +15,7 @@ export class CategoryComponent implements OnInit {
     isShowAll: boolean = false;
     isAdmin: boolean = false;
     size: number;
-    menh: string;
+    giaFilter: string = '';
     mau: string;
     tuoi: string;
     keyword: string;

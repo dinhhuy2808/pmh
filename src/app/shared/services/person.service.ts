@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient  } from '@angular/common/http';
 import { Person } from '../models/person'
 import { Observable } from 'rxjs';
-
+import { Index } from '../index';
 
 @Injectable()
 export class PersonService {
-
-    private getPersonUrl = 'http://localhost:8080/app/user';
+    index:Index = new Index();
+    private getPersonUrl = 'http://'+this.index.host+':8080/app/user';
 
     constructor( private http: HttpClient ) { }
 

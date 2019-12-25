@@ -7,11 +7,11 @@ import { Settingshop } from '../models/settingshop'
 import { Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
-
+import { Index } from '../index';
 @Injectable()
 export class TreefolderService {
-
-    private getTreeFolderUrl = 'http://localhost:8080/app/treefolder';
+    index:Index = new Index();
+    private getTreeFolderUrl = 'http://'+this.index.host+':8080/app/treefolder';
 
     constructor( private http: HttpClient ) { }
 
@@ -29,7 +29,7 @@ export class TreefolderService {
 
     addTreeFolder( folder_name: string, cat_name: string, token: string ) {
         const httpOptions = {
-            headers: new HttpHeaders( { 'Content-Type': 'application/json' })
+            headers: new HttpHeaders( { 'Content-Type': 'application/json' , 'charset':'utf-8'})
         };
         let data = {
             folder_name: folder_name,
