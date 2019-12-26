@@ -54,7 +54,7 @@ export class UserService {
         let data = {
             user: user,
         }
-        return this.http.post(this.getPersonUrl, data, httpOptions).pipe(
+        return this.http.put(this.getPersonUrl, data, httpOptions).pipe(
             map(this.extractData)
             )
     }
@@ -76,14 +76,14 @@ export class UserService {
             let data = {
                 user: user,
             }
-            return this.http.post(this.getPersonUrl+"/login", data, httpOptions).pipe(
+            return this.http.put(this.getPersonUrl+"/login", data, httpOptions).pipe(
                 map(this.extractData)
                 )
     }
     deletePerson(person:Person) {
         /*let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });*/
-         return this.http.post(this.getPersonUrl+'/delete', person/*, options*/)
+         return this.http.put(this.getPersonUrl+'/delete', person/*, options*/)
          /*.map( this.extractData )
          .catch( this.handleErrorObservable )*/
     }

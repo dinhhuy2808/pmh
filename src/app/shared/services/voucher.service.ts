@@ -39,7 +39,7 @@ export class VoucherService {
                         {'Content-Type': 'application/json','Authorization':token}
                         
                 )};
-        return this.http.post( this.getVoucherUrl+'/'+token ,newVouchers,httpOptions).pipe(
+        return this.http.put( this.getVoucherUrl+'/'+token ,newVouchers,httpOptions).pipe(
             map(this.extractData));
     }
     
@@ -49,7 +49,7 @@ export class VoucherService {
                         {'Content-Type': 'application/json','Authorization':token}
                         
                 )};
-        return this.http.put( this.getVoucherUrl+'/'+token ,oldVouchers,httpOptions).pipe(
+        return this.http.put( this.getVoucherUrl+'/update/'+token ,oldVouchers,httpOptions).pipe(
             map(this.extractData));
     }
 
@@ -59,7 +59,7 @@ export class VoucherService {
                         {'Content-Type': 'application/json','Authorization':token}
                         
                 )};
-        return this.http.post( this.getVoucherUrl+'/delete/'+id+'/'+token ,httpOptions).pipe(
+        return this.http.put( this.getVoucherUrl+'/delete/'+id+'/'+token ,httpOptions).pipe(
             map(this.extractData));
     }
     

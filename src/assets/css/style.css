@@ -1,7 +1,7 @@
 .font-custom{
     font-family: "Palatino Linotype";
 }
-body { font-family: Cambria;font-size: 13px; }
+body { font-family: Cambria;font-size: 11px; }
 html,body
 {
     width: 100%;
@@ -10,9 +10,14 @@ html,body
     overflow-x: hidden; 
 }
 a:hover{
+	
     text-decoration: none;
 }
+label {
+	font-size: 11px;
+}
 .menu-hover:hover{
+	font-size: 10px;
     background-color: #da2f58;
 }
 .nav-hover:hover{
@@ -191,8 +196,8 @@ form.search::after {
 .product{
     /*background-color: #B28D34;*/
     margin-top: 20px;
-    height: 620px;
-    border: #bfbfbf solid 2px;
+    height: 100%;
+    
     position: relative;
     overflow: hidden;
 }

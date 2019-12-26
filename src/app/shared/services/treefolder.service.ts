@@ -29,13 +29,13 @@ export class TreefolderService {
 
     addTreeFolder( folder_name: string, cat_name: string, token: string ) {
         const httpOptions = {
-            headers: new HttpHeaders( { 'Content-Type': 'application/json' , 'charset':'utf-8'})
+            headers: new HttpHeaders( { 'Content-Type': 'application/json;charset=UTF-8'})
         };
         let data = {
             folder_name: folder_name,
             cat_name: cat_name,
         }
-        return this.http.post( this.getTreeFolderUrl + '/' + token, data, httpOptions ).pipe(
+        return this.http.put( this.getTreeFolderUrl + '/' + token, data, httpOptions ).pipe(
             map( this.extractData )
         )
     }

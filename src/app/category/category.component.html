@@ -1,22 +1,15 @@
 
 <div class="container">
-    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
+	<ngx-loading [show]="loading"
+		[config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
 	<div *ngIf="!isShowAll">
-		<div *ngIf="isAdmin" class="row">
-			<div class="col-md-3">
-				<a class="btn btn-primary font-mobile"
-					href="/create-prd?cat=<%= catflt %>&catId=<%= catId %>">Thêm
-					Sản Phẩm</a>
-			</div>
-		</div>
-		
 		<div class="row" id="filter" style="display: block;">
 			<div class="col-xs-12 col-md-12">
 				<div class="row">
 					<div class="col-md-3 col-xs-6">
 						<div class="form-group">
 							<h3 class="font-mobile">
-								<span class="label label-success">Lọc Theo Giá :</span>
+								<label>Lọc Theo Giá :</label>
 							</h3>
 						</div>
 						<div class="form-group">
@@ -28,7 +21,7 @@
 							</select>
 						</div>
 					</div>
-					
+
 				</div>
 				<div class="row">
 					<div class="form-group">
@@ -44,7 +37,7 @@
 						<div class="row">
 							<div class="col-md-offset-5 col-md-2 col-xs-offset-5 col-xs-3">
 								<div class="form-group">
-									<button class="btn btn-primary font-mobile" (click)="filter()">Áp
+									<button class="btn font-mobile" (click)="filter()">Áp
 										Dụng</button>
 								</div>
 							</div>
@@ -52,7 +45,7 @@
 					</div>
 				</div>
 				<div *ngIf="isAdmin" class="row">
-					<button class="btn btn-primary font-mobile" (click)="addProduct()">Thêm
+					<button class="btn font-mobile" (click)="addProduct()">Thêm
 						sản phẩm.</button>
 				</div>
 				<div class="row">
@@ -70,13 +63,15 @@
 									<div *ngIf="product.discountPrice==0"
 										style="position: relative;" class="product_detail">
 										<h2 class="font-custom" style="margin: 0px;">{{product.name}}</h2>
-										<h3>
+										<h4>
 											<a href=""
-												style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;</a>
-										</h3>
-										<h3 class="font-custom currency"
-											style="color: red; font-weight: bold; margin-top: 10px;"
-											id="dictprice">{{product.price}}</h3>
+												style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;
+											</a>
+
+										</h4>
+										<h4 class="font-custom currency"
+											style=" font-weight: bold; margin-top: 10px;"
+											id="dictprice">{{product.price}}</h4>
 									</div>
 									<div *ngIf="product.discountPrice!=0"
 										style="position: relative;" class="product_detail">
@@ -90,23 +85,23 @@
 											<!-- <h4 style="color: white;">-39%</h4>   -->
 										</div>
 										<h2 class="font-custom" style="margin: 0px;">{{product.name}}</h2>
-										<h3>
+										<h4>
 											<a href=""
-												style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;</a>
-										</h3>
-										<h3 class="font-custom currency"
+												style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;
+											</a>
+										</h4>
+										<h4 class="font-custom currency"
 											style="color: red; font-weight: bold; margin-top: 10px;"
-											id="dictprice">{{product.discountPrice}}</h3>
-										<h4 class="currency"
-											style="text-decoration: line-through; color: #6b6b6c; margin: 0px;">{{product.price}}</h4>
+											id="dictprice">{{product.discountPrice}} <- 
+											<font style="text-decoration: line-through; color: #6b6b6c">{{product.price}}</font>
+										</h4>
 									</div>
-									<h3 class="font-custom " style="margin: 0px;">{{product.name}}</h3>
 
 								</div>
 							</a>
 							<div class="row" *ngIf="isAdmin">
 								<div class="col-xs-3 col-md-3">
-									<a class="btn btn-primary"
+									<a class="btn "
 										(click)="navigateToProductEdit(product.name)">Edit</a>
 								</div>
 								<div class="col-xs-3 col-md-3">
@@ -123,40 +118,39 @@
 				<div>
 					<nav aria-label="Page navigation example"
 						style="text-align: center;">
-						<ul class="pagination" >
-							<li class="page-item">
-							<a class="page-link font-mobile"
+						<ul class="pagination">
+							<li class="page-item"><a class="page-link font-mobile"
 								onclick="plusPage(-1)" href="#">Trước</a></li>
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(1)">1</a>
-							</li> 
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(2)">2</a>
-							</li> 
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(3)">3</a>
-							</li> 
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(4)">4</a>
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(1)">1</a>
 							</li>
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(5)">5</a>
-							</li> 
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(6)">6</a>
-							</li> 
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(7)">7</a>
-							</li> 
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(8)">8</a>
-							</li> 
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(9)">9</a>
-							</li> 
-							<li class="page-item">
-							<a class="page-link active font-mobile" (click)="goToPage(10)">10</a>
-							</li>  
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(2)">2</a>
+							</li>
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(3)">3</a>
+							</li>
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(4)">4</a>
+							</li>
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(5)">5</a>
+							</li>
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(6)">6</a>
+							</li>
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(7)">7</a>
+							</li>
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(8)">8</a>
+							</li>
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(9)">9</a>
+							</li>
+							<li class="page-item"><a
+								class="page-link active font-mobile" (click)="goToPage(10)">10</a>
+							</li>
 							<li class="page-item"><a class="page-link font-mobile"
 								onclick="plusPage(1)" href="#">Tiếp</a></li>
 						</ul>

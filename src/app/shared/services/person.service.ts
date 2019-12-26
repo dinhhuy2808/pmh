@@ -35,7 +35,7 @@ export class PersonService {
     deletePerson(person:Person) {
         /*let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });*/
-         return this.http.post(this.getPersonUrl+'/delete', person/*, options*/)
+         return this.http.put(this.getPersonUrl+'/delete', person/*, options*/)
          /*.map( this.extractData )
          .catch( this.handleErrorObservable )*/
     }

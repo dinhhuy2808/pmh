@@ -46,7 +46,7 @@ export class ProductService {
             thuoctinh: thuoctinh,
             images:file
         }
-        return this.http.post(this.getProductUrl + '/'+catName, data, httpOptions).pipe(
+        return this.http.put(this.getProductUrl + '/'+catName, data, httpOptions).pipe(
             map(this.extractData)
             )
     }
@@ -57,7 +57,7 @@ export class ProductService {
             product: product,
             thuoctinh: thuoctinh,
         }
-        return this.http.post(this.getProductUrl + '/DV/'+catName, data, httpOptions).pipe(
+        return this.http.put(this.getProductUrl + '/DV/'+catName, data, httpOptions).pipe(
             map(this.extractData)
             )
     }
@@ -70,7 +70,7 @@ export class ProductService {
             thuoctinh: thuoctinh,
             images:file
         }
-        return this.http.post(this.getProductUrl + '/edit/'+token, data, httpOptions).pipe(
+        return this.http.put(this.getProductUrl + '/edit/'+token, data, httpOptions).pipe(
             map(this.extractData)
             )
     }
@@ -107,7 +107,7 @@ export class ProductService {
                         {'Content-Type': 'application/json'}
                         
                 )};
-        return this.http.post(this.getProductUrl + '/get-cart-detail-not-login',cartInfo,httpOptions).pipe(
+        return this.http.put(this.getProductUrl + '/get-cart-detail-not-login',cartInfo,httpOptions).pipe(
                 map(this.extractData));
     }
    

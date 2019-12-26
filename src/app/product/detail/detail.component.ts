@@ -150,7 +150,7 @@ export class DetailComponent implements OnInit {
                 dots[i].parentElement.style.backgroundColor = "white";
             }
             dots[this.slideIndex].className += " active";
-            dots[this.slideIndex].parentElement.style.backgroundColor = "#d639d2";
+            dots[this.slideIndex].parentElement.style.backgroundColor = "#6A3723";
         }
         this.imgDisplay = this.imagesSource[this.slideIndex];
     }

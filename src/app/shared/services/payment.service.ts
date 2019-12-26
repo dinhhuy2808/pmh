@@ -31,7 +31,7 @@ export class PaymentService {
 
             )
         };
-        return this.http.post( this.getPaymentUrl + '/checkout-not-login/', cartInfo, httpOptions ).pipe(
+        return this.http.put( this.getPaymentUrl + '/checkout-not-login/', cartInfo, httpOptions ).pipe(
             map( this.extractData ) );
     }
     checkVoucher( voucher: string, sum: number ) {
@@ -44,7 +44,7 @@ export class PaymentService {
         let data = {
             PaymentScreen: paymentScreen
         }
-        return this.http.post( this.getPaymentUrl + '/' + token + "/" + isLogIn, paymentScreen, httpOptions ).pipe(
+        return this.http.put( this.getPaymentUrl + '/' + token + "/" + isLogIn, paymentScreen, httpOptions ).pipe(
             map( this.extractData )
         )
     }
