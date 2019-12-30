@@ -9,11 +9,14 @@ export const ProductRoutes: Routes = [
     {
         path: 'product', component: ProductComponent,
         children: [
-                   {
-                       path: 'detail/:name', component: DetailComponent,pathMatch:'full'
-                   },
-           ...AddRoutes,
-           ...EditRoutes
+            {
+                path: '', component: ProductComponent, pathMatch: 'full'
+            },
+            {
+                path: 'detail/:name', component: DetailComponent, pathMatch: 'full'
+            },
+            ...AddRoutes,
+            ...EditRoutes
         ]
     }
 ];

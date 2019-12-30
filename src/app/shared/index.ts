@@ -1,3 +1,3 @@
 export class Index { 
-    host:string='localhost';
+    host:string='45.13.132.213';
 }

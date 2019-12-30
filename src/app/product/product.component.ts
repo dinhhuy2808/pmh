@@ -27,17 +27,7 @@ export class ProductComponent implements OnInit {
   total : number = 0;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService) { }
 
-  ngOnInit() {
-    this.name = this.activatedRoute.snapshot.paramMap.get('name');
-    this.productService.getProduct(this.name,'detail').subscribe(res => {
-      this.productScreenDetail = <ProducScreenDtail>res;
-      this.product = this.productScreenDetail.product;
-      this.sizes = this.productScreenDetail.sizes;
-      this.thuoctinh = this.productScreenDetail.thuoctinh;
-      this.description = this.productScreenDetail.description;
-    });
-
-  }
+  ngOnInit() {}
 
   
 }

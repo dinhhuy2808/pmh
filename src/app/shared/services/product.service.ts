@@ -19,8 +19,7 @@ export class ProductService {
     constructor(private http: HttpClient) { }
 
     getProduct(productName: string, purpose:string) {
-        return this.http.get(this.getProductUrl + '/' + productName+"/"+purpose).pipe(
-            map(this.extractData));
+        return this.http.get(this.getProductUrl + '/' + productName+"/"+purpose);
     }
     getProductByCategoryName(catName: string, page:string) {
         return this.http.get<CategoryScreen[]>(this.getProductUrl + '/get-by-category/' + catName+"/"+page);
@@ -91,7 +90,7 @@ export class ProductService {
     getCartDetail(token: string) {
         const httpOptions = {
                 headers: new HttpHeaders(
-                        {'Content-Type': 'application/json','Authorization':token}
+                        {'Content-Type': 'application/json'}
                         
                 )};
         return this.http.get(this.getProductUrl + '/get-cart-detail/'+token,httpOptions).pipe(
