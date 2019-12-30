@@ -155,6 +155,7 @@ shipSelected: string = '';
 
     }
     update() {
+        Array.prototype.push.apply(this.carts, this.newCarts)
         this.paymentService.updatePayment(this.cookieService.get('token'), this.payment, this.carts).subscribe(( res: any) => {
             alert('Cập nhật đơn hàng thành công.');
             window.location.reload();
