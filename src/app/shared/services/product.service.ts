@@ -24,6 +24,12 @@ export class ProductService {
     getProductByCategoryName(catName: string, page:string) {
         return this.http.get<CategoryScreen[]>(this.getProductUrl + '/get-by-category/' + catName+"/"+page);
     }
+    getLatestProduct() {
+        return this.http.get<CategoryScreen[]>(this.getProductUrl + '/get-list-hot-product/');
+    }
+    getAllProduct(token:string) {
+        return this.http.get<Product[]>(this.getProductUrl + '/get-all-product/'+token);
+    }
     search(keyword: string, page:string) {
         return this.http.get<CategoryScreen[]>(this.getProductUrl + '/search/' + keyword+"/"+page);
     }

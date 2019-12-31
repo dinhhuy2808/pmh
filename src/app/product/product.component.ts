@@ -5,7 +5,7 @@ import { Product } from '../shared/models/product'
 import { Thuoctinh } from '../shared/models/thuoctinh'
 import { ProducScreenDtail } from '../shared/screenvars/ProducScreenDetail'
 import { ProductService } from '../shared/services/product.service'
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -15,7 +15,7 @@ import { ProductService } from '../shared/services/product.service'
 export class ProductComponent implements OnInit {
   productScreenDetail: ProducScreenDtail = new ProducScreenDtail();
   name: string = '';
-  product: Product = new Product();
+  products: Array<Product> = new Array();
   sizes: Size[];
   thuoctinh: Thuoctinh = new Thuoctinh();
   description: string = '';
@@ -25,9 +25,15 @@ export class ProductComponent implements OnInit {
   info: string = '';
   quantity: number = 1;
   total : number = 0;
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private productService: ProductService, private cookieService: CookieService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+      this.productService.getAllProduct(this.cookieService.get('token')).subscribe( res => {
+          if (Array.isArray(res)) {
+              this.products = res;
+          }
+      });
+  }
 
   
 }

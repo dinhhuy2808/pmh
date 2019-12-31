@@ -7,24 +7,24 @@
 			</div>
 			<div class="col-xs-7">
 				<div class="row">
-					<div class="col-xs-12" style="padding: 30px;">
-						<div class="form-group">
-							<input class="form-control"
-								style="background-color: white; width: 80%; min-height: 70px;"
-								type="text" placeholder="Tìm kiếm trên Cutiie House..."
-								[(ngModel)]="search">
-						</div>
-						<button class="form-control" style="width: 20%; min-height: 70px;"
-							(click)="Search()">
-							<span class="glyphicon glyphicon-search"></span>
+					<div class="col-xs-10" style="padding-top: 30px;">
+						<input class="form-control"
+							style="background-color: white; width: 100%;" type="text"
+							placeholder="Tìm kiếm trên Cutiie House..." [(ngModel)]="search">
+
+					</div>
+					<div class="col-xs-2" style="padding-top: 30px;">
+						<button type="button" class="btn btn-default" (click)="Search()">
+							<span class="glyphicon glyphicon-search" ></span> Search
 						</button>
+
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-4">
 						<button class="cursor" (click)="openDialog()"
 							style="background-color: transparent; border: 0px; padding: 0px; position: relative;">
-							<img src="assets/img/cart.png"
+							<img src="assets/img/cart.jpg"
 								class="img-responsive cursor shopping-cart"
 								style="max-width: 100px; margin: 15px 10px 15px 0px;">
 							<h4 id='cartIcon'
@@ -55,74 +55,81 @@
 								Xuất</button>
 						</a> <a *ngIf="!isSignIn">
 							<button class="btn btn-success"
-								style="min-width: 100px; min-height: 70px;" (click)="openLoginDialog()"
-						routerLinkActive="router-link-active">Đăng Nhập</button>
+								style="min-width: 100px; min-height: 70px;"
+								(click)="openLoginDialog()"
+								routerLinkActive="router-link-active">Đăng Nhập</button>
 						</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-2">
 				<a (click)="openNav()"
-					style="background-color: transparent; border: 0px; padding: 30px; position: relative;">
+					style="background-color: transparent; border: 0px; padding-top: 30px; position: relative;">
 					<img src="assets/img/align-justify.png"
 					class="img-responsive cursor shopping-cart"
 					style="max-width: 90px; margin: 15px 10px 15px 0px;">
 				</a>
-				<div class="container-fuild large-menu" id="menu-mobile" style="background-color: white;">
+				<div class="container-fuild large-menu" id="menu-mobile"
+					style="background-color: white;">
 					<div class="row" style="margin: 50px;">
 						<div class="col-xs-offset-10 col-xs-1">
 							<a href="javascript:void(0)" class="closebtn font-menu-mobile"
 								(click)="closeNav()">&times;</a>
 						</div>
 						<div *ngFor="let item of treeMap | keyvalue">
-                            <div class="col-xs-12">
-                                <div class="" style="border-bottom: 1px solid #000000;">
-                                    <a class="font-menu-mobile" (click)="displayCat(item.key)" style="color: black;">{{item.key}}</a>
-                                </div>
-                                <a *ngIf="item.value != item.key" class="font-menu-mobile display-menu"
-                                    style="font-weight: bold; position: absolute; right: 50px; top: 0px;" (click)="displayMenu(item.key)"
-                                >+</a>
-                            </div>
+							<div class="col-xs-12">
+								<div class="" style="border-bottom: 1px solid #000000;">
+									<a class="font-menu-mobile" (click)="displayCat(item.key)"
+										style="color: black;">{{item.key}}</a>
+								</div>
+								<a *ngIf="item.value != item.key"
+									class="font-menu-mobile display-menu"
+									style="font-weight: bold; position: absolute; right: 50px; top: 0px;"
+									(click)="displayMenu(item.key)">+</a>
+							</div>
 
-                            <div *ngIf="item.value != item.key" class="col-xs-12" id="{{item.key}}" style="display: none;" >
-                                <div *ngFor="let cat of item.value" >
-                                    <div class="col-xs-12" style="background-color: white;">
-                                        <div class="selected-menu" 
-                                            style="border-bottom: 1px solid #000000; display: block;">
-                                            <a class="font-menu-mobile" data-filter=".folder2" style="color: #6A3723" (click)="displayCat(cat.trim())"
-                                                >  {{cat.trim()}}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
+							<div *ngIf="item.value != item.key" class="col-xs-12"
+								id="{{item.key}}" style="display: none;">
+								<div *ngFor="let cat of item.value">
+									<div class="col-xs-12" style="background-color: white;">
+										<div class="selected-menu"
+											style="border-bottom: 1px solid #000000; display: block;">
+											<a class="font-menu-mobile" data-filter=".folder2"
+												style="color: #6A3723" (click)="displayCat(cat.trim())">
+												{{cat.trim()}}</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
 
 						<div *ngIf="isAdmin" class="col-xs-12">
 							<div class="selected-menu"
 								style="border-bottom: 1px solid #000000;">
-								<a class="font-menu-mobile selected-menu"
-									style="color: black;">Administrator</a>
+								<a class="font-menu-mobile selected-menu" style="color: black;">Administrator</a>
 							</div>
 
 							<a class="font-menu-mobile display-menu"
-								style="font-weight: bold; position: absolute; right: 50px; top: 0px;" (click)="displayMenu('Administrator')">+</a>
-							<div class="small-menu" id="Administrator" style="display: block;">
+								style="font-weight: bold; position: absolute; right: 50px; top: 0px;"
+								(click)="displayMenu('Administrator')">+</a>
+							<div class="small-menu" id="Administrator"
+								style="display: block;">
 								<a class="font-menu-mobile col-xs-12"
 									[routerLink]="['accounts']"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Tài
-									Khoản</a> <a class="font-menu-mobile col-xs-12"
+									style="border-bottom: 1px solid #000000; padding-left: 50px; color: #6A3723">
+									Tài Khoản</a> <a class="font-menu-mobile col-xs-12"
 									[routerLink]="['payment']"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Đơn
-									Hàng</a> <a class="font-menu-mobile col-xs-12"
+									style="border-bottom: 1px solid #000000; padding-left: 50px; color: #6A3723">
+									Đơn Hàng</a> <a class="font-menu-mobile col-xs-12"
 									[routerLink]="['maintenance']"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Thư
-									Mục</a> <a class="font-menu-mobile col-xs-12" href="/voucher"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Voucher</a>
-
-								<a class="font-menu-mobile col-xs-12"
+									style="border-bottom: 1px solid #000000; padding-left: 50px; color: #6A3723">
+									Thư Mục</a> <a class="font-menu-mobile col-xs-12" href="/voucher"
+									style="border-bottom: 1px solid #000000; padding-left: 50px; color: #6A3723">
+									Voucher</a> <a class="font-menu-mobile col-xs-12"
 									href="/maintenance-prd/All"
-									style="border-bottom: 1px solid #000000; padding-left: 50px;color: #6A3723">  Kho</a>
+									style="border-bottom: 1px solid #000000; padding-left: 50px; color: #6A3723">
+									Kho</a>
 							</div>
 						</div>
 					</div>
@@ -152,14 +159,15 @@
 
 				</div>
 				<div class="col-xs-3 col-md-1 " style="text-align: center;">
-					<button class="form-control" style="margin: 15px 10px 15px 0px;" (click)="Search()">
-						<span class="glyphicon glyphicon-search" ></span>
+					<button class="form-control" style="margin: 15px 10px 15px 0px;"
+						(click)="Search()">
+						<span class="glyphicon glyphicon-search"></span>
 					</button>
 				</div>
 				<div class="col-xs-2 col-md-1 cursor">
 					<button class="cursor" (click)="openDialog()"
 						style="background-color: transparent; border: 0px; padding: 0px; position: relative;">
-						<img src="assets/img/cart.png"
+						<img src="assets/img/cart.jpg"
 							class="img-responsive cursor shopping-cart"
 							style="max-width: 50px; margin: 15px 10px 15px 0px;">
 						<h4 id='cartIcon'
@@ -196,8 +204,7 @@
 						style="min-width: 100px;" href="/logout"><p
 							style="color: white;" (click)="logout()">Đăng Xuất</p></a> <a
 						*ngIf="!isSignIn" class="btn btn-success "
-						(click)="openLoginDialog()"
-						routerLinkActive="router-link-active"><p
+						(click)="openLoginDialog()" routerLinkActive="router-link-active"><p
 							style="color: white;">Đăng nhập</p></a>
 				</div>
 			</div>
@@ -209,7 +216,8 @@
 					<div *ngIf="item.value == item.key">
 						<div class="dropdown">
 							<ul class="nav navbar-nav navbar-left sm">
-								<li class="menu-hover"><a (click)="displayCat(item.key.trim())"><h3
+								<li class="menu-hover"><a href="javascript:void(0)"
+									(click)="displayCat(item.key.trim())"><h3
 											style="color: black;">{{item.key}}</h3></a></li>
 							</ul>
 						</div>
@@ -217,12 +225,13 @@
 					<div *ngIf="item.value != item.key">
 						<div class="dropdown">
 							<ul class="nav navbar-nav navbar-left sm">
-								<li class="menu-hover"><a data-filter=".folder2"><h3>
+								<li class="menu-hover"><a href="javascript:void(0)"
+									data-filter=".folder2"><h3>
 											<font color="black">{{item.key}}</font>
 										</h3></a>
 									<ul class="dropdown-menu">
 										<li *ngFor="let cat of item.value"><a
-											(click)="displayCat(cat.trim())">
+											href="javascript:void(0)" (click)="displayCat(cat.trim())">
 												<h3>{{cat.trim()}}</h3>
 										</a></li>
 									</ul></li>
@@ -237,11 +246,14 @@
 									<font color="black">Administrator</font>
 								</h3></a>
 							<ul class="dropdown-menu">
-								<li><a [routerLink]="['maintenance/accounts']"><h4>Tài
-											Khoản</h4></a></li>
-								<li><a [routerLink]="['payment']"><h4>Đơn Hàng</h4></a></li>
-								<li><a [routerLink]="['maintenance']"><h4>Thư Mục</h4></a></li>
-								<li><a [routerLink]="['maintenance/voucher']"><h4>Voucher</h4></a></li>
+								<li><a href="javascript:void(0)"
+									[routerLink]="['maintenance/accounts']"><h4>Tài Khoản</h4></a></li>
+								<li><a href="javascript:void(0)" [routerLink]="['payment']"><h4>Đơn
+											Hàng</h4></a></li>
+								<li><a href="javascript:void(0)"
+									[routerLink]="['maintenance']"><h4>Thư Mục</h4></a></li>
+								<li><a href="javascript:void(0)"
+									[routerLink]="['maintenance/voucher']"><h4>Voucher</h4></a></li>
 								<li><a href="/maintenance-prd/All"><h4>Kho</h4></a></li>
 							</ul></li>
 					</ul>
@@ -281,13 +293,13 @@
 		<div class="row" style="margin: 20px;">
 
 			<div class="row" style="margin: 20px;">
-				<div class="col-md-offset-1 col-md-12" style="padding: 0px;">
+				<div class="col-md-offset-1 col-md-12 col-xs-12" style="padding: 0px;">
 
 					<div class="row">
 						<h3 style="color: #6A3723; font-size: 50px;">Cutiie House</h3>
 					</div>
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-md-3 col-xs-3">
 							<div class="row">
 								<p style="font-size: 120%; color: #6A3723; font-weight: bold">Chính
 									Sách</p>
@@ -308,7 +320,7 @@
 								</p>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-3 col-xs-3">
 							<div class="row">
 								<p style="font-size: 120%; color: #6A3723; font-weight: bold">Hướng
 									Dẫn</p>
@@ -319,7 +331,7 @@
 								</p>
 							</div>
 						</div>
-						<div class="col-md-5">
+						<div class="col-md-5 col-xs-5">
 							<div class="row">
 								<p style="font-size: 120%; color: #6A3723; font-weight: bold">Cửa
 									Hàng</p>
@@ -336,7 +348,7 @@
 					</div>
 					<hr>
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-4 col-xs-4">
 							<div class="row">
 								<p style="font-size: 120%; color: #6A3723; font-weight: bold">Chủ
 									tài khoản: Bùi Thiện Thanh</p>
@@ -349,7 +361,7 @@
 									Vietcombank Tphcm</p>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-4 col-xs-4">
 							<div class="row">
 								<p style="font-size: 120%; color: #6A3723; font-weight: bold">Chủ
 									tài khoản: Bùi Thiện Thanh</p>
@@ -362,7 +374,7 @@
 									Sacombank Hưng Đạo</p>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-4 col-xs-4">
 							<div class="row">
 								<p style="font-size: 120%; color: #6A3723; font-weight: bold">Chủ
 									tài khoản: Phạm Mai Hoa</p>
@@ -380,7 +392,7 @@
 
 			</div>
 			<div class="row" style="margin: 20px;">
-				<div class="col-md-offset-1 col-md-6">
+				<div class="col-md-offset-1 col-md-6 col-xs-6">
 					<div class="row"></div>
 				</div>
 
