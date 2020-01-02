@@ -157,4 +157,11 @@ export class DetailComponent implements OnInit {
     zoomImg() {
         this.zoomImage = true;
     }
+    xemthem() {
+        if (localStorage.getItem('keyword-cutiiehouse')) {
+            this.router.navigate( ['category/Search/1'], { queryParams: { keyword: localStorage.getItem('keyword-cutiiehouse') } } );
+        } else {
+            this.router.navigate( ['category/'+this.productScreenDetail.catName.replace(/ /g,'-')+'/1'] );
+        }
+    }
 }

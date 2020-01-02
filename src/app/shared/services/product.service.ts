@@ -4,6 +4,8 @@ import { Person } from '../models/person'
 import { Product } from '../models/product'
 import { Size } from '../models/size'
 import { CategoryScreen } from '../screenvars/CategoryScreen'
+import { ProducScreen } from '../screenvars/ProducScreen'
+
 import { Thuoctinh } from '../models/thuoctinh'
 import { Observable } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
@@ -28,7 +30,7 @@ export class ProductService {
         return this.http.get<CategoryScreen[]>(this.getProductUrl + '/get-list-hot-product/');
     }
     getAllProduct(token:string) {
-        return this.http.get<Product[]>(this.getProductUrl + '/get-all-product/'+token);
+        return this.http.get<ProducScreen[]>(this.getProductUrl + '/get-all-product/'+token);
     }
     search(keyword: string, page:string) {
         return this.http.get<CategoryScreen[]>(this.getProductUrl + '/search/' + keyword+"/"+page);

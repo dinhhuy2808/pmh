@@ -1,23 +1,25 @@
-<div class="carousel js-flickity container-fluid"
-	data-flickity-options='{ "autoPlay" : 4000 }'>
-	<div class="carousel-cell">
-		<a> <img
-			src="../../assets/img/new-slide.jpg" class="center-block">
-		</a>
+
+<div class="container">
+	<div class="carousel js-flickity"
+		data-flickity-options='{ "autoPlay" : 4000 }'>
+		<div class="carousel-cell">
+			<a> <img (click)="arrival()"
+				src="../../assets/img/new-slide.jpg" class="center-block">
+			</a>
+		</div>
+		<div class="carousel-cell">
+			<a href="/maintenance-prd/VIP"><img class="center-block"
+				src="../../assets/img/member-slide.jpg" alt="..."></a>
+		</div>
 	</div>
-	<div class="carousel-cell">
-		<a href="/maintenance-prd/VIP"><img class="center-block"
-			src="../../assets/img/member-slide.jpg" alt="..."></a>
-	</div>
-</div>
-<div class="container-fluid">
 	<div class="container" id="mobile">
 		<div *ngIf="isMobile">
 			<div class="row ">
 				<div class="col-xs-6 col-md-6">
 
-					<a href="javascript:void(0)" > <img src="../assets/img/best.jpg" alt="Avatar"
-						class="center-block" (click)="best()"></a>
+					<a href="javascript:void(0)"> <img
+						src="../assets/img/best.jpg" alt="Avatar" class="center-block"
+						(click)="best()"></a>
 					<div class="center text">Best Seller</div>
 
 				</div>
@@ -36,8 +38,9 @@
 			<div class="row ">
 				<div class="col-xs-6 col-md-6">
 
-					<a href="javascript:void(0)" > <img src="../assets/img/best.jpg" alt="Avatar"
-						class="center-block" (click)="best()"></a>
+					<a href="javascript:void(0)"> <img
+						src="../assets/img/best.jpg" alt="Avatar" class="center-block"
+						(click)="best()"></a>
 					<div class="middle 1">
 						<div class="text">Best Seller</div>
 					</div>
@@ -46,8 +49,8 @@
 
 				<div class="col-xs-6 col-md-6">
 
-					<a href="javascript:void(0)"> <img src="../assets/img/new.jpg" class="center-block"
-						alt="Avatar" (click)="arrival()"></a>
+					<a href="javascript:void(0)"> <img src="../assets/img/new.jpg"
+						class="center-block" alt="Avatar" (click)="arrival()"></a>
 					<div class="middle 2">
 						<div class="text">New Arrival</div>
 					</div>
@@ -67,93 +70,95 @@
 		<div class="row ">
 			<div class=" col-xs-4 col-md-4" style="align-items: center">
 
-				<a href="javascript:void(0)" style="align-self: center"><img src="../assets/img/ao.png"
-					class="center-block" alt="Avatar" (click)="ao()"></a>
+				<a href="javascript:void(0)" style="align-self: center"><img
+					src="../assets/img/ao.png" class="center-block" alt="Avatar"
+					(click)="ao()"></a>
 				<h4 style="text-align: center; font-weight: bold">Áo</h4>
 
 			</div>
 			<div class="col-xs-4 col-md-4">
 
-				<a href="javascript:void(0)"><img src="../assets/img/dam.png" class="center-block"
-					alt="Avatar" (click)="dam()"></a>
+				<a href="javascript:void(0)"><img src="../assets/img/dam.png"
+					class="center-block" alt="Avatar" (click)="dam()"></a>
 				<h4 style="text-align: center; font-weight: bold">Đầm</h4>
 
 			</div>
 			<div class="col-xs-4 col-md-4">
 
-				<a href="javascript:void(0)"><img src="../assets/img/phukien.png" class="center-block"
-					alt="Avatar" (click)="phukien()"></a>
+				<a href="javascript:void(0)"><img
+					src="../assets/img/phukien.png" class="center-block" alt="Avatar"
+					(click)="phukien()"></a>
 				<h4 style="text-align: center; font-weight: bold">Phụ Kiện</h4>
 
 			</div>
 
 		</div>
 		<div class="row">
-					<div *ngFor="let product of categoryscreens">
-						<div class="col-xs-6 col-md-3">
-							<a href="javascript:void(0)" (click)="navigateToProductDetail(product.name)">
-								<div class="product">
+			<div *ngFor="let product of categoryscreens">
+				<div class="col-xs-6 col-md-3">
+					<a href="javascript:void(0)"
+						(click)="navigateToProductDetail(product.name)">
+						<div class="product">
 
-									<div class=""
-										style="position: relative; overflow: hidden; margin-bottom: 20px;">
-										<img class="img-responsive zoom" src="{{product.image}}"
-											alt="image">
+							<div class=""
+								style="position: relative; overflow: hidden; margin-bottom: 20px;">
+								<img class="img-responsive zoom" src="{{product.image}}"
+									alt="image">
+							</div>
+
+							<div *ngIf="product.discountPrice==0" style="position: relative;"
+								class="product_detail">
+								<h2 class="font-custom" style="margin: 0px;">{{product.name}}</h2>
+								<h4>
+									<a href="javascript:void(0)"
+										style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;
+									</a>
+
+								</h4>
+								<h4 class="font-custom currency"
+									style="font-weight: bold; margin-top: 10px;" id="dictprice">{{product.price}}</h4>
+							</div>
+							<div *ngIf="product.discountPrice!=0" style="position: relative;"
+								class="product_detail">
+								<div class="col-md-3"
+									style="position: absolute; padding: 0px; top: 0px; right: 0px;">
+									<div style="position: relative;">
+
+										<h5
+											style="color: white; position: absolute; top: 0px; text-align: center; padding-left: 15px;">-{{(1-product.discountPrice/product.price)*100}}%</h5>
 									</div>
-
-									<div *ngIf="product.discountPrice==0"
-										style="position: relative;" class="product_detail">
-										<h2 class="font-custom" style="margin: 0px;">{{product.name}}</h2>
-										<h4>
-											<a href="javascript:void(0)"
-												style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;
-											</a>
-
-										</h4>
-										<h4 class="font-custom currency"
-											style=" font-weight: bold; margin-top: 10px;"
-											id="dictprice">{{product.price}}</h4>
-									</div>
-									<div *ngIf="product.discountPrice!=0"
-										style="position: relative;" class="product_detail">
-										<div class="col-md-3"
-											style="position: absolute; padding: 0px; top: 0px; right: 0px;">
-											<div style="position: relative;">
-												<img src="/img/sale.svg">
-												<h5
-													style="color: white; position: absolute; top: 0px; text-align: center; padding-left: 15px;">-{{(1-product.discountPrice/product.price)*100}}%</h5>
-											</div>
-											<!-- <h4 style="color: white;">-39%</h4>   -->
-										</div>
-										<h2 class="font-custom" style="margin: 0px;">{{product.name}}</h2>
-										<h4>
-											<a href="javascript:void(0)"
-												style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;
-											</a>
-										</h4>
-										<h4 class="font-custom currency"
-											style="color: red; font-weight: bold; margin-top: 10px;"
-											id="dictprice">{{product.discountPrice}} <- 
-											<font style="text-decoration: line-through; color: #6b6b6c">{{product.price}}</font>
-										</h4>
-									</div>
-
+									<!-- <h4 style="color: white;">-39%</h4>   -->
 								</div>
-							</a>
-							<div class="row" *ngIf="isAdmin">
-								<div class="col-xs-3 col-md-3">
-									<a class="btn "
-										(click)="navigateToProductEdit(product.name)">Edit</a>
-								</div>
-								<div class="col-xs-3 col-md-3">
-									<button class="btn btn-danger"
-										onclick="EraseProduct('<%=result[j].name%>')">Xóa</button>
-								</div>
+								<h2 class="font-custom" style="margin: 0px;">{{product.name}}</h2>
+								<h4>
+									<a href="javascript:void(0)"
+										style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;
+									</a>
+								</h4>
+								<h4 class="font-custom currency"
+									style="color: red; font-weight: bold; margin-top: 10px;"
+									id="dictprice">
+									{{product.discountPrice}} <- <font
+										style="text-decoration: line-through; color: #6b6b6c">{{product.price}}</font>
+								</h4>
 							</div>
 
 						</div>
+					</a>
+					<div class="row" *ngIf="isAdmin">
+						<div class="col-xs-3 col-md-3">
+							<a class="btn " (click)="navigateToProductEdit(product.name)">Edit</a>
+						</div>
+						<div class="col-xs-3 col-md-3">
+							<button class="btn btn-danger"
+								onclick="EraseProduct('<%=result[j].name%>')">Xóa</button>
+						</div>
 					</div>
 
-
 				</div>
+			</div>
+
+
+		</div>
 	</div>
 </div>

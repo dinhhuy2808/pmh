@@ -23,18 +23,13 @@ export class HomeComponent implements OnInit {
 categoryscreens: CategoryScreen[];
     constructor( private deviceService: DeviceDetectorService , private router: Router, private productService: ProductService,private activatedRoute: ActivatedRoute) { 
         activatedRoute.params.subscribe(val => {
-            this.isMobile = this.deviceService.isMobile();
-            this.productService.getLatestProduct().subscribe(res => {
-                if(Array.isArray(res)) {
-                    this.categoryscreens = res;
-                }
-            });
+            this.ngOnInit();
         });
     }
 
     ngOnInit() {
         this.isMobile = this.deviceService.isMobile();
-        if (this.categoryscreens.length ==0) {
+        if (this.categoryscreens != undefined &&this.categoryscreens.length ==0) {
             this.productService.getLatestProduct().subscribe(res => {
                 if(Array.isArray(res)) {
                     this.categoryscreens = res;

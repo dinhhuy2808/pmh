@@ -6,4 +6,5 @@ export class ProducScreenDtail {
   sizes: Size[];
   thuoctinh: Thuoctinh = new Thuoctinh();
   description: string = ''; 
+  catName: string ='';
 }

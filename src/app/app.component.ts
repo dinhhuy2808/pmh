@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+        localStorage.setItem("keyword-cutiiehouse", '');
         this.treefolderService.getTreefolder().subscribe(( data: {} ) => {
             for ( const [key, value] of Object.entries( data ) ) {
                 this.treeMap.set( key, data[key] );
@@ -165,7 +166,11 @@ export class AppComponent implements OnInit {
         }
     }
     Search(){
-        this.router.navigate( ['category/Search/1'], { queryParams: { keyword: this.search } } );
+        if (this.search) {
+            localStorage.setItem('keyword-cutiiehouse' , this.search);
+            this.router.navigate( ['category/Search/1'], { queryParams: { keyword: this.search } } );
+        }
+        
     }
     openChinhSachKhachSi() {
         const dialogConfig = new MatDialogConfig();

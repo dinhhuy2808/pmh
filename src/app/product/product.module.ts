@@ -22,6 +22,5 @@ import { DetailComponent } from './detail/detail.component';
     RouterModule
   ],
   providers: [CookieService],
-  exports: [ProductComponent],
 })
 export class ProductModule { }

@@ -7,7 +7,7 @@ import { ProductComponent } from './product.component'
 
 export const ProductRoutes: Routes = [
     {
-        path: 'product', component: ProductComponent,
+        path: 'product',
         children: [
             {
                 path: '', component: ProductComponent, pathMatch: 'full'
