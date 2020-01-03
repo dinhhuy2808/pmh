@@ -6,8 +6,9 @@ interface Scripts {
 }
 
 export const ScriptStore: Scripts[] = [
+  { name: 'jssor-slider', src: '../../../assets/js/jssor-slider.js' },
+  { name: 'angular', src: 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js' },
   { name: 'ckeditor-js', src: '../../../assets/js/ckeditor-js.js' },
-  { name: 'angular', src: 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js' }
 ];
 
 declare var document: any;
