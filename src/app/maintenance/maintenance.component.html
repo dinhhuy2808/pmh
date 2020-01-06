@@ -321,16 +321,19 @@
 			</div>
 			<div *ngIf="item.value.length>0 ">
 				<div class="row" *ngFor="let cat of item.value">
-					<div class="col-md-4">
+					<div class="col-md-4 col-xs-4">
 						<input class="form-control" value="{{item.key}}" disabled>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3 col-xs-3">
 						<input class="form-control" value="{{cat}}" disabled>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 col-xs-3">
 						<input class="form-control" value="" >
 					</div>
-					<div class="col-md-1">
+					<div class="col-md-1 col-xs-1">
+						<a class="btn btn-danger form-control" (click)="deleteCat($event.target.parentElement.parentElement)">Xóa</a>
+					</div>
+					<div class="col-md-1 col-xs-1">
 						<a class="btn btn-success form-control" (click)="changeName($event.target.parentElement.parentElement)">Ok</a>
 					</div>
 				</div>

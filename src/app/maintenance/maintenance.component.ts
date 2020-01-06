@@ -115,7 +115,15 @@ export class MaintenanceComponent implements OnInit {
             }
         });
     }
-    
+    deleteCat(value): void {
+        this.treefolderService.deleteCat(this.cookieService.get( 'token' )
+                ,value.childNodes[1].firstChild.value
+                ).subscribe(( res ) => {
+            if ( res == '200' ) {
+                window.location.reload();
+            }
+        });
+    }
     updateIndex(value): void {
         this.treefolder.folder_name = value.childNodes[0].firstChild.value;
         this.treefolder.index = value.childNodes[1].firstChild.value;

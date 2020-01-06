@@ -132,4 +132,11 @@ export class CategoryComponent implements OnInit {
         let productUrl = 'product/add/' + this.name;
         this.router.navigate( [productUrl] );
     }
+    deleteProduct( value ) {
+       this.productService.deleteProduct( this.cookieService.get( 'token' ) , value.replace( / /g, '-' )).subscribe( res => {
+           if(res == '200') {
+               window.location.reload();
+           }
+       });
+    }
 }

@@ -65,7 +65,14 @@ export class TreefolderService {
             map( this.extractData )
         )
     }
-    
+    deleteCat(token: string , catName:string) {
+        const httpOptions = {
+            headers: new HttpHeaders( { 'Content-Type': 'application/json' })
+        };
+        return this.http.get( this.getTreeFolderUrl + '/delete-cat/' + token+'/'+catName ).pipe(
+            map( this.extractData )
+        )
+    }
     updateIndex( tree: Treefolder, token: string ) {
         const httpOptions = {
             headers: new HttpHeaders( { 'Content-Type': 'application/json' })
