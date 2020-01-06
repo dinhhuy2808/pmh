@@ -36,7 +36,7 @@ export class ProductService {
         return this.http.get<CategoryScreen[]>(this.getProductUrl + '/search/' + keyword+"/"+page);
     }
     deleteProduct(token: string, productName:string) {
-        return this.http.get<CategoryScreen[]>(this.getProductUrl + '/delete-product/' + token+"/"+productName);
+        return this.http.get(this.getProductUrl + '/delete-product/' + token+"/"+productName);
     }
     checkProductName(productName: string) {
         return this.http.get(this.getProductUrl + '/check/' + productName).pipe(
