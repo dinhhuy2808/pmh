@@ -21,10 +21,10 @@ export class RegisterComponent implements OnInit {
   }
    checkUserByPhone() {
     this.userService.checkUserByPhone(this.user.phone).subscribe(res => {
-      if(res == false){
-          this.isValidPhone = false;
-      } else {
+      if(res == true){
           this.isValidPhone = true;
+      } else {
+          this.isValidPhone = false;
       }
     });
   }

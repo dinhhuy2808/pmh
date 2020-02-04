@@ -45,7 +45,7 @@
                         <div class="form-group form-group-icon-left col-md-offset-2 col-md-8"><i class="fa fa-user input-icon input-icon-show"></i>
                             <label>Số điện thoại</label>
                             <input class="form-control" type="text" [(ngModel)]="user.phone" name = 'phone' #phoneValidation = "ngModel" (blur)="checkUserByPhone()">
-                             <div *ngIf="user.phone.trim()==''" style="color: red"> Mời số điện thoại</div>checkUserByPhone
+                             <div *ngIf="user.phone.trim()==''" style="color: red"> Mời số điện thoại</div>
                               <div *ngIf="isValidPhone && user.phone.trim()!=''" style="color: red">Số điện thoại đã được đăng kí</div>
                         </div>
                     </div>
