@@ -60,10 +60,10 @@
 											alt="image">
 									</div>
 
-									<div *ngIf="product.discountPrice==0"
+									<div *ngIf="product.discountPrice==0 || product.discountPrice==undefined"
 										style="position: relative;" class="product_detail">
 										<h2 class="font-custom" style="margin: 0px;">{{product.name}}</h2>
-										<h4>
+										<h4 *ngIf="product.price!=0&&product.price!=undefined">
 											<a href="javascript:void(0)"
 												style="font-weight: bold; color: #6b6b6c; float: left;">Từ&nbsp;
 											</a>
@@ -73,7 +73,7 @@
 											style=" font-weight: bold; margin-top: 10px;"
 											id="dictprice">{{product.price}}</h4>
 									</div>
-									<div *ngIf="product.discountPrice!=0"
+									<div *ngIf="product.discountPrice>0"
 										style="position: relative;" class="product_detail">
 										<div class="col-md-3"
 											style="position: absolute; padding: 0px; top: 0px; right: 0px;">
