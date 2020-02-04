@@ -35,6 +35,11 @@ phone: string = '';
                   var day = date.substring( 6, 8 )
                   this.user.dob = year + '-' + month + '-' + day;
               }
+              this.userService.isAdmin(this.cookieService.get('token')).subscribe(res1 => {
+                  if (res1 == true) {
+                      this.isAdmin = true;
+                  }
+              });
             });
       } else {
           this.router.navigate([`/`]);
